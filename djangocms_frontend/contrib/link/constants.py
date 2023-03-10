@@ -6,6 +6,13 @@ LINK_CHOICES = (
     ("btn", _("Button")),
 )
 
+LINK_TYPE_CHOICES = (
+    ("", _("URL")),
+    ("mailto:", _("Mail")),
+    ("tel:", _("Phone")),
+    ("#", _("Anchor")),
+)
+
 LINK_SIZE_CHOICES = (
     ("btn-sm", _("Small")),
     ("", _("Medium")),

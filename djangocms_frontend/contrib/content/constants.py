@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 
 CODE_TYPE_CHOICES = (
@@ -7,3 +8,10 @@ CODE_TYPE_CHOICES = (
     ("kbd", _("User input")),
     ("samp", _("Sample output")),
 )
+
+BLOCKQUOTE_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
+    settings,
+    "DJANGOCMS_FRONTEND_BLOCKQUOTE_TEMPLATES",
+    ()
+))
+

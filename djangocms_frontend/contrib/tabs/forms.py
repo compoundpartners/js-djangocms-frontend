@@ -2,17 +2,19 @@ from django import forms
 from django.utils.translation import gettext as _
 from entangled.forms import EntangledModelForm
 
-from ... import settings
-from ...common.spacing import PaddingFormMixin
-from ...fields import (
+from djangocms_frontend import settings
+from djangocms_frontend.common.spacing import PaddingFormMixin
+from djangocms_frontend.common.background import BackgroundFormMixin
+from djangocms_frontend.common.foreground import ForegroundFormMixin
+from djangocms_frontend.fields import (
     AttributesFormField,
     ButtonGroup,
     IconGroup,
     TagTypeFormField,
     TemplateChoiceMixin,
 )
-from ...helpers import first_choice
-from ...models import FrontendUIItem
+from djangocms_frontend.helpers import first_choice
+from djangocms_frontend.models import FrontendUIItem
 from .constants import (
     TAB_ALIGNMENT_CHOICES,
     TAB_EFFECT_CHOICES,
@@ -21,7 +23,7 @@ from .constants import (
 )
 
 
-class TabForm(TemplateChoiceMixin, EntangledModelForm):
+class TabForm(ForegroundFormMixin, BackgroundFormMixin, TemplateChoiceMixin, EntangledModelForm):
     """
     Components > "Navs - Tab" Plugin
     https://getbootstrap.com/docs/5.0/components/navs/
@@ -75,7 +77,7 @@ class TabForm(TemplateChoiceMixin, EntangledModelForm):
     tag_type = TagTypeFormField()
 
 
-class TabItemForm(PaddingFormMixin, EntangledModelForm):
+class TabItemForm(ForegroundFormMixin, BackgroundFormMixin, PaddingFormMixin, EntangledModelForm):
     """
     Components > "Navs - Tab Item" Plugin
     https://getbootstrap.com/docs/5.0/components/navs/

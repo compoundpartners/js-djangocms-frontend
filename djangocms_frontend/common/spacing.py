@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from entangled.forms import EntangledModelFormMixin
 
 from djangocms_frontend import settings
-from djangocms_frontend.fields import DeviceChoiceField, IconGroup
+from djangocms_frontend.fields import OptionalDeviceChoiceField, IconGroup
 from djangocms_frontend.helpers import insert_fields
 from djangocms_frontend.settings import DEVICE_CHOICES
 
@@ -81,7 +81,7 @@ class SpacingSizeSideField(forms.MultiValueField):  # lgtm [py/missing-call-to-i
     def clean(self, value):
         if value[1] and not value[0]:
             raise ValidationError(
-                _("Please choose a side to which the spacing should be applied."),
+                _("Please chose a side to which the spacing should be applied."),
                 code="incomplete",
             )
         return super().clean(value)
@@ -197,7 +197,7 @@ class MarginFormMixin(EntangledModelFormMixin):
         size_choices=settings.SPACER_SIZE_CHOICES + AUTO_SIZE,
         side_choices=settings.SPACER_Y_SIDES_CHOICES,
     )
-    margin_devices = DeviceChoiceField(
+    margin_devices = OptionalDeviceChoiceField(
         label=_("Apply margin on device"),
         required=False,
         help_text=_(
@@ -229,7 +229,7 @@ class PaddingFormMixin(EntangledModelFormMixin):
         size_choices=settings.SPACER_SIZE_CHOICES,
         side_choices=settings.SPACER_Y_SIDES_CHOICES,
     )
-    padding_devices = DeviceChoiceField(
+    padding_devices = OptionalDeviceChoiceField(
         label=_("Apply padding on device"),
         required=False,
         help_text=_(

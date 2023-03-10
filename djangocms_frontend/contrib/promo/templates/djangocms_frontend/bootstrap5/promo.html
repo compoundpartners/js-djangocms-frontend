@@ -1,0 +1,5 @@
+{% load cms_tags %}
+    <div {{ instance.get_attributes }}>
+        <h3><a href="{{ instance.get_link }}">{{ instance.title}}</a></h3>
+        {{ instance.content|safe }}
+    </div>

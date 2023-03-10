@@ -16,7 +16,7 @@ mixin_factory = settings.get_renderer(carousel)
 
 
 @plugin_pool.register_plugin
-class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, CMSUIPlugin):
+class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, BackgroundMixin, CMSUIPlugin):
     """
     Components > "Carousel" Plugin
     https://getbootstrap.com/docs/5.0/components/carousel/
@@ -27,7 +27,12 @@ class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, CMSUIPlugin):
     model = models.Carousel
     form = forms.CarouselForm
     allow_children = True
-    child_classes = ["CarouselSlidePlugin"]
+    child_classes = [
+        "CarouselSlidePlugin",
+        "PromoPlugin",
+        "ImagePlugin",
+        "BlockquotePlugin",
+    ]
 
     fieldsets = [
         (
@@ -38,8 +43,7 @@ class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, CMSUIPlugin):
                     ("carousel_aspect_ratio", "carousel_interval"),
                     ("carousel_controls", "carousel_indicators"),
                     ("carousel_keyboard", "carousel_wrap"),
-                    ("carousel_ride",),
-                    ("carousel_transition", "carousel_pause",),
+                    ("carousel_ride", "carousel_pause"),
                 )
             },
         ),
@@ -53,7 +57,7 @@ class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, CMSUIPlugin):
 
 @plugin_pool.register_plugin
 class CarouselSlidePlugin(
-    mixin_factory("CarouselSlide"), AttributesMixin, BackgroundMixin, LinkPluginMixin, CMSUIPlugin
+    mixin_factory("CarouselSlide"), AttributesMixin, LinkPluginMixin, CMSUIPlugin
 ):
     """
     Components > "Carousel Slide" Plugin
@@ -82,9 +86,10 @@ class CarouselSlidePlugin(
             {
                 "classes": ("collapse",),
                 "fields": (
+                    "link_name",
                     ("external_link", "internal_link"),
-                    ("mailto", "phone"),
-                    ("anchor", "target"),
+                    ("external_link_type", "new_window"),
+                    ("file_link"),
                 ),
             },
         ),

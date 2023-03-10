@@ -19,7 +19,7 @@ mixin_factory = settings.get_renderer(link)
 UILINK_FIELDS = (
     ("name", "link_type"),
     ("site", "url_grouper")
-    if apps.is_installed("djangocms_url_manager")
+    if False#dm apps.is_installed("djangocms_url_manager")
     else ("external_link", "internal_link"),
     ("link_context", "link_size"),
     ("link_outline", "link_block"),
@@ -39,15 +39,15 @@ UILINK_FIELDSET = [
         },
     ),
 ]
-if not apps.is_installed("djangocms_url_manager"):
+if True:#dm not apps.is_installed("djangocms_url_manager"):
     UILINK_FIELDSET += [
         (
             _("Link settings"),
             {
                 "classes": ("collapse",),
                 "fields": (
-                    ("mailto", "phone"),
-                    ("anchor", "target"),
+                    #dm ("mailto", "phone"),
+                    #dm ("anchor", "target"),
                     ("file_link",),
                 ),
             },
@@ -59,11 +59,10 @@ class LinkPluginMixin:
     link_fieldset_position = None
     link_fields = (
         (("site", "url_grouper"),)
-        if apps.is_installed("djangocms_url_manager")
+        if False#dm apps.is_installed("djangocms_url_manager")
         else (
             ("external_link", "internal_link"),
-            ("mailto", "phone"),
-            ("anchor", "target"),
+            ("external_link_type", "new_window"),
             "file_link",
         )
     )

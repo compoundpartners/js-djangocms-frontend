@@ -13,10 +13,9 @@ COLOR_STYLE_CHOICES = (("link", _("Link")),) + COLOR_STYLE_CHOICES
 
 class GetLinkMixin:
     def get_link(self):
+        link = ""
         if getattr(self, "url_grouper", None):
             url_grouper = get_related_object(self.config, "url_grouper")
-            if not url_grouper:
-                return ""
             url = url_grouper.get_content(show_draft_content=True)
             # simulate the call to the unauthorized CMSPlugin.page property
             cms_page = self.placeholder.page if self.placeholder_id else None
@@ -85,20 +84,8 @@ class GetLinkMixin:
 
         elif getattr(self, "external_link", None):
             link = self.external_link
-
-        elif getattr(self, "phone", None):
-            link = "tel:{}".format(self.phone.replace(" ", ""))
-
-        elif getattr(self, "mailto", None):
-            link = f"mailto:{self.mailto}"
-
-        else:
-            link = ""
-
-        if (
-            not getattr(self, "phone", None) and not getattr(self, "mailto", None)
-        ) and getattr(self, "anchor", None):
-            link += f"#{self.anchor}"
+            if getattr(self, "external_link_type", None):
+                link = "{}{}".format(self.external_link_type, link)
 
         return link
 

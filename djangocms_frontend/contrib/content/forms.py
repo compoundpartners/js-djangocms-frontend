@@ -2,6 +2,8 @@ from django import forms
 from django.conf import settings as django_settings
 from django.utils.translation import gettext_lazy as _
 from entangled.forms import EntangledModelForm
+from js_color_picker.forms import RGBColorField
+from js_color_picker.widgets import ColorFieldWidget
 
 from djangocms_frontend.settings import ALIGN_CHOICES
 
@@ -9,11 +11,17 @@ from ... import settings
 from ...common.background import BackgroundFormMixin
 from ...common.responsive import ResponsiveFormMixin
 from ...common.spacing import SpacingFormMixin
-from ...fields import AttributesFormField, HTMLFormField, IconGroup, TagTypeFormField
+from ...fields import (
+    AttributesFormField,
+    HTMLFormField,
+    IconGroup,
+    TagTypeFormField,
+    TemplateChoiceMixin
+)
 from ...helpers import first_choice
 from ...models import FrontendUIItem
 from .. import content
-from .constants import CODE_TYPE_CHOICES
+from .constants import CODE_TYPE_CHOICES, BLOCKQUOTE_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_forms(content)
 
@@ -65,6 +73,7 @@ class CodeForm(
 
 class BlockquoteForm(
     mixin_factory("Blockquote"),
+    TemplateChoiceMixin,
     SpacingFormMixin,
     ResponsiveFormMixin,
     BackgroundFormMixin,
@@ -79,20 +88,38 @@ class BlockquoteForm(
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "template",
                 "quote_content",
-                "quote_origin",
+                "quote_origin_name",
+                "quote_origin_role",
+                "quote_origin_company",
                 "quote_alignment",
+                "foreground_color",
                 "attributes",
             ]
         }
 
+    template = forms.ChoiceField(
+        label=_("Template"),
+        choices=BLOCKQUOTE_TEMPLATE_CHOICES,
+        initial=first_choice(BLOCKQUOTE_TEMPLATE_CHOICES),
+        help_text=_("This is the template that will be used for the component."),
+    )
     quote_content = HTMLFormField(
         label=_("Quote"),
         initial="",
         required=True,
     )
-    quote_origin = HTMLFormField(
-        label=_("Source"),
+    quote_origin_name = forms.CharField(
+        label=_("Name"),
+        required=False,
+    )
+    quote_origin_role = forms.CharField(
+        label=_("Role"),
+        required=False,
+    )
+    quote_origin_company = forms.CharField(
+        label=_("Company"),
         required=False,
     )
     quote_alignment = forms.ChoiceField(
@@ -102,8 +129,26 @@ class BlockquoteForm(
         required=False,
         widget=IconGroup(),
     )
+    foreground_color = RGBColorField(
+        label=_('Foreground color'),
+        required=False,
+        widget=ColorFieldWidget(
+            mode=settings.COLORPICKER_MODE,
+            colors=settings.COLORPICKER_COLORS
+        ),
+    )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()
+
+    def __init__(self, *args, **kwargs):
+        FIELD_SETTINGS = {
+            'quote_is_richtext': False
+        }
+        if type(settings.PLUGINS_AND_FIELDS.get('Blockquote')) is dict:
+            FIELD_SETTINGS.update(settings.PLUGINS_AND_FIELDS.get('Blockquote'))
+        super().__init__(*args, **kwargs)
+        if not FIELD_SETTINGS['quote_is_richtext']:
+            self.fields['quote_content'].widget = forms.Textarea()
 
 
 class FigureForm(
@@ -142,3 +187,4 @@ class FigureForm(
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()
+

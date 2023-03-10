@@ -7,7 +7,9 @@ from ...common.attributes import AttributesMixin
 from ...common.background import BackgroundMixin
 from ...common.responsive import ResponsiveMixin
 from ...common.spacing import SpacingMixin
+from ...helpers import get_plugin_template
 from .. import content
+from .constants import BLOCKQUOTE_TEMPLATE_CHOICES
 from . import forms, models
 
 mixin_factory = settings.get_renderer(content)
@@ -32,6 +34,7 @@ class CodePlugin(
     model = models.CodeBlock
     form = forms.CodeForm
     change_form_template = "djangocms_frontend/admin/code.html"
+    render_template_prefix = "content"
 
     fieldsets = [
         (
@@ -46,70 +49,82 @@ class CodePlugin(
     ]
 
 
-@plugin_pool.register_plugin
-class BlockquotePlugin(
-    mixin_factory("Blockquote"),
-    AttributesMixin,
-    ResponsiveMixin,
-    SpacingMixin,
-    BackgroundMixin,
-    CMSUIPlugin,
-):
-    """
-    Content > "Blockquote" Plugin
-    https://getbootstrap.com/docs/5.0/content/typography/#blockquotes
-    """
+if settings.PLUGINS_AND_FIELDS.get('Blockquote'):
+    @plugin_pool.register_plugin
+    class BlockquotePlugin(
+        mixin_factory("Blockquote"),
+        AttributesMixin,
+        ResponsiveMixin,
+        SpacingMixin,
+        BackgroundMixin,
+        CMSUIPlugin,
+    ):
+        """
+        Content > "Blockquote" Plugin
+        https://getbootstrap.com/docs/5.0/content/typography/#blockquotes
+        """
 
-    name = _("Blockquote")
-    module = _("Frontend")
-    model = models.Blockquote
-    form = forms.BlockquoteForm
-    change_form_template = "djangocms_frontend/admin/blockquote.html"
-    allow_children = True
+        name = _("Blockquote")
+        module = _("Frontend")
+        model = models.Blockquote
+        form = forms.BlockquoteForm
+        change_form_template = "djangocms_frontend/admin/blockquote.html"
+        allow_children = True
 
-    fieldsets = [
-        (
-            None,
-            {
-                "fields": (
-                    "quote_content",
-                    "quote_origin",
-                    "quote_alignment",
-                )
-            },
-        ),
-    ]
+        fieldsets = [
+            (
+                None,
+                {
+                    "fields": (
+                        "template",
+                        "quote_content",
+                        "quote_origin_name",
+                        "quote_origin_role",
+                        "quote_origin_company",
+                        "quote_alignment",
+                        "foreground_color",
+                    )
+                },
+            ),
+        ]
+
+        def get_render_template(self, context, instance, placeholder):
+            return get_plugin_template(
+                instance, "content", "blockquote", BLOCKQUOTE_TEMPLATE_CHOICES
+            )
 
 
-@plugin_pool.register_plugin
-class FigurePlugin(
-    mixin_factory("Figure"),
-    AttributesMixin,
-    ResponsiveMixin,
-    SpacingMixin,
-    BackgroundMixin,
-    CMSUIPlugin,
-):
-    """
-    Content > "Figure" Plugin
-    https://getbootstrap.com/docs/5.0/content/figures/
-    """
+if settings.PLUGINS_AND_FIELDS.get('Figure'):
+    @plugin_pool.register_plugin
+    class FigurePlugin(
+        mixin_factory("Figure"),
+        AttributesMixin,
+        ResponsiveMixin,
+        SpacingMixin,
+        BackgroundMixin,
+        CMSUIPlugin,
+    ):
+        """
+        Content > "Figure" Plugin
+        https://getbootstrap.com/docs/5.0/content/figures/
+        """
 
-    name = _("Figure")
-    module = _("Frontend")
-    model = models.Figure
-    form = forms.FigureForm
-    change_form_template = "djangocms_frontend/admin/figure.html"
-    allow_children = True
+        name = _("Figure")
+        module = _("Frontend")
+        model = models.Figure
+        form = forms.FigureForm
+        change_form_template = "djangocms_frontend/admin/figure.html"
+        allow_children = True
+        render_template_prefix = "content"
 
-    fieldsets = [
-        (
-            None,
-            {
-                "fields": (
-                    "figure_caption",
-                    "figure_alignment",
-                )
-            },
-        ),
-    ]
+        fieldsets = [
+            (
+                None,
+                {
+                    "fields": (
+                        "figure_caption",
+                        "figure_alignment",
+                    )
+                },
+            ),
+        ]

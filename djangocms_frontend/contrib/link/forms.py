@@ -27,11 +27,8 @@ from ...fields import (
 )
 from ...helpers import first_choice, get_related_object
 from ...models import FrontendUIItem
-from .. import link
-from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES
+from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES, LINK_TYPE_CHOICES
 from .helpers import get_choices, get_object_for_value
-
-mixin_factory = settings.get_forms(link)
 
 # Weak dependency on djangocms_icon
 # (Even if djangocms_icon is in the python path, the admin form will fail due to missing
@@ -43,6 +40,10 @@ else:
         def __init__(self, *args, **kwargs):
             kwargs["widget"] = forms.HiddenInput
             super().__init__(*args, **kwargs)
+
+
+def get_templates():
+    return settings.LINK_TEMPLATE_CHOICES
 
 
 HOSTNAME = getattr(settings, "DJANGOCMS_LINK_INTRANET_HOSTNAME_PATTERN", None)
@@ -114,7 +115,7 @@ class SmartLinkField(forms.ChoiceField):
         return super().clean(value)
 
 
-if apps.apps.is_installed("djangocms_url_manager"):
+if False:#dm apps.apps.is_installed("djangocms_url_manager"):
     from djangocms_url_manager.forms import (
         HtmlLinkSiteSelectWidget,
         HtmlLinkUrlSelectWidget,
@@ -155,11 +156,13 @@ else:
                 "config": [
                     "external_link",
                     "internal_link",
+                    "new_window",
+                    "external_link_type",
                     "file_link",
-                    "anchor",
-                    "mailto",
-                    "phone",
-                    "target",
+                    #dm "anchor",
+                    #dm "mailto",
+                    #dm "phone",
+                    #dm "target",
                 ]
             }
 
@@ -169,7 +172,7 @@ else:
         #     IntranetURLValidator(intranet_host_re=HOSTNAME),
         # ]
 
-        external_link = forms.URLField(
+        external_link = forms.CharField(
             label=_("External link"),
             required=False,
             #        validators=url_validators,
@@ -180,6 +183,18 @@ else:
             required=False,
             help_text=_("If provided, overrides the external link."),
         )
+        external_link_type = forms.ChoiceField(
+            label=_("Link type"),
+            choices=LINK_TYPE_CHOICES,
+            required=False,
+            initial="",
+        )
+
+        new_window = forms.BooleanField(
+            label=_("Open in New Window"),
+            required=False,
+            initial=False,
+        )
         file_link = AdminFileFormField(
             rel=ManyToOneRel(FilerFileField, File, "id"),
             queryset=File.objects.all(),
@@ -187,29 +202,6 @@ else:
             label=_("File link"),
             required=False,
             help_text=_("If provided links a file from the filer app."),
-        )
-        # other link types
-        anchor = forms.CharField(
-            label=_("Anchor"),
-            required=False,
-            help_text=_(
-                "Appends the value only after the internal or external link. "
-                'Do <em>not</em> include a preceding "&#35;" symbol.'
-            ),
-        )
-        mailto = forms.EmailField(
-            label=_("Email address"),
-            required=False,
-        )
-        phone = forms.CharField(
-            label=_("Phone"),
-            required=False,
-        )
-        # advanced options
-        target = forms.ChoiceField(
-            label=_("Target"),
-            choices=settings.EMPTY_CHOICE + TARGET_CHOICES,
-            required=False,
         )
 
         def __init__(self, *args, **kwargs):
@@ -234,17 +226,8 @@ else:
             link_field_names = (
                 "external_link",
                 "internal_link",
-                "mailto",
-                "phone",
                 "file_link",
             )
-            anchor_field_name = "anchor"
-            field_names_allowed_with_anchor = (
-                "external_link",
-                "internal_link",
-            )
-            anchor_field_verbose_name = force_str(self.fields[anchor_field_name].label)
-            anchor_field_value = self.cleaned_data.get(anchor_field_name, None)
             link_fields = {
                 key: self.cleaned_data.get(key, None) for key in link_field_names
             }
@@ -267,29 +250,12 @@ else:
 
             if (
                 len(provided_link_fields) == 0
-                and not self.cleaned_data.get(anchor_field_name, None)
                 and not self.link_is_optional
             ):
                 raise ValidationError(_("Please provide a link."))
 
-            if anchor_field_value:
-                for field_name in provided_link_fields.keys():
-                    if field_name not in field_names_allowed_with_anchor:
-                        error_msg = _(
-                            "%(anchor_field_verbose_name)s is not allowed together with %(field_name)s"
-                        ) % {
-                            "anchor_field_verbose_name": anchor_field_verbose_name,
-                            "field_name": link_field_verbose_names.get(field_name),
-                        }
-                        raise ValidationError(
-                            {
-                                anchor_field_name: error_msg,
-                                field_name: error_msg,
-                            }
-                        )
 
-
-class LinkForm(mixin_factory("Link"), SpacingFormMixin, TemplateChoiceMixin, AbstractLinkForm):
+class LinkForm(SpacingFormMixin, TemplateChoiceMixin, AbstractLinkForm):
     class Meta:
         model = FrontendUIItem
         entangled_fields = {
@@ -315,8 +281,8 @@ class LinkForm(mixin_factory("Link"), SpacingFormMixin, TemplateChoiceMixin, Abs
     )
     template = forms.ChoiceField(
         label=_("Template"),
-        choices=settings.LINK_TEMPLATE_CHOICES,
-        initial=first_choice(settings.LINK_TEMPLATE_CHOICES),
+        choices=get_templates(),
+        initial=first_choice(get_templates()),
     )
     link_stretched = forms.BooleanField(
         label=_("Stretch link"),

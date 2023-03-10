@@ -5,15 +5,14 @@ from entangled.forms import EntangledModelForm
 from filer.fields.image import AdminImageFormField, FilerImageField
 from filer.models import Image
 
+from djangocms_frontend.common.background import BackgroundFormMixin
 from djangocms_frontend.fields import (
     AttributesFormField,
-    ButtonGroup,
     TagTypeFormField,
     TemplateChoiceMixin,
 )
 
 from ... import settings
-from ...common.background import BackgroundFormMixin
 from ...fields import HTMLFormField
 from ...helpers import first_choice
 from ...models import FrontendUIItem
@@ -22,14 +21,14 @@ from ..link.forms import AbstractLinkForm
 from .constants import (
     CAROUSEL_ASPECT_RATIO_CHOICES,
     CAROUSEL_PAUSE_CHOICES,
+    CAROUSEL_RIDE_CHOICES,
     CAROUSEL_TEMPLATE_CHOICES,
-    CAROUSEL_TRANSITION_CHOICES,
 )
 
 mixin_factory = settings.get_forms(carousel)
 
 
-class CarouselForm(mixin_factory("Carousel"), TemplateChoiceMixin, EntangledModelForm):
+class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoiceMixin, EntangledModelForm):
     """
     Components > "Carousel" Plugin
     https://getbootstrap.com/docs/5.0/components/carousel/
@@ -48,7 +47,6 @@ class CarouselForm(mixin_factory("Carousel"), TemplateChoiceMixin, EntangledMode
                 "carousel_pause",
                 "carousel_ride",
                 "carousel_wrap",
-                "carousel_transition",
                 "attributes",
             ]
         }
@@ -96,12 +94,11 @@ class CarouselForm(mixin_factory("Carousel"), TemplateChoiceMixin, EntangledMode
             '"mouseleave". If set to "false", hovering over the carousel '
             "won't pause it."
         ),
-        widget=ButtonGroup(attrs=dict(property="text")),
     )
-    carousel_ride = forms.BooleanField(
-        label=_("Auto start"),
-        initial=True,
-        required=False,
+    carousel_ride = forms.ChoiceField(
+        label=_("Ride"),
+        choices=CAROUSEL_RIDE_CHOICES,
+        initial=first_choice(CAROUSEL_RIDE_CHOICES),
         help_text=_(
             "Autoplays the carousel after the user manually cycles the "
             'first item. If "carousel", autoplays the carousel on load.'
@@ -125,16 +122,6 @@ class CarouselForm(mixin_factory("Carousel"), TemplateChoiceMixin, EntangledMode
             "according to the selected ratio."
         ),
     )
-    carousel_transition = forms.ChoiceField(
-        label=_("Transition"),
-        choices=CAROUSEL_TRANSITION_CHOICES,
-        required=False,
-        initial=CAROUSEL_TRANSITION_CHOICES[0][0],
-        help_text=_(
-            "Determines if slides change by sliding or fading."
-        ),
-        widget=ButtonGroup(attrs=dict(property="text")),
-    )
     attributes = AttributesFormField(
         excluded_keys=[
             "id",
@@ -149,7 +136,7 @@ class CarouselForm(mixin_factory("Carousel"), TemplateChoiceMixin, EntangledMode
 
 
 class CarouselSlideForm(
-    mixin_factory("CarouselSlide"), AbstractLinkForm, BackgroundFormMixin, EntangledModelForm
+    mixin_factory("CarouselSlide"), AbstractLinkForm, EntangledModelForm
 ):
     """
     Components > "Slide" Plugin
@@ -163,6 +150,7 @@ class CarouselSlideForm(
                 "carousel_image",
                 "carousel_content",
                 "attributes",
+                "link_name",
             ]
         }
         untangled_fields = ("tag_type",)
@@ -181,6 +169,10 @@ class CarouselSlideForm(
         required=False,
         initial="",
         help_text=_("Content may also be added using child plugins."),
+    )
+    link_name = forms.CharField(
+        label=_("Display name"),
+        required=False,
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

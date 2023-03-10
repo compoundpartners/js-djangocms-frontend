@@ -3,6 +3,52 @@ import importlib
 from django.conf import settings as django_settings
 from django.utils.translation import gettext_lazy as _
 
+COLORPICKER_COLORS = getattr(django_settings, 'COLORPICKER_COLORS', None)
+COLORPICKER_MODE = getattr(django_settings, 'COLORPICKER_MODE', None)
+
+FOREGROUND_SETTINGS = {
+    "alternate_text_color": True,
+    "foreground_color": True,
+    "foreground_image": True,
+}
+FOREGROUND_SETTINGS.update(
+    getattr(django_settings, 'DJANGOCMS_FRONTEND_FOREGROUND_SETTINGS', {})
+)
+
+BACKGROUND_SETTINGS = {
+  'color': True,
+  'image': True,
+  'video': False,
+  'video_url': True,
+  'attachment': True,
+  'repeat': True,
+  'position':{
+    'alignment': True, # controls whether alignemtn icons are shown
+    'empirical': True, # shows wherther px/% text boxes are shown
+  },
+  'size':
+  {
+    'select': True, # shows whether select is shown
+    'empirical': True, # shows wherther px/% text boxes are shown
+  },
+}
+BACKGROUND_SETTINGS.update(
+    getattr(django_settings, 'DJANGOCMS_FRONTEND_BACKGROUND_SETTINGS', {})
+)
+
+PLUGINS_AND_FIELDS = {
+    'Figure': True,
+    'Image': {
+        'caption': True,
+    },
+    'Blockquote': {
+        'quote_is_richtext': False,
+    },
+}
+PLUGINS_AND_FIELDS.update(
+    getattr(django_settings, 'DJANGOCMS_FRONTEND_PLUGINS_AND_FIELDS', {})
+)
+
 EMPTY_CHOICE = (("", "-----"),)
 
 EMPTY_FIELDSET = [
@@ -49,30 +95,23 @@ ALIGN_CHOICES = (
     ("end", _("Right")),
 )
 
-LINK_TEMPLATE_CHOICES = getattr(
+LINK_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
     django_settings,
-    "DJANGOCMS_FRONTEND_LINK_TEMPLATE_CHOICES",
-    [
-        ("default", _("Default")),
-    ],
-)
+    "DJANGOCMS_LINK_TEMPLATES",
+    ()
+))
 
-JUMBOTRON_TEMPLATE_CHOICES = getattr(
+JUMBOTRON_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
     django_settings,
-    "DJANGOCMS_FRONTEND_JUMBOTRON_TEMPLATE_CHOICES",
-    [
-        ("default", _("Default")),
-    ],
-)
+    "DJANGOCMS_FRONTEND_JUMBOTRON_TEMPLATES",
+    ()
+))
 
-NAVIGATION_TEMPLATE_CHOICES = getattr(
+NAVIGATION_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
     django_settings,
-    "DJANGOCMS_FRONTEND_NAVIGATION_TEMPLATE_CHOICES",
-    [
-        ("default", _("Default")),
-        ("offcanvas", _("Offcanvas")),
-    ],
-)
+    "DJANGOCMS_FRONTEND_NAVIGATION_TEMPLATES",
+    (("offcanvas", _("Offcanvas")),)
+))
 
 FORM_OPTIONS = getattr(django_settings, "DJANGOCMS_FRONTEND_FORM_OPTIONS", {})
 
@@ -145,3 +184,6 @@ def get_forms(my_module):
     return get_mixins(
         "{name}FormMixin", theme_forms_path, f"{my_module}.frameworks.{framework}"
     )
+
+TEMPLATE_PATH = getattr(django_settings, 'DJANGOCMS_FRONTEND_TEMPLATE_PATH',
+    "djangocms_frontend/{framework}/{prefix}/{template}/{name}.html")

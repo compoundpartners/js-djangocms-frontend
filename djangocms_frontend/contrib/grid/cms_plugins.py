@@ -4,15 +4,22 @@ from django.utils.translation import gettext_lazy as _
 from djangocms_frontend import settings
 from djangocms_frontend.common.attributes import AttributesMixin
 from djangocms_frontend.common.background import BackgroundMixin
+from djangocms_frontend.common.foreground import ForegroundMixin
 from djangocms_frontend.common.responsive import ResponsiveMixin
 from djangocms_frontend.common.sizing import SizingMixin
 from djangocms_frontend.common.spacing import SpacingMixin
+from djangocms_frontend.helpers import get_plugin_template
 
 from ...cms_plugins import CMSUIPlugin
 from ...common.title import TitleMixin
 from ...helpers import add_plugin
 from .. import grid
 from . import forms, models
+from .constants import (
+    GRID_TEMPLATE_CHOICES,
+    ROW_TEMPLATE_CHOICES,
+    COL_TEMPLATE_CHOICES,
+)
 
 mixin_factory = settings.get_renderer(grid)
 
@@ -24,6 +31,7 @@ class GridContainerPlugin(
     ResponsiveMixin,
     SpacingMixin,
     BackgroundMixin,
+    ForegroundMixin,
     SizingMixin,
     TitleMixin,
     CMSUIPlugin,
@@ -46,6 +54,7 @@ class GridContainerPlugin(
             {
                 "fields": (
                     (
+                        "template",
                         "container_type",
                         "plugin_title",
                     ),
@@ -54,6 +63,11 @@ class GridContainerPlugin(
         ),
     ]
 
+    def get_render_template(self, context, instance, placeholder, template=None):
+        return get_plugin_template(
+            instance, "grid", "container", GRID_TEMPLATE_CHOICES
+        )
+
 
 @plugin_pool.register_plugin
 class GridRowPlugin(
@@ -61,6 +75,8 @@ class GridRowPlugin(
     AttributesMixin,
     ResponsiveMixin,
     SpacingMixin,
+    BackgroundMixin,
+    ForegroundMixin,
     TitleMixin,
     CMSUIPlugin,
 ):
@@ -84,6 +100,7 @@ class GridRowPlugin(
                 "fields": (
                     (
                         "create",
+                        "template",
                         "plugin_title",
                     ),
                 )
@@ -130,6 +147,21 @@ class GridRowPlugin(
                 ),
             )
 
+    def get_render_template(self, context, instance, placeholder):
+        TEMPLATE_CHOICES = ROW_TEMPLATE_CHOICES
+        plugin = instance
+        if getattr(instance, 'template', None):
+            pass
+        elif instance.parent and instance.parent.plugin_type == "GridContainerPlugin":
+            TEMPLATE_CHOICES = GRID_TEMPLATE_CHOICES
+            plugin = instance.parent.get_plugin_instance()[0]
+        return get_plugin_template(
+            plugin,
+            "grid",
+            "grid_row",
+            TEMPLATE_CHOICES,
+        )
+
 
 @plugin_pool.register_plugin
 class GridColumnPlugin(
@@ -138,6 +170,7 @@ class GridColumnPlugin(
     ResponsiveMixin,
     SpacingMixin,
     BackgroundMixin,
+    ForegroundMixin,
     TitleMixin,
     CMSUIPlugin,
 ):
@@ -163,6 +196,7 @@ class GridColumnPlugin(
             {
                 "fields": (
                     (
+                        "template",
                         "column_alignment",
                         "text_alignment",
                     ),
@@ -183,3 +217,22 @@ class GridColumnPlugin(
         ),
         (_("Title settings"), {"fields": ("plugin_title",)}),
     ]
+
+    def get_render_template(self, context, instance, placeholder):
+        TEMPLATE_CHOICES = COL_TEMPLATE_CHOICES
+        plugin = instance
+        if getattr(instance, 'template', None):
+            pass
+        elif instance.parent and instance.parent.plugin_type == "GridRowPlugin":
+            TEMPLATE_CHOICES = ROW_TEMPLATE_CHOICES
+            plugin = instance.parent.get_plugin_instance()[0]
+        elif instance.parent and instance.parent.parent and instance.parent.parent.plugin_type == "GridContainerPlugin":
+            TEMPLATE_CHOICES = GRID_TEMPLATE_CHOICES,
+            plugin = instance.parent.parent.get_plugin_instance()[0],
+        return get_plugin_template(
+            plugin,
+            "grid",
+            "grid_col",
+            TEMPLATE_CHOICES,
+        )
+

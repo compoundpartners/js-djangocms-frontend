@@ -3,10 +3,12 @@ from django.utils.translation import gettext_lazy as _
 
 from djangocms_frontend.helpers import get_plugin_template
 
-from ... import settings
-from ...cms_plugins import CMSUIPlugin
-from ...common.attributes import AttributesMixin
-from ...common.spacing import PaddingMixin
+from djangocms_frontend import settings
+from djangocms_frontend.cms_plugins import CMSUIPlugin
+from djangocms_frontend.common.attributes import AttributesMixin
+from djangocms_frontend.common.spacing import PaddingMixin
+from djangocms_frontend.common.foreground import ForegroundMixin
+from djangocms_frontend.common.background import BackgroundMixin
 from .. import tabs
 from . import forms, models
 from .constants import TAB_TEMPLATE_CHOICES
@@ -15,7 +17,7 @@ mixin_factory = settings.get_renderer(tabs)
 
 
 @plugin_pool.register_plugin
-class TabPlugin(mixin_factory("Tab"), AttributesMixin, CMSUIPlugin):
+class TabPlugin(mixin_factory("Tab"), ForegroundMixin, BackgroundMixin, AttributesMixin, CMSUIPlugin):
     """
     Components > "Navs - Tab" Plugin
     https://getbootstrap.com/docs/5.0/components/navs/
@@ -48,7 +50,7 @@ class TabPlugin(mixin_factory("Tab"), AttributesMixin, CMSUIPlugin):
 
 @plugin_pool.register_plugin
 class TabItemPlugin(
-    mixin_factory("TabItem"), AttributesMixin, PaddingMixin, CMSUIPlugin
+    mixin_factory("TabItem"), ForegroundMixin, BackgroundMixin, AttributesMixin, PaddingMixin, CMSUIPlugin
 ):
     """
     Components > "Navs - Tab Item" Plugin

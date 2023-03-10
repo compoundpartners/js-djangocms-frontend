@@ -63,10 +63,10 @@ PROJECT_URLS = {
 
 
 setup(
-    name="djangocms-frontend",
+    name="js-djangocms-frontend",
     version=__version__,
-    author="fsbraun",
-    author_email="fsbraun@gmx.de",
+    author="Compound Partners Ltd, fsbraun",
+    author_email="hello@compoundpartners.co.uk, fsbraun@gmx.de",
     maintainer="Django CMS Association and contributors",
     maintainer_email="info@django-cms.org",
     url="https://github.com/django-cms/djangocms-frontend",

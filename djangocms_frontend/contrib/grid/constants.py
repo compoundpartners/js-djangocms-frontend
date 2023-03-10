@@ -43,3 +43,19 @@ GRID_COLUMN_ALIGNMENT_CHOICES = (
     ("align-self-center", _("Align self center")),
     ("align-self-end", _("Align self end")),
 )
+
+GRID_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
+    settings,
+    "DJANGOCMS_FRONTEND_GRID_TEMPLATES",
+    ()
+))
+ROW_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
+    settings,
+    "DJANGOCMS_FRONTEND_ROW_TEMPLATES",
+    ()
+))
+COL_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
+    settings,
+    "DJANGOCMS_FRONTEND_COL_TEMPLATES",
+    ()
+))

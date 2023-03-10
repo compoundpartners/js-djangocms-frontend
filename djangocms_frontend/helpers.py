@@ -35,13 +35,17 @@ def insert_fields(
     if blockattrs is None:
         blockattrs = dict()
     if block is None:
+        classes = ("collapse",)
+        if 'classes' in blockattrs:
+            classes = blockattrs['classes']
+            del blockattrs['classes']
         fs = (
             list(fieldsets[:position] if position != -1 else fieldsets)
             + [
                 (
                     blockname,
                     {
-                        "classes": ("collapse",) if len(fieldsets) > 0 else (),
+                        "classes": classes if len(fieldsets) > 0 else (),
                         "fields": list(new_fields),
                         **blockattrs,
                     },
@@ -82,7 +86,8 @@ def first_choice(choices):
 
 
 def get_template_path(prefix, template, name):
-    return f"djangocms_frontend/{settings.framework}/{prefix}/{template}/{name}.html"
+    return settings.TEMPLATE_PATH.format(prefix=prefix, template=template or "default", name=name, framework=settings.framework)
+    #return f"djangocms_frontend/{settings.framework}/{prefix}/{template}/{name}.html"
 
 
 def get_plugin_template(instance, prefix, name, templates):
@@ -93,7 +98,7 @@ def get_plugin_template(instance, prefix, name, templates):
         select_template([template_path])
     except TemplateDoesNotExist:
         # TODO render a warning inside the template
-        template_path = get_template_path(prefix, "default", name)
+        template_path = get_template_path(prefix, None, name)
 
     return template_path
 

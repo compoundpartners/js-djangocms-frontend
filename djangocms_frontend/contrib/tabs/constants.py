@@ -21,8 +21,8 @@ TAB_EFFECT_CHOICES = getattr(
     (("fade", _("Fade")),),
 )
 
-TAB_TEMPLATE_CHOICES = getattr(
+TAB_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
     settings,
     "DJANGOCMS_FRONTEND_TAB_TEMPLATES",
-    (("default", _("Default")),),
-)
+    ()
+))

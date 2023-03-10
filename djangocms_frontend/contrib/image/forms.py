@@ -10,7 +10,7 @@ from djangocms_frontend import settings
 
 from ...common.responsive import ResponsiveFormMixin
 from ...common.spacing import MarginFormMixin
-from ...fields import AttributesFormField, TagTypeFormField, TemplateChoiceMixin
+from ...fields import AttributesFormField, TagTypeFormField, TemplateChoiceMixin, HTMLFormField
 from ...helpers import first_choice
 from ...models import FrontendUIItem
 from ..link.forms import AbstractLinkForm
@@ -35,11 +35,11 @@ def get_templates():
     choices = getattr(
         django_settings,
         "DJANGOCMS_PICTURE_TEMPLATES",
-        [
-            ("default", _("Default")),
-        ],
     )
-    return choices
+    return [
+            ("default", _("Default")),
+        ] + list(choices)
+
 
 
 # required for backwards compability
@@ -73,6 +73,7 @@ class ImageForm(
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "caption",
                 "template",
                 "picture",
                 "external_picture",
@@ -96,6 +97,11 @@ class ImageForm(
 
     link_is_optional = True
 
+    caption = HTMLFormField(
+        label=_("Caption"),
+        initial="",
+        required=False,
+    )
     template = forms.ChoiceField(
         label=_("Template"),
         choices=get_templates(),

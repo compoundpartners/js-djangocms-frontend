@@ -8,6 +8,9 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import FieldError, ObjectDoesNotExist
 from django.utils.encoding import force_str
 from django.utils.html import mark_safe
+from django.core.cache import cache
+from django.utils.translation import get_language
+
 
 LINK_MODELS = getattr(django_settings, "DJANGOCMS_FRONTEND_LINK_MODELS", [])
 
@@ -94,11 +97,25 @@ def get_link_choices(request, term="", lang=None, nbsp=""):
             except FieldError:
                 pass
         if objects is None:
-            objects = [
-                item
-                for item in qs.all()
-                if (not isinstance(term, str)) or term.upper() in str(item).upper()
-            ]
+            language = get_language()
+            key = f"LINK_MODELS-{section}-{language}"
+            values = cache.get(key)
+            if not values:
+                values = []
+                type_class = ContentType.objects.get_for_model(qs.model)
+                for item in qs.all():
+                    values.append(dict(id=f"{type_class.id}-{item.id}", text=str(item)))
+                cache.set(key, values, 18000)
+            available_objects.append(
+                {
+                    "text": force_str(section),
+                    "children": [
+                        item
+                        for item in values
+                        if (not isinstance(term, str)) or term.upper() in str(item['text']).upper()
+                    ],
+                }
+            )
         if objects:
             type_class = ContentType.objects.get_for_model(objects[0].__class__)
             available_objects.append(
@@ -107,9 +124,10 @@ def get_link_choices(request, term="", lang=None, nbsp=""):
                     "children": [
                         dict(id=f"{type_class.id}-{obj.id}", text=str(obj))
                         for obj in objects
-                        if request is None
-                        or model_admin
-                        and model_admin.has_view_permission(request, obj=obj)
+                        #dm
+                        # if request is None
+                        # or model_admin
+                        # and model_admin.has_view_permission(request, obj=obj)
                     ],
                 }
             )

@@ -7,6 +7,7 @@ from entangled.forms import EntangledModelForm
 
 from djangocms_frontend import settings
 from djangocms_frontend.common.background import BackgroundFormMixin
+from djangocms_frontend.common.foreground import ForegroundFormMixin
 from djangocms_frontend.common.responsive import ResponsiveFormMixin
 from djangocms_frontend.common.sizing import SizingFormMixin
 from djangocms_frontend.common.spacing import SpacingFormMixin
@@ -28,6 +29,9 @@ from .constants import (
     GRID_ROW_HORIZONTAL_ALIGNMENT_CHOICES,
     GRID_ROW_VERTICAL_ALIGNMENT_CHOICES,
     GRID_SIZE,
+    GRID_TEMPLATE_CHOICES,
+    ROW_TEMPLATE_CHOICES,
+    COL_TEMPLATE_CHOICES,
 )
 
 mixin_factory = settings.get_forms(grid)
@@ -37,6 +41,7 @@ class GridContainerForm(
     mixin_factory("GridContainer"),
     TitleFormMixin,
     BackgroundFormMixin,
+    ForegroundFormMixin,
     ResponsiveFormMixin,
     SpacingFormMixin,
     SizingFormMixin,
@@ -51,6 +56,7 @@ class GridContainerForm(
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "template",
                 "container_type",
                 "attributes",
             ]
@@ -67,6 +73,11 @@ class GridContainerForm(
             "margins or padding."
         ),
     )
+    template = forms.ChoiceField(
+        label=_("template"),
+        choices=GRID_TEMPLATE_CHOICES,
+        initial=first_choice(GRID_TEMPLATE_CHOICES),
+    )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()
 
@@ -74,6 +85,8 @@ class GridContainerForm(
 class GridRowBaseForm(
     mixin_factory("GridRow"),
     TitleFormMixin,
+    BackgroundFormMixin,
+    ForegroundFormMixin,
     ResponsiveFormMixin,
     SpacingFormMixin,
     EntangledModelForm,
@@ -82,6 +95,7 @@ class GridRowBaseForm(
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "template",
                 "vertical_alignment",
                 "horizontal_alignment",
                 "gutters",
@@ -99,6 +113,11 @@ class GridRowBaseForm(
         required=False,
         min_value=0,
         max_value=GRID_SIZE,
+    )
+    template = forms.ChoiceField(
+        label=_("template"),
+        choices=ROW_TEMPLATE_CHOICES,
+        initial=first_choice(ROW_TEMPLATE_CHOICES),
     )
     vertical_alignment = forms.ChoiceField(
         label=_("Vertical alignment"),
@@ -148,6 +167,7 @@ class GridColumnBaseForm(
     mixin_factory("GridColumn"),
     TitleFormMixin,
     BackgroundFormMixin,
+    ForegroundFormMixin,
     ResponsiveFormMixin,
     SpacingFormMixin,
     EntangledModelForm,
@@ -156,6 +176,7 @@ class GridColumnBaseForm(
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "template",
                 "column_alignment",
                 "text_alignment",
                 "attributes",
@@ -163,6 +184,11 @@ class GridColumnBaseForm(
         }
         untangled_fields = ("tag_type",)
 
+    template = forms.ChoiceField(
+        label=_("template"),
+        choices=COL_TEMPLATE_CHOICES,
+        initial=first_choice(COL_TEMPLATE_CHOICES),
+    )
     column_alignment = forms.ChoiceField(
         label=_("Column alignment"),
         choices=settings.EMPTY_CHOICE + GRID_COLUMN_ALIGNMENT_CHOICES,

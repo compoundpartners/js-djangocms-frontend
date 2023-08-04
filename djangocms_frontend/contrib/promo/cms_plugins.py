@@ -33,6 +33,7 @@ class PromoPlugin(LinkPluginMixin, AttributesMixin, BackgroundMixin, ForegroundM
                     "content",
                     "icon",
                     "alignment",
+                    "modal_video",
                 )
             },
         ),

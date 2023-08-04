@@ -1,13 +1,15 @@
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from ... import settings
-from ...cms_plugins import CMSUIPlugin
-from ...common.attributes import AttributesMixin
-from ...common.responsive import ResponsiveMixin
-from ...common.spacing import MarginMixin, PaddingMixin
-from .. import listgroup
+from djangocms_frontend import settings
+from djangocms_frontend.cms_plugins import CMSUIPlugin
+from djangocms_frontend.common.attributes import AttributesMixin
+from djangocms_frontend.common.responsive import ResponsiveMixin
+from djangocms_frontend.common.spacing import MarginMixin, PaddingMixin
+from djangocms_frontend.helpers import get_plugin_template
+from djangocms_frontend.contrib import listgroup
 from . import forms, models
+from .constants import LISTGROUP_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_renderer(listgroup)
 
@@ -35,8 +37,13 @@ class ListGroupPlugin(
     # TODO consider linking to tab-content
 
     fieldsets = [
-        (None, {"fields": ("list_group_flush",)}),
+        (None, {"fields": ("template", "list_group_flush",)}),
     ]
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_plugin_template(
+            instance, "listgroup", "listgroup", LISTGROUP_TEMPLATE_CHOICES
+        )
 
 
 @plugin_pool.register_plugin

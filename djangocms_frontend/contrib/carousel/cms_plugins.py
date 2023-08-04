@@ -40,6 +40,8 @@ class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, BackgroundMixin
             {
                 "fields": (
                     "template",
+                    "title",
+                    "description",
                     ("carousel_aspect_ratio", "carousel_interval"),
                     ("carousel_controls", "carousel_indicators"),
                     ("carousel_keyboard", "carousel_wrap"),

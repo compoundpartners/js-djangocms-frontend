@@ -47,6 +47,7 @@ class PromoForm(BackgroundFormMixin, ForegroundFormMixin, TemplateChoiceMixin, A
                 "content",
                 "icon",
                 "alignment",
+                "modal_video",
                 "attributes",
                 "foreground_image",
             ]
@@ -88,6 +89,10 @@ class PromoForm(BackgroundFormMixin, ForegroundFormMixin, TemplateChoiceMixin, A
         choices=settings.EMPTY_CHOICE + settings.ALIGN_CHOICES,
         required=False,
         widget=IconGroup(),
+    )
+    modal_video = forms.CharField(
+        label=_("Modal Video"),
+        required=False,
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

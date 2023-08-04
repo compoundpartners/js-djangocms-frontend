@@ -12,12 +12,12 @@ from djangocms_frontend.fields import (
     TemplateChoiceMixin,
 )
 
-from ... import settings
-from ...fields import HTMLFormField
-from ...helpers import first_choice
-from ...models import FrontendUIItem
-from .. import carousel
-from ..link.forms import AbstractLinkForm
+from djangocms_frontend import settings
+from djangocms_frontend.fields import HTMLFormField
+from djangocms_frontend.helpers import first_choice
+from djangocms_frontend.models import FrontendUIItem
+from djangocms_frontend.contrib import carousel
+from djangocms_frontend.contrib.link.forms import AbstractLinkForm
 from .constants import (
     CAROUSEL_ASPECT_RATIO_CHOICES,
     CAROUSEL_PAUSE_CHOICES,
@@ -39,6 +39,8 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
         entangled_fields = {
             "config": [
                 "template",
+                "title",
+                "description",
                 "carousel_aspect_ratio",
                 "carousel_controls",
                 "carousel_indicators",
@@ -57,6 +59,15 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
         choices=CAROUSEL_TEMPLATE_CHOICES,
         initial=first_choice(CAROUSEL_TEMPLATE_CHOICES),
         help_text=_("This is the template that will be used for the component."),
+    )
+    title = forms.CharField(
+        label=_("Title"),
+        required=False,
+    )
+    description = forms.CharField(
+        label=_("Description"),
+        required=False,
+        widget=forms.Textarea()
     )
     carousel_interval = forms.IntegerField(
         label=_("Interval"),

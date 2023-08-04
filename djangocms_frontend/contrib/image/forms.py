@@ -35,6 +35,7 @@ def get_templates():
     choices = getattr(
         django_settings,
         "DJANGOCMS_PICTURE_TEMPLATES",
+        (),
     )
     return [
             ("default", _("Default")),
@@ -252,7 +253,7 @@ class ImageForm(
             )
 
         # you shall only set one image kind
-        if not data.get("picture", False) and not data.get("external_picture", False):
+        if not data.get("picture", False) and not data.get("external_picture", False) and not data.get("file_link", False):
             raise forms.ValidationError(
                 _(
                     "You need to add either an image, "

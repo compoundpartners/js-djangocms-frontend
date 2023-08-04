@@ -4,16 +4,17 @@ from entangled.forms import EntangledModelForm
 
 from djangocms_frontend import settings
 
-from ...common.responsive import ResponsiveFormMixin
-from ...common.spacing import MarginFormMixin, PaddingFormMixin
-from ...fields import (
+from djangocms_frontend.common.responsive import ResponsiveFormMixin
+from djangocms_frontend.common.spacing import MarginFormMixin, PaddingFormMixin
+from djangocms_frontend.fields import (
     AttributesFormField,
     ButtonGroup,
     ColoredButtonGroup,
     TagTypeFormField,
 )
-from ...models import FrontendUIItem
-from .constants import LISTGROUP_STATE_CHOICES
+from djangocms_frontend.models import FrontendUIItem
+from djangocms_frontend.helpers import first_choice
+from .constants import LISTGROUP_STATE_CHOICES, LISTGROUP_TEMPLATE_CHOICES
 
 
 class ListGroupForm(MarginFormMixin, ResponsiveFormMixin, EntangledModelForm):
@@ -26,12 +27,18 @@ class ListGroupForm(MarginFormMixin, ResponsiveFormMixin, EntangledModelForm):
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "template",
                 "list_group_flush",
                 "attributes",
             ]
         }
         untangled_fields = ("tag_type",)
 
+    template = forms.ChoiceField(
+        label=_("template"),
+        choices=LISTGROUP_TEMPLATE_CHOICES,
+        initial=first_choice(LISTGROUP_TEMPLATE_CHOICES),
+    )
     list_group_flush = forms.BooleanField(
         label=_("List group flush"),
         initial=False,

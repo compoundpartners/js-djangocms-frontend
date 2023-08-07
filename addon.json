@@ -1,8 +1,6 @@
 {
-    "package-name": "djangocms-frontend",
     "installed-apps": [
         "djangocms_icon",
-        "djangocms_link",
         "djangocms_picture",
         "djangocms_frontend",
         "djangocms_frontend.contrib.accordion",
@@ -12,15 +10,18 @@
         "djangocms_frontend.contrib.carousel",
         "djangocms_frontend.contrib.collapse",
         "djangocms_frontend.contrib.content",
+        "djangocms_frontend.contrib.custom_plugins",
         "djangocms_frontend.contrib.grid",
+        "djangocms_frontend.contrib.image",
         "djangocms_frontend.contrib.jumbotron",
         "djangocms_frontend.contrib.link",
         "djangocms_frontend.contrib.listgroup",
         "djangocms_frontend.contrib.media",
-        "djangocms_frontend.contrib.picture",
+        "djangocms_frontend.contrib.modal",
+        "djangocms_frontend.contrib.navigation",
+        "djangocms_frontend.contrib.promo",
         "djangocms_frontend.contrib.tabs",
         "djangocms_frontend.contrib.utilities"
-        "djangocms_frontend.contrib.custom"
-        "djangocms_frontend.contrib.promo"
-    ]
+    ],
+    "package-name": "js-djangocms-frontend"
 }

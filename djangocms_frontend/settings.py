@@ -6,6 +6,24 @@ from django.utils.translation import gettext_lazy as _
 COLORPICKER_COLORS = getattr(django_settings, 'COLORPICKER_COLORS', None)
 COLORPICKER_MODE = getattr(django_settings, 'COLORPICKER_MODE', None)
 
+LINK_SETTINGS = {
+    "name": True, 
+    "link_type": True,
+    "external_link": True, 
+    "internal_link": True,
+    "external_link_type": True, 
+    "new_window": True,
+    "file_link": True,    
+    "link_context": True, 
+    "link_size": True,
+    "link_outline": True, 
+    "link_block": True,
+    "link_stretched": True,
+}
+LINK_SETTINGS.update(
+    getattr(django_settings, 'DJANGOCMS_FRONTEND_LINK_SETTINGS', {})
+)
+
 FOREGROUND_SETTINGS = {
     "alternate_text_color": True,
     "foreground_color": True,
@@ -22,6 +40,7 @@ BACKGROUND_SETTINGS = {
   'video_url': True,
   'attachment': True,
   'repeat': True,
+  'opacity': True,
   'position':{
     'alignment': True, # controls whether alignemtn icons are shown
     'empirical': True, # shows wherther px/% text boxes are shown

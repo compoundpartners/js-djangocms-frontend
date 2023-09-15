@@ -1,0 +1,49 @@
+{% load cms_tags sekizai_tags %}
+
+{% addtoblock "js" %}
+  <script type="application/javascript" src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.js"></script>
+{% endaddtoblock %}
+
+<div class="gated-content">
+
+  {% for plugin in instance.child_plugin_instances %}
+    {% with parentloop=forloop parent=instance %}{% render_plugin plugin %}{% endwith %}
+  {% empty %}{{ instance.simple_content }}{% endfor %}
+
+</div>
+
+{% addtoblock "js" %}
+  <script>
+
+    var gatedTrigger = document.querySelector(".gated-trigger")
+    var gatedContent = document.querySelector(".gated-content")
+
+    function toggleContent() {
+      // hide gated trigger
+      gatedTrigger.style.display = 'none'
+
+      // show gated content
+      gatedContent.style.display = 'block'      
+    }
+
+    // check to see if a cookie exists and the user has already filled the form
+    if ( Cookies.get('{{ instance.cookie_name }}') ) {
+
+      toggleContent()
+      
+    } else {
+      // add listener for message from Pardot
+      window.addEventListener('message', function(event){
+        if( event.data == "show_content" ) {
+
+          toggleContent()
+
+          //drop cookie
+          Cookies.set('{{ instance.cookie_name }}', true, { expires: 60 })
+
+        }
+      }, false)
+    }
+
+  </script>
+{% endaddtoblock %}

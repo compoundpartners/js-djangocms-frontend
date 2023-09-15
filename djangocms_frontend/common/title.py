@@ -47,7 +47,10 @@ class TitleField(forms.MultiValueField):  # lgtm [py/missing-call-to-init]
 
 class TitleMixin:
     def render(self, context, instance, placeholder):
-        if instance.config.get("plugin_title", {}).get("show", False):
+        title = instance.config.get("plugin_title", {})
+        if title and isinstance(title, str):
+            title = {'title': title, 'show': True}
+        if title and title.get("show", False):
             instance.add_attribute("title", instance.plugin_title.get("title", ""))
         return super().render(context, instance, placeholder)
 

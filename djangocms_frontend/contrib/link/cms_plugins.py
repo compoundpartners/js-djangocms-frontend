@@ -15,16 +15,19 @@ from .constants import USE_LINK_ICONS
 
 mixin_factory = settings.get_renderer(link)
 
+is_there = lambda x, y: x in y and y[x]
+split = lambda x: tuple((x[i], x[i+1]) for i in range(0, len(x)-1, 2)) + tuple((x[-1],) if len(x) % 2 else tuple())
 
-UILINK_FIELDS = (
-    ("name", "link_type"),
-    ("site", "url_grouper")
-    if False#dm apps.is_installed("djangocms_url_manager")
-    else ("external_link", "internal_link"),
-    ("link_context", "link_size"),
-    ("link_outline", "link_block"),
-    "link_stretched",
+setup = settings.LINK_SETTINGS
+setup.update(
+    getattr(django_settings, 'DJANGOCMS_FRONTEND_LINK_PLUGIN_SETTINGS')
 )
+
+fields = ["name", "link_type", "external_link",
+          "internal_link", "external_link_type", 
+          "new_window", "link_context", "link_size",
+          "link_outline", "link_block", "link_stretched"]
+UILINK_FIELDS = split([f for f in fields if is_there(f, setup)])
 
 UILINK_FIELDSET = [
     (
@@ -39,7 +42,7 @@ UILINK_FIELDSET = [
         },
     ),
 ]
-if True:#dm not apps.is_installed("djangocms_url_manager"):
+if is_there("file_link", setup):
     UILINK_FIELDSET += [
         (
             _("Link settings"),
@@ -56,29 +59,35 @@ if True:#dm not apps.is_installed("djangocms_url_manager"):
 
 
 class LinkPluginMixin:
+    link_fields = ["external_link", "internal_link", 
+                   "external_link_type", "new_window", "file_link"]
+
     link_fieldset_position = None
-    link_fields = (
-        (("site", "url_grouper"),)
-        if False#dm apps.is_installed("djangocms_url_manager")
-        else (
-            ("external_link", "internal_link"),
-            ("external_link_type", "new_window"),
-            "file_link",
-        )
-    )
+    link_show_name = True
 
     def get_form(self, request, obj=None, change=False, **kwargs):
         """The link form needs the request object to check permissions"""
         form = super().get_form(request, obj, change, **kwargs)
         form.request = request
         return form
-
+    
+    def get_link_fields(self):
+        model_name = self.model.__name__.upper()
+        setup = settings.LINK_SETTINGS
+        setup.update(
+            getattr(django_settings, 'DJANGOCMS_FRONTEND_%s_LINK_SETTINGS' % model_name, {})
+        )
+        fields = split([f for f in self.link_fields if is_there(f, setup)])
+        if self.link_show_name:
+            fields = (("link_name",),) + fields
+        return fields
+        
     def get_fieldsets(self, request, obj=None):
         fieldsets = super().get_fieldsets(request, obj)
         if self.link_fieldset_position is not None:
             fieldsets = insert_fields(
                 fieldsets,
-                self.link_fields,
+                self.get_link_fields(),
                 blockname=_("Link settings"),
                 position=self.link_fieldset_position,
             )

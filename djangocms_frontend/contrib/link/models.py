@@ -85,7 +85,7 @@ class GetLinkMixin:
         elif getattr(self, "external_link", None):
             link = self.external_link
             if getattr(self, "external_link_type", None):
-                link = "{}{}".format(self.external_link_type, link)
+                link = "{}{}".format(self.external_link_type.replace('modal','#'), link)
 
         return link
 

@@ -78,6 +78,7 @@ if settings.PLUGINS_AND_FIELDS.get('Image'):
             ),
         ]
         link_fieldset_position = -1
+        link_show_name = False
 
         # def get_render_template(self, context, instance, placeholder):
             # return f"djangocms_frontend/{settings.framework}/{instance.template}/image.html"

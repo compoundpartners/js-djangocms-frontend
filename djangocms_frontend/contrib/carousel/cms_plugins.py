@@ -73,6 +73,8 @@ class CarouselSlidePlugin(
     allow_children = True
     parent_classes = ["CarouselPlugin"]
 
+    link_fieldset_position = -1
+
     fieldsets = [
         (
             None,
@@ -81,18 +83,6 @@ class CarouselSlidePlugin(
                     "carousel_image",
                     "carousel_content",
                 )
-            },
-        ),
-        (
-            _("Link settings"),
-            {
-                "classes": ("collapse",),
-                "fields": (
-                    "link_name",
-                    ("external_link", "internal_link"),
-                    ("external_link_type", "new_window"),
-                    ("file_link"),
-                ),
             },
         ),
     ]

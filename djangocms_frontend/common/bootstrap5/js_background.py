@@ -183,6 +183,7 @@ class BackgroundMixin:
             if background_size:
                 styles.append('background-size: %s;' % ' '.join(background_size))
         instance.attributes['style'] = ' '.join(styles)
+        context['background_opacity'] = getattr(instance, 'background_opacity', 100) / 100
         return super().render(context, instance, placeholder)
 
 
@@ -196,6 +197,7 @@ class BackgroundFormMixin(EntangledModelFormMixin):
                 'background_video_url',
                 'background_attachment',
                 'background_repeat',
+                'background_opacity',
                 'background_position_alignment_horizontal',
                 'background_position_alignment_vertical',
                 'background_position_x',
@@ -251,6 +253,13 @@ class BackgroundFormMixin(EntangledModelFormMixin):
         choices=[('repeat', 'repeat'), ('repeat-x', 'repeat-x'), ('repeat-y', 'repeat-y'), ('no-repeat', 'no-repeat')],
         required=False,
         initial='no-repeat',
+    )
+    background_opacity = forms.IntegerField(
+        label=_('Opacity'),
+        required=False,
+        initial=100,
+        min_value=0,
+        max_value=100,
     )
     background_position_alignment_horizontal = forms.ChoiceField(
         label=_('Horizontal alignment'),

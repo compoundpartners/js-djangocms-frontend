@@ -11,6 +11,7 @@ LINK_TYPE_CHOICES = (
     ("mailto:", _("Mail")),
     ("tel:", _("Phone")),
     ("#", _("Anchor")),
+    ("modal", _("Modal")),
 )
 
 LINK_SIZE_CHOICES = (

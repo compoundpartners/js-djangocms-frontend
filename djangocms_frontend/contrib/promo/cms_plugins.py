@@ -22,6 +22,9 @@ class PromoPlugin(LinkPluginMixin, AttributesMixin, BackgroundMixin, ForegroundM
     form = forms.PromoForm
     allow_children = False
 
+    link_fieldset_position = -1
+    link_show_name = True
+
     fieldsets = [
         (
             None,
@@ -35,18 +38,6 @@ class PromoPlugin(LinkPluginMixin, AttributesMixin, BackgroundMixin, ForegroundM
                     "alignment",
                     "modal_video",
                 )
-            },
-        ),
-        (
-            _("Link settings"),
-            {
-                "classes": ("collapse",),
-                "fields": (
-                    "link_name",
-                    ("external_link", "internal_link"),
-                    ("external_link_type", "new_window"),
-                    ("file_link"),
-                ),
             },
         ),
     ]

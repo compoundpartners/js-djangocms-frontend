@@ -20,7 +20,7 @@ split = lambda x: tuple((x[i], x[i+1]) for i in range(0, len(x)-1, 2)) + tuple((
 
 setup = settings.LINK_SETTINGS
 setup.update(
-    getattr(django_settings, 'DJANGOCMS_FRONTEND_LINK_PLUGIN_SETTINGS')
+    getattr(django_settings, 'DJANGOCMS_FRONTEND_LINK_PLUGIN_SETTINGS', {})
 )
 
 fields = ["name", "link_type", "external_link",

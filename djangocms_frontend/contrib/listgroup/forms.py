@@ -4,6 +4,8 @@ from entangled.forms import EntangledModelForm
 
 from djangocms_frontend import settings
 
+from djangocms_frontend.common.background import BackgroundFormMixin
+from djangocms_frontend.common.foreground import ForegroundFormMixin
 from djangocms_frontend.common.responsive import ResponsiveFormMixin
 from djangocms_frontend.common.spacing import MarginFormMixin, PaddingFormMixin
 from djangocms_frontend.fields import (
@@ -17,7 +19,11 @@ from djangocms_frontend.helpers import first_choice
 from .constants import LISTGROUP_STATE_CHOICES, LISTGROUP_TEMPLATE_CHOICES
 
 
-class ListGroupForm(MarginFormMixin, ResponsiveFormMixin, EntangledModelForm):
+class ListGroupForm(MarginFormMixin, 
+                    BackgroundFormMixin,
+                    ForegroundFormMixin,
+                    ResponsiveFormMixin, 
+                    EntangledModelForm):
     """
     Components > "List Group" Plugin
     https://getbootstrap.com/docs/5.0/components/list-group/

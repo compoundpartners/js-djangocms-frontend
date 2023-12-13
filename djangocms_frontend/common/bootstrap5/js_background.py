@@ -183,7 +183,13 @@ class BackgroundMixin:
             if background_size:
                 styles.append('background-size: %s;' % ' '.join(background_size))
         instance.attributes['style'] = ' '.join(styles)
-        context['background_opacity'] = getattr(instance, 'background_opacity', 100) / 100
+        background_opacity = getattr(instance, 'background_opacity', 100)
+        if type(background_opacity) == str:
+            try:
+                background_opacity = int(background_opacity)
+            except:
+                background_opacity = 100
+        context['background_opacity'] = background_opacity / 100
         return super().render(context, instance, placeholder)
 
 

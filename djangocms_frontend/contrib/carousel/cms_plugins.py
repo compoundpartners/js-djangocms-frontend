@@ -45,7 +45,11 @@ class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, BackgroundMixin
                     ("carousel_aspect_ratio", "carousel_interval"),
                     ("carousel_controls", "carousel_indicators"),
                     ("carousel_keyboard", "carousel_wrap"),
-                    ("carousel_ride", "carousel_pause"),
+                    ("carousel_ride",),
+                    (
+                        "carousel_transition",
+                        "carousel_pause",
+                    ),
                 )
             },
         ),
@@ -59,7 +63,11 @@ class CarouselPlugin(mixin_factory("Carousel"), AttributesMixin, BackgroundMixin
 
 @plugin_pool.register_plugin
 class CarouselSlidePlugin(
-    mixin_factory("CarouselSlide"), AttributesMixin, LinkPluginMixin, CMSUIPlugin
+    mixin_factory("CarouselSlide"),
+    AttributesMixin,
+    BackgroundMixin,
+    LinkPluginMixin,
+    CMSUIPlugin,
 ):
     """
     Components > "Carousel Slide" Plugin

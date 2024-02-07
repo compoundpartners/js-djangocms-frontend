@@ -6,6 +6,7 @@ from django.conf import settings as django_settings
 from django.contrib.admin import site
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import FieldError, ObjectDoesNotExist
+from django.urls import NoReverseMatch, reverse
 from django.utils.encoding import force_str
 from django.utils.html import mark_safe
 from django.core.cache import cache
@@ -23,6 +24,30 @@ def import_models(link_models):
             parts = item["class_path"].rsplit(".", 1)
             models[item["class_path"]] = getattr(import_module(parts[0]), parts[1])
     return models
+# =======
+#             cls = getattr(import_module(parts[0]), parts[1])
+#             queryset = cls.objects
+
+#             if "manager_method" in item:
+#                 queryset = getattr(queryset, item["manager_method"])()
+
+#             if "filter" in item:
+#                 for k, v in item["filter"].items():
+#                     try:
+#                         # Attempt to execute any callables in the filter dict.
+#                         item["filter"][k] = v()
+#                     except TypeError:
+#                         # OK, it wasn't a callable, so, leave it be
+#                         pass
+#                 queryset = queryset.filter(**item["filter"])
+#             else:
+#                 if "manager_method" not in item:
+#                     queryset = queryset.all()
+#             if "order_by" in item:
+#                 queryset = queryset.order_by(item["order_by"])
+#             querysets.append((section, queryset, item.get("search", None), cls))
+#     return querysets
+# >>>>>>> upstream/master
 
 
 def get_model_queryset(link_model, queryset):
@@ -133,7 +158,7 @@ def get_link_choices(request, term="", lang=None, nbsp=""):
     return available_objects
 
 
-def get_choices(request, term="", lang=None):
+def get_choices(request, term="", lang=None) -> list:
     def to_choices(json):
         return list(
             (elem["text"], to_choices(elem["children"]))
@@ -143,3 +168,23 @@ def get_choices(request, term="", lang=None):
         )
 
     return to_choices(get_link_choices(request, term, lang, "&nbsp;"))
+
+
+def ensure_select2_url_is_available() -> None:
+    """Install the URLs"""
+    try:
+        reverse("dcf_autocomplete:ac_view")
+    except NoReverseMatch:  # Not installed yet
+        urlconf_module = import_module(django_settings.ROOT_URLCONF)
+        from django.urls import clear_url_caches, include, path
+
+        urlconf_module.urlpatterns = [
+            path(
+                "@dcf-links/",
+                include(
+                    "djangocms_frontend.contrib.link.urls",
+                    namespace="dcf_autocomplete",
+                ),
+            )
+        ] + urlconf_module.urlpatterns
+        clear_url_caches()

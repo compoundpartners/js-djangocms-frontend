@@ -18,20 +18,23 @@ jobs:
             dj32_cms39.txt,
             dj32_cms41.txt,
             dj40_cms311.txt,
+            dj41_cms311.txt,
+            dj42_cms311.txt,
             dj40_cms41.txt,
             dj41_cms41.txt,
+            dj42_cms41.txt,
         ]
         os: [
             ubuntu-20.04,
         ]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         fetch-depth: '2'
 
     - name: Setup Python
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
     - name: Generate Report
@@ -39,4 +42,4 @@ jobs:
         pip install -r tests/requirements/${{ matrix.requirements-file }}
         coverage run setup.py test
     - name: Upload Coverage to Codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4

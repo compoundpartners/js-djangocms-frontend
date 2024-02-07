@@ -35,6 +35,8 @@ if settings.PLUGINS_AND_FIELDS.get('Image'):
         model = models.Image
         form = forms.ImageForm
 
+        text_enabled = True
+
         change_form_template = "djangocms_frontend/admin/image.html"
 
         fieldsets = [

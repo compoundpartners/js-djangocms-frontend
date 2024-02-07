@@ -3,22 +3,26 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# Mark Walker <theshow@gmail.com>, 2023
+# Fabian Braun <fsbraun@gmx.de>, 2023
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-28 15:03+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Peter Wischer <peter.wischer@lwl.org>, 2018\n"
-"Language-Team: German (https://www.transifex.com/divio/teams/58664/de/)\n"
+"POT-Creation-Date: 2023-10-04 07:43+0200\n"
+"PO-Revision-Date: 2023-01-20 15:48+0000\n"
+"Last-Translator: Fabian Braun <fsbraun@gmx.de>, 2023\n"
+"Language-Team: German (https://app.transifex.com/divio/teams/58664/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: djangocms_frontend/common/attributes.py:9
+#: common/attributes.py:9
 msgid ""
 "Advanced settings lets you add html attributes to render this element. Use "
 "them wisely and rarely."
@@ -26,217 +30,114 @@ msgstr ""
 "Die erweiterten Einstellungen erlaubt Ihnen, HTML-Attribute des Elements "
 "direkt anzugeben."
 
-#: djangocms_frontend/common/attributes.py:26
-#: djangocms_frontend/contrib/accordion/cms_plugins.py:91
+#: common/attributes.py:26 contrib/accordion/cms_plugins.py:91
 msgid "Advanced settings"
 msgstr "Erweiterte Einstellungen"
 
-#: djangocms_frontend/common/bootstrap5/background.py:20
-#: djangocms_frontend/common/bootstrap5/js_background.py:116
+#: common/bootstrap5/background.py:20
 msgid "Background"
 msgstr "Hintergrund"
 
-#: djangocms_frontend/common/bootstrap5/background.py:47
+#: common/bootstrap5/background.py:48
 msgid "Background context"
 msgstr "Hintergrund-Kontext"
 
-#: djangocms_frontend/common/bootstrap5/background.py:51
-#: djangocms_frontend/contrib/card/forms.py:32
-#: djangocms_frontend/contrib/card/models.py:7
+#: common/bootstrap5/background.py:52 contrib/card/forms.py:32
+#: contrib/card/models.py:7
 msgid "Transparent"
 msgstr "Transparent"
 
-#: djangocms_frontend/common/bootstrap5/background.py:56
+#: common/bootstrap5/background.py:57
 msgid "Background opacity"
 msgstr "Deckkraft des Hintergrundes"
 
-#: djangocms_frontend/common/bootstrap5/background.py:61
+#: common/bootstrap5/background.py:62
 msgid "Opacity of card background color (only if no outline selected)"
 msgstr ""
 "Gibt die Deckkraft der Hintergrundfarbe an (nur wirksam, wenn Kontur nicht "
 "angewählt ist)."
 
-#: djangocms_frontend/common/bootstrap5/background.py:65
-#: djangocms_frontend/contrib/alert/frameworks/bootstrap5.py:42
+#: common/bootstrap5/background.py:66 contrib/alert/frameworks/bootstrap5.py:42
 msgid "Shadow"
 msgstr "Schatten"
 
-#: djangocms_frontend/common/bootstrap5/background.py:70
+#: common/bootstrap5/background.py:71
 msgid "Use shadows to optically lift cards from the background."
 msgstr "Schatten heben Karten optisch vom Hintergrund ab."
 
-#: djangocms_frontend/common/bootstrap5/js_background.py:18
-#: djangocms_frontend/frameworks/bootstrap5.py:65
-msgid "Top"
-msgstr "Oben"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:19
-msgid "Middle"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:20
-#: djangocms_frontend/frameworks/bootstrap5.py:66
-msgid "Bottom"
-msgstr "Unten"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:66
-#, fuzzy
-#| msgid "Please provide a link."
-msgid "Please choice unit."
-msgstr "Bitte geben Sie ein Ziel an."
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:94
-#, fuzzy
-#| msgid "No selection"
-msgid "Position"
-msgstr "Keine Auswahl"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:103
-#: djangocms_frontend/common/bootstrap5/js_background.py:285
-#: djangocms_frontend/contrib/utilities/forms.py:50
-msgid "Size"
-msgstr "Größe"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:220
-#, fuzzy
-#| msgid "Background"
-msgid "Background color"
-msgstr "Hintergrund"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:232
-#: djangocms_frontend/contrib/image/forms.py:115
-#: djangocms_frontend/contrib/image/models.py:71
-msgid "Image"
-msgstr "Bild"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:239
-msgid "Video"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:242
-msgid "Video URL"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:246
-msgid "Attachment"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:252
-msgid "Repeat"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:258
-msgid "Opacity"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:265
-#: djangocms_frontend/contrib/grid/forms.py:130
-msgid "Horizontal alignment"
-msgstr "Horizontale Ausrichtung"
-
-#: djangocms_frontend/common/bootstrap5/js_background.py:271
-#: djangocms_frontend/contrib/grid/forms.py:123
-msgid "Vertical alignment"
-msgstr "Vertikale Ausrichtung"
-
-#: djangocms_frontend/common/bootstrap5/js_foreground.py:41
-#, fuzzy
-#| msgid "Background"
-msgid "Foreground"
-msgstr "Hintergrund"
-
-#: djangocms_frontend/common/bootstrap5/js_foreground.py:73
-msgid "Alternate text color"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_foreground.py:81
-#: djangocms_frontend/contrib/content/forms.py:133
-msgid "Foreground color"
-msgstr ""
-
-#: djangocms_frontend/common/bootstrap5/js_foreground.py:93
-#, fuzzy
-#| msgid "Crop image"
-msgid "Foreground image"
-msgstr "Bild beschneiden"
-
-#: djangocms_frontend/common/bootstrap5/responsive.py:35
+#: common/bootstrap5/responsive.py:35
 msgid "Visibility"
 msgstr "Sichtbarkeit"
 
-#: djangocms_frontend/common/bootstrap5/responsive.py:58
+#: common/bootstrap5/responsive.py:58
 msgid "Show element on device"
 msgstr "Zeige Element auf diesen Bildschirmgrößen"
 
-#: djangocms_frontend/common/bootstrap5/responsive.py:60
+#: common/bootstrap5/responsive.py:60
 msgid "Select only devices on which this element should be shown."
 msgstr ""
 "Nur die Bildschirmgrößen auswählen, auf denen dieses Element angezeigt "
 "werden soll."
 
-#: djangocms_frontend/common/bootstrap5/sizing.py:8
-#: djangocms_frontend/common/spacing.py:11
-#: djangocms_frontend/contrib/utilities/forms.py:51
-#: djangocms_frontend/frameworks/bootstrap5.py:90
-#: djangocms_frontend/frameworks/bootstrap5.py:103
+#: common/bootstrap5/sizing.py:8 common/spacing.py:11
+#: contrib/utilities/forms.py:51 frameworks/bootstrap5.py:90
+#: frameworks/bootstrap5.py:103
 msgid "Auto"
 msgstr "Auto"
 
-#: djangocms_frontend/common/bootstrap5/sizing.py:44
+#: common/bootstrap5/sizing.py:44
 msgid "Horizontal size"
 msgstr "Horizontale Größe"
 
-#: djangocms_frontend/common/bootstrap5/sizing.py:50
+#: common/bootstrap5/sizing.py:50
 msgid ""
 "Sets the horizontal size relative to the surrounding container or the "
 "viewport."
 msgstr ""
-"Legt die horizontale Größe im Verhältnis zum umgebenden Kontainer oder dem "
+"Legt die horizontale Größe im Verhältnis zum umgebenden Container oder dem "
 "Fenster fest."
 
-#: djangocms_frontend/common/bootstrap5/sizing.py:54
+#: common/bootstrap5/sizing.py:54
 msgid "Vertical size"
 msgstr "Vertikale Größe"
 
-#: djangocms_frontend/common/bootstrap5/sizing.py:60
+#: common/bootstrap5/sizing.py:60
 msgid ""
 "Sets the vertical size relative to the surrounding container or the viewport."
 msgstr ""
-"Legt die vertikale Größe im Verhältnis zum umgebenden Kontainer oder dem "
+"Legt die vertikale Größe im Verhältnis zum umgebenden Container oder dem "
 "Fenster fest."
 
-#: djangocms_frontend/common/spacing.py:84
-msgid "Please chose a side to which the spacing should be applied."
+#: common/spacing.py:84
+msgid "Please choose a side to which the spacing should be applied."
 msgstr "Bitte Seite auswählen, auf die der Abstand angewendet werden soll."
 
-#: djangocms_frontend/common/spacing.py:113
+#: common/spacing.py:113
 msgid "Margin"
 msgstr "Abstand außen"
 
-#: djangocms_frontend/common/spacing.py:139
-#: djangocms_frontend/common/spacing.py:147
+#: common/spacing.py:139 common/spacing.py:147
 msgid "Padding"
 msgstr "Abstand zum Rand innen"
 
-#: djangocms_frontend/common/spacing.py:175
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:22
-#: djangocms_frontend/contrib/utilities/models.py:14
+#: common/spacing.py:175 contrib/utilities/cms_plugins.py:22
+#: contrib/utilities/models.py:14
 msgid "Spacing"
 msgstr "Abstand"
 
-#: djangocms_frontend/common/spacing.py:189
+#: common/spacing.py:189
 msgid "Horizontal margin"
 msgstr "Horizontaler Abstand außen"
 
-#: djangocms_frontend/common/spacing.py:195
+#: common/spacing.py:195
 msgid "Vertical margin"
 msgstr "Vertikaler Abstand außen"
 
-#: djangocms_frontend/common/spacing.py:201
+#: common/spacing.py:201
 msgid "Apply margin on device"
 msgstr "Anzuwenden auf diesen Geräten"
 
-#: djangocms_frontend/common/spacing.py:204
+#: common/spacing.py:204
 msgid ""
 "Select only devices on which the margin should be applied. On other devices "
 "larger than the first selected device the margin will be set to zero."
@@ -245,19 +146,19 @@ msgstr ""
 "soll. Auf größeren Bildschirmen als dem ersten ausgewählten, wird der "
 "Außenabstand auf Null gesetzt."
 
-#: djangocms_frontend/common/spacing.py:221
+#: common/spacing.py:221
 msgid "Horizontal padding"
 msgstr "Horizontaler Abstand zum Rand"
 
-#: djangocms_frontend/common/spacing.py:227
+#: common/spacing.py:227
 msgid "Vertical padding"
 msgstr "Vertikaler Abstand zum Rand"
 
-#: djangocms_frontend/common/spacing.py:233
+#: common/spacing.py:233
 msgid "Apply padding on device"
 msgstr "Anzuwenden auf diesen Geräten"
 
-#: djangocms_frontend/common/spacing.py:236
+#: common/spacing.py:236
 msgid ""
 "Select only devices on which the padding should be applied. On other devices "
 "larger than the first selected device the padding will be set to zero."
@@ -266,17 +167,15 @@ msgstr ""
 "soll. Auf größeren Bildschirmen als dem ersten ausgewählten, wird der "
 "Abstand zum Rand auf Null gesetzt."
 
-#: djangocms_frontend/common/title.py:40
+#: common/title.py:40
 msgid "Please add a title if you want to publish it."
 msgstr "Bitte Titel-Attribut hinzufügen, wenn es öffentlich sein soll."
 
-#: djangocms_frontend/common/title.py:67
-#: djangocms_frontend/contrib/carousel/forms.py:64
-#: djangocms_frontend/contrib/promo/forms.py:68
+#: common/title.py:64
 msgid "Title"
 msgstr "Titel-Attribut"
 
-#: djangocms_frontend/common/title.py:70
+#: common/title.py:67
 msgid ""
 "Optional title of the plugin for easier identification. Its <code>title</"
 "code> attribute will only be set if the checkbox is selected."
@@ -285,83 +184,58 @@ msgstr ""
 "<code>title</code>-Attribut wird nur gesetzt, wenn das Auswahlkästchen "
 "angewählt ist"
 
-#: djangocms_frontend/contrib/accordion/cms_plugins.py:21
-#: djangocms_frontend/contrib/accordion/models.py:14
+#: contrib/accordion/cms_plugins.py:21 contrib/accordion/models.py:14
 msgid "Accordion"
 msgstr "Akkordion"
 
-#: djangocms_frontend/contrib/accordion/cms_plugins.py:22
-#: djangocms_frontend/contrib/accordion/cms_plugins.py:72
-#: djangocms_frontend/contrib/alert/cms_plugins.py:25
-#: djangocms_frontend/contrib/badge/cms_plugins.py:21
-#: djangocms_frontend/contrib/card/cms_plugins.py:25
-#: djangocms_frontend/contrib/card/cms_plugins.py:86
-#: djangocms_frontend/contrib/card/cms_plugins.py:146
-#: djangocms_frontend/contrib/carousel/cms_plugins.py:26
-#: djangocms_frontend/contrib/carousel/cms_plugins.py:70
-#: djangocms_frontend/contrib/collapse/cms_plugins.py:21
-#: djangocms_frontend/contrib/collapse/cms_plugins.py:50
-#: djangocms_frontend/contrib/collapse/cms_plugins.py:76
-#: djangocms_frontend/contrib/content/cms_plugins.py:33
-#: djangocms_frontend/contrib/content/cms_plugins.py:68
-#: djangocms_frontend/contrib/content/cms_plugins.py:113
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:17
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:46
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:89
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:125
-#: djangocms_frontend/contrib/grid/cms_plugins.py:45
-#: djangocms_frontend/contrib/grid/cms_plugins.py:89
-#: djangocms_frontend/contrib/grid/cms_plugins.py:183
-#: djangocms_frontend/contrib/image/cms_plugins.py:33
-#: djangocms_frontend/contrib/jumbotron/cms_plugins.py:32
-#: djangocms_frontend/contrib/link/cms_plugins.py:97
-#: djangocms_frontend/contrib/listgroup/cms_plugins.py:31
-#: djangocms_frontend/contrib/listgroup/cms_plugins.py:63
-#: djangocms_frontend/contrib/media/cms_plugins.py:24
-#: djangocms_frontend/contrib/media/cms_plugins.py:41
-#: djangocms_frontend/contrib/modal/cms_plugins.py:22
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:30
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:75
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:106
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:134
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:165
-#: djangocms_frontend/contrib/promo/cms_plugins.py:20
-#: djangocms_frontend/contrib/tabs/cms_plugins.py:27
-#: djangocms_frontend/contrib/tabs/cms_plugins.py:61
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:23
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:50
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:62
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:123
+#: contrib/accordion/cms_plugins.py:22 contrib/accordion/cms_plugins.py:72
+#: contrib/alert/cms_plugins.py:25 contrib/badge/cms_plugins.py:21
+#: contrib/card/cms_plugins.py:25 contrib/card/cms_plugins.py:86
+#: contrib/card/cms_plugins.py:146 contrib/carousel/cms_plugins.py:26
+#: contrib/carousel/cms_plugins.py:71 contrib/collapse/cms_plugins.py:21
+#: contrib/collapse/cms_plugins.py:50 contrib/collapse/cms_plugins.py:76
+#: contrib/content/cms_plugins.py:31 contrib/content/cms_plugins.py:64
+#: contrib/content/cms_plugins.py:99 contrib/grid/cms_plugins.py:37
+#: contrib/grid/cms_plugins.py:73 contrib/grid/cms_plugins.py:150
+#: contrib/icon/cms_plugins.py:30 contrib/image/cms_plugins.py:31
+#: contrib/jumbotron/cms_plugins.py:32 contrib/link/cms_plugins.py:98
+#: contrib/listgroup/cms_plugins.py:29 contrib/listgroup/cms_plugins.py:56
+#: contrib/media/cms_plugins.py:24 contrib/media/cms_plugins.py:41
+#: contrib/navigation/cms_plugins.py:30 contrib/navigation/cms_plugins.py:75
+#: contrib/navigation/cms_plugins.py:106 contrib/navigation/cms_plugins.py:134
+#: contrib/navigation/cms_plugins.py:165 contrib/tabs/cms_plugins.py:25
+#: contrib/tabs/cms_plugins.py:59 contrib/utilities/cms_plugins.py:23
+#: contrib/utilities/cms_plugins.py:50 contrib/utilities/cms_plugins.py:62
+#: contrib/utilities/cms_plugins.py:123
 msgid "Frontend"
 msgstr "Frontend"
 
-#: djangocms_frontend/contrib/accordion/cms_plugins.py:57
+#: contrib/accordion/cms_plugins.py:57
 msgid "Item {}"
 msgstr "Element {}"
 
-#: djangocms_frontend/contrib/accordion/cms_plugins.py:71
-#: djangocms_frontend/contrib/accordion/models.py:33
+#: contrib/accordion/cms_plugins.py:71 contrib/accordion/models.py:33
 msgid "Accordion item"
 msgstr "Akkordion-Element"
 
-#: djangocms_frontend/contrib/accordion/forms.py:34
+#: contrib/accordion/forms.py:34
 msgid "Create accordion items"
 msgstr "Akkordion-Element erstellen"
 
-#: djangocms_frontend/contrib/accordion/forms.py:35
+#: contrib/accordion/forms.py:35
 msgid "Number of accordion items to create when saving."
 msgstr ""
 "Anzahl der Akkordion-Elemente, die beim Speichern erstellt werden soll."
 
-#: djangocms_frontend/contrib/accordion/forms.py:42
+#: contrib/accordion/forms.py:42
 msgid "Header type"
 msgstr "Überschritften-Typ"
 
-#: djangocms_frontend/contrib/accordion/forms.py:48
+#: contrib/accordion/forms.py:48
 msgid "Integrate into parent"
 msgstr "In Eltern-Element einfügen"
 
-#: djangocms_frontend/contrib/accordion/forms.py:52
+#: contrib/accordion/forms.py:52
 msgid ""
 "Removes the default background-color, some borders, and some rounded corners "
 "to render accordions edge-to-edge with their parent container "
@@ -369,265 +243,228 @@ msgstr ""
 "Entfernt die Hintergrundfarbe, Rahmen und ausgewählte abgerundete Ecken, um "
 "Akkordions direkt in ihren Eltern-Elementen anzuzeigen."
 
-#: djangocms_frontend/contrib/accordion/forms.py:78
-#: djangocms_frontend/contrib/card/constants.py:16
+#: contrib/accordion/forms.py:78 contrib/card/constants.py:16
 msgid "Header"
 msgstr "Überschrift"
 
-#: djangocms_frontend/contrib/accordion/forms.py:82
+#: contrib/accordion/forms.py:82
 msgid "Item open"
 msgstr "Offenes element"
 
-#: djangocms_frontend/contrib/accordion/forms.py:85
+#: contrib/accordion/forms.py:85
 msgid "Initially shows this accordion item on page load."
 msgstr "Zeigt nach dem Laden dieses Akkordion-Element."
 
-#: djangocms_frontend/contrib/accordion/models.py:20
+#: contrib/accordion/models.py:20
 msgid "({} entries)"
 msgstr "({} Einträge)"
 
-#: djangocms_frontend/contrib/accordion/models.py:29
+#: contrib/accordion/models.py:29
 msgid "AccordionItem"
 msgstr "Akkordion-Element"
 
-#: djangocms_frontend/contrib/alert/cms_plugins.py:24
-#: djangocms_frontend/contrib/alert/models.py:14
+#: contrib/alert/cms_plugins.py:24 contrib/alert/models.py:14
 msgid "Alert"
 msgstr "Warnung"
 
-#: djangocms_frontend/contrib/alert/forms.py:41
-#: djangocms_frontend/contrib/badge/forms.py:37
-#: djangocms_frontend/contrib/link/forms.py:303
-#: djangocms_frontend/contrib/listgroup/forms.py:78
+#: contrib/alert/forms.py:41 contrib/badge/forms.py:37
+#: contrib/link/forms.py:344 contrib/listgroup/forms.py:71
 msgid "Context"
 msgstr "Kontext"
 
-#: djangocms_frontend/contrib/alert/forms.py:47
+#: contrib/alert/forms.py:47
 msgid "Dismissible"
 msgstr "Schließbar"
 
-#: djangocms_frontend/contrib/alert/forms.py:50
+#: contrib/alert/forms.py:50
 msgid "Allows the alert to be closed."
 msgstr "Erlaubt, die Warnung zu schliessen."
 
-#: djangocms_frontend/contrib/alert/frameworks/bootstrap5.py:47
+#: contrib/alert/frameworks/bootstrap5.py:47
 msgid "Use shadows to optically lift alerts from the background."
 msgstr "Schatten heben Warnungen optisch vom Hintergrund ab."
 
-#: djangocms_frontend/contrib/alert/templates/djangocms_frontend/bootstrap5/alert.html:4
-#: djangocms_frontend/contrib/modal/templates/djangocms_frontend/modal/default/modal.html:21
+#: contrib/alert/templates/djangocms_frontend/bootstrap5/alert.html:4
 msgid "Close"
 msgstr "Schliessen"
 
-#: djangocms_frontend/contrib/badge/cms_plugins.py:20
-#: djangocms_frontend/contrib/badge/models.py:14
+#: contrib/badge/cms_plugins.py:20 contrib/badge/models.py:14
 msgid "Badge"
 msgstr "Badge"
 
-#: djangocms_frontend/contrib/badge/forms.py:33
+#: contrib/badge/forms.py:33
 msgid "Badge text"
 msgstr "Badge-Text"
 
-#: djangocms_frontend/contrib/badge/forms.py:43
+#: contrib/badge/forms.py:43
 msgid "Pills style"
 msgstr "Pillen-Stil"
 
-#: djangocms_frontend/contrib/badge/forms.py:46
+#: contrib/badge/forms.py:46
 msgid "Activates the pills style."
 msgstr "Aktiviert den Pillen-Stil."
 
-#: djangocms_frontend/contrib/card/cms_plugins.py:24
-#: djangocms_frontend/contrib/card/models.py:20
+#: contrib/card/cms_plugins.py:24 contrib/card/models.py:20
 msgid "Card layout"
 msgstr "Karten-Layout"
 
-#: djangocms_frontend/contrib/card/cms_plugins.py:47
-#: djangocms_frontend/contrib/grid/cms_plugins.py:110
-#: djangocms_frontend/contrib/grid/cms_plugins.py:207
+#: contrib/card/cms_plugins.py:47 contrib/grid/cms_plugins.py:93
+#: contrib/grid/cms_plugins.py:173
 msgid "Responsive settings"
 msgstr "Responsive-Hilfsmittel"
 
-#: djangocms_frontend/contrib/card/cms_plugins.py:85
-#: djangocms_frontend/contrib/card/models.py:35
+#: contrib/card/cms_plugins.py:85 contrib/card/models.py:35
 msgid "Card"
 msgstr "Karte"
 
-#: djangocms_frontend/contrib/card/cms_plugins.py:145
-#: djangocms_frontend/contrib/card/models.py:57
+#: contrib/card/cms_plugins.py:145 contrib/card/models.py:57
 msgid "Card inner"
 msgstr "Karten-Inhalt"
 
-#: djangocms_frontend/contrib/card/constants.py:4
+#: contrib/card/constants.py:4
 msgid "Card group"
 msgstr "Karten-Gruppe"
 
-#: djangocms_frontend/contrib/card/constants.py:5
+#: contrib/card/constants.py:5
 msgid "Grid cards"
 msgstr "Karten-Gitter"
 
-#: djangocms_frontend/contrib/card/constants.py:9
-#: djangocms_frontend/contrib/utilities/forms.py:108
-#: djangocms_frontend/frameworks/bootstrap5.py:59
-#: djangocms_frontend/settings.py:94
+#: contrib/card/constants.py:9 contrib/utilities/forms.py:108
+#: frameworks/bootstrap5.py:59 settings.py:47
 msgid "Left"
 msgstr "Links"
 
-#: djangocms_frontend/contrib/card/constants.py:10
-#: djangocms_frontend/contrib/utilities/forms.py:109
-#: djangocms_frontend/settings.py:95
+#: contrib/card/constants.py:10 contrib/utilities/forms.py:109 settings.py:48
 msgid "Center"
 msgstr "Mitte"
 
-#: djangocms_frontend/contrib/card/constants.py:11
-#: djangocms_frontend/contrib/utilities/forms.py:110
-#: djangocms_frontend/frameworks/bootstrap5.py:60
-#: djangocms_frontend/settings.py:96
+#: contrib/card/constants.py:11 contrib/utilities/forms.py:110
+#: frameworks/bootstrap5.py:60 settings.py:49
 msgid "Right"
 msgstr "Rechts"
 
-#: djangocms_frontend/contrib/card/constants.py:15
+#: contrib/card/constants.py:15
 msgid "Body"
 msgstr "Body"
 
-#: djangocms_frontend/contrib/card/constants.py:17
+#: contrib/card/constants.py:17
 msgid "Footer"
 msgstr "Footer"
 
-#: djangocms_frontend/contrib/card/constants.py:18
+#: contrib/card/constants.py:18
 msgid "Image overlay"
 msgstr "Bild-Überlagerung"
 
-#: djangocms_frontend/contrib/card/forms.py:35
-#: djangocms_frontend/contrib/card/models.py:9
+#: contrib/card/forms.py:35 contrib/card/models.py:9
 msgid "White"
 msgstr "Weiss"
 
-#: djangocms_frontend/contrib/card/forms.py:61
+#: contrib/card/forms.py:61
 msgid "Create cards"
 msgstr "Karten erstellen"
 
-#: djangocms_frontend/contrib/card/forms.py:62
+#: contrib/card/forms.py:62
 msgid "Number of cards to create when saving."
 msgstr "Anzahl der Karten, die beim Speichern erstellt werden soll."
 
-#: djangocms_frontend/contrib/card/forms.py:68
+#: contrib/card/forms.py:68
 msgid "Card type"
 msgstr "Card-Typ"
 
-#: djangocms_frontend/contrib/card/forms.py:122
+#: contrib/card/forms.py:122
 msgid "Card outline context"
 msgstr "Kontext Kartenrand"
 
-#: djangocms_frontend/contrib/card/forms.py:126
+#: contrib/card/forms.py:126
 msgid "Uses the border to indicate context."
 msgstr "Färbt den Rand gemäß dem Kontext"
 
-#: djangocms_frontend/contrib/card/forms.py:132
-#: djangocms_frontend/contrib/content/forms.py:126
-#: djangocms_frontend/contrib/content/forms.py:182
-#: djangocms_frontend/contrib/grid/cms_plugins.py:116
-#: djangocms_frontend/contrib/image/forms.py:151
-#: djangocms_frontend/contrib/promo/forms.py:88
-#: djangocms_frontend/contrib/tabs/forms.py:59
-#: djangocms_frontend/contrib/utilities/forms.py:139
+#: contrib/card/forms.py:132 contrib/content/forms.py:99
+#: contrib/content/forms.py:137 contrib/grid/cms_plugins.py:99
+#: contrib/image/forms.py:147 contrib/tabs/forms.py:57
+#: contrib/utilities/forms.py:139
 msgid "Alignment"
 msgstr "Ausrichtung"
 
-#: djangocms_frontend/contrib/card/forms.py:140
+#: contrib/card/forms.py:140
 msgid "Text context"
 msgstr "Text-Kontext"
 
-#: djangocms_frontend/contrib/card/forms.py:148
+#: contrib/card/forms.py:148
 msgid "Full height"
 msgstr "Volle Höhe"
 
-#: djangocms_frontend/contrib/card/forms.py:152
+#: contrib/card/forms.py:152
 msgid ""
 "If checked cards in one row will automatically extend to the full row height."
 msgstr "Wenn angewählt, erhalten alle Cards in einer Reihe die volle Höhe."
 
-#: djangocms_frontend/contrib/card/forms.py:186
+#: contrib/card/forms.py:186
 msgid "Inner type"
 msgstr "Inhalts-Typ"
 
-#: djangocms_frontend/contrib/card/forms.py:189
+#: contrib/card/forms.py:189
 msgid "Define the structure of the plugin."
 msgstr "Definiert die Struktur des Plugins."
 
-#: djangocms_frontend/contrib/card/forms.py:193
-#: djangocms_frontend/contrib/grid/forms.py:199
+#: contrib/card/forms.py:193 contrib/grid/forms.py:173
 msgid "Content alignment"
 msgstr "Inhalts-Ausrichtung"
 
-#: djangocms_frontend/contrib/card/templates/djangocms_frontend/admin/card_layout.html:14
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_row.html:13
+#: contrib/card/templates/djangocms_frontend/admin/card_layout.html:14
+#: contrib/grid/templates/djangocms_frontend/admin/grid_row.html:13
 msgid "Colums per row"
 msgstr "Splaten pro Zeile"
 
-#: djangocms_frontend/contrib/carousel/cms_plugins.py:25
-#: djangocms_frontend/contrib/carousel/models.py:20
+#: contrib/carousel/cms_plugins.py:25 contrib/carousel/models.py:20
 msgid "Carousel"
 msgstr "Karussell"
 
-#: djangocms_frontend/contrib/carousel/cms_plugins.py:69
-#: djangocms_frontend/contrib/carousel/models.py:42
+#: contrib/carousel/cms_plugins.py:70 contrib/carousel/models.py:42
 msgid "Carousel slide"
 msgstr "Karussell-Eintrag"
 
-#: djangocms_frontend/contrib/carousel/cms_plugins.py:87
-#: djangocms_frontend/contrib/link/cms_plugins.py:45
-#: djangocms_frontend/contrib/link/cms_plugins.py:82
-#: djangocms_frontend/contrib/promo/cms_plugins.py:41
+#: contrib/carousel/cms_plugins.py:88 contrib/link/cms_plugins.py:45
+#: contrib/link/cms_plugins.py:83
 msgid "Link settings"
 msgstr "Link-Einstellungen"
 
-#: djangocms_frontend/contrib/carousel/constants.py:16
-#: djangocms_frontend/contrib/content/constants.py:12
-#: djangocms_frontend/contrib/custom_plugins/constants.py:5
-#: djangocms_frontend/contrib/grid/constants.py:47
-#: djangocms_frontend/contrib/grid/constants.py:52
-#: djangocms_frontend/contrib/grid/constants.py:57
-#: djangocms_frontend/contrib/image/forms.py:41
-#: djangocms_frontend/contrib/listgroup/constants.py:9
-#: djangocms_frontend/contrib/modal/constants.py:5
-#: djangocms_frontend/contrib/promo/constants.py:4
-#: djangocms_frontend/contrib/tabs/constants.py:24
-#: djangocms_frontend/settings.py:99 djangocms_frontend/settings.py:105
-#: djangocms_frontend/settings.py:111
+#: contrib/carousel/constants.py:5
+msgid "On hover"
+msgstr "Mit Maus"
+
+#: contrib/carousel/constants.py:6
+msgid "Never"
+msgstr "Nie"
+
+#: contrib/carousel/constants.py:12 contrib/image/forms.py:39
+#: contrib/tabs/constants.py:27 settings.py:56 settings.py:64 settings.py:72
 msgid "Default"
 msgstr "Standard"
 
-#: djangocms_frontend/contrib/carousel/forms.py:58
-#: djangocms_frontend/contrib/content/forms.py:103
-#: djangocms_frontend/contrib/custom_plugins/forms.py:62
-#: djangocms_frontend/contrib/image/forms.py:107
-#: djangocms_frontend/contrib/jumbotron/forms.py:44
-#: djangocms_frontend/contrib/link/forms.py:283
-#: djangocms_frontend/contrib/modal/forms.py:36
-#: djangocms_frontend/contrib/navigation/forms.py:42
-#: djangocms_frontend/contrib/promo/forms.py:58
-#: djangocms_frontend/contrib/tabs/forms.py:47
-msgid "Template"
-msgstr "Vorlage"
+#: contrib/carousel/constants.py:36
+msgid "Slide"
+msgstr "Gleiten"
 
-#: djangocms_frontend/contrib/carousel/forms.py:61
-#: djangocms_frontend/contrib/content/forms.py:106
-#: djangocms_frontend/contrib/custom_plugins/forms.py:65
-#: djangocms_frontend/contrib/promo/forms.py:61
-#: djangocms_frontend/contrib/tabs/forms.py:50
+#: contrib/carousel/constants.py:37 contrib/tabs/constants.py:21
+msgid "Fade"
+msgstr "Überblenden"
+
+#: contrib/carousel/forms.py:58 contrib/image/forms.py:103
+#: contrib/jumbotron/forms.py:44 contrib/link/forms.py:324
+#: contrib/navigation/forms.py:42 contrib/tabs/forms.py:45
+msgid "Layout"
+msgstr "Layout"
+
+#: contrib/carousel/forms.py:61 contrib/tabs/forms.py:48
 msgid "This is the template that will be used for the component."
 msgstr "Dies ist das Template das für die Komponente genutzt wird."
 
-#: djangocms_frontend/contrib/carousel/forms.py:68
-msgid "Description"
-msgstr ""
-
-#: djangocms_frontend/contrib/carousel/forms.py:73
-#: djangocms_frontend/contrib/carousel/models.py:24
+#: contrib/carousel/forms.py:64 contrib/carousel/models.py:24
 msgid "Interval"
 msgstr "Intervall"
 
-#: djangocms_frontend/contrib/carousel/forms.py:76
+#: contrib/carousel/forms.py:67
 msgid ""
 "The amount of time to delay between automatically cycling an item. If false, "
 "carousel will not automatically cycle."
@@ -635,39 +472,35 @@ msgstr ""
 "Die Zeitspanne zwischen dem automatischen Wechseln der Einträge. Wenn false, "
 "dann wird nicht automatisch gewechselt."
 
-#: djangocms_frontend/contrib/carousel/forms.py:81
-#: djangocms_frontend/contrib/carousel/models.py:25
+#: contrib/carousel/forms.py:72 contrib/carousel/models.py:25
 msgid "Controls"
 msgstr "Steuerelemente"
 
-#: djangocms_frontend/contrib/carousel/forms.py:84
+#: contrib/carousel/forms.py:75
 msgid "Adding in the previous and next controls."
 msgstr "Fügt die Weiter und Zurück Steuerelemente hinzu."
 
-#: djangocms_frontend/contrib/carousel/forms.py:87
-#: djangocms_frontend/contrib/carousel/models.py:26
+#: contrib/carousel/forms.py:78 contrib/carousel/models.py:26
 msgid "Indicators"
 msgstr "Indikatoren"
 
-#: djangocms_frontend/contrib/carousel/forms.py:90
+#: contrib/carousel/forms.py:81
 msgid "Adding in the indicators to the carousel."
 msgstr "Fügt dem Karussell Positions-Indikatoren hinzu."
 
-#: djangocms_frontend/contrib/carousel/forms.py:93
-#: djangocms_frontend/contrib/carousel/models.py:27
+#: contrib/carousel/forms.py:84 contrib/carousel/models.py:27
 msgid "Keyboard"
 msgstr "Tastatur"
 
-#: djangocms_frontend/contrib/carousel/forms.py:96
+#: contrib/carousel/forms.py:87
 msgid "Whether the carousel should react to keyboard events."
 msgstr "Soll das Karussell mit der Tastatur bedienbar sein."
 
-#: djangocms_frontend/contrib/carousel/forms.py:99
-#: djangocms_frontend/contrib/carousel/models.py:28
+#: contrib/carousel/forms.py:90 contrib/carousel/models.py:28
 msgid "Pause"
 msgstr "Pause"
 
-#: djangocms_frontend/contrib/carousel/forms.py:103
+#: contrib/carousel/forms.py:94
 msgid ""
 "If set to \"hover\", pauses the cycling of the carousel on \"mouseenter\" "
 "and resumes the cycling of the carousel on \"mouseleave\". If set to "
@@ -676,333 +509,264 @@ msgstr ""
 "Pausiert das Karussells, sobald sich die Maus über dem Karussell befindet. "
 "Startet wieder, nachdem die Maus das Karussell verlassen hat."
 
-#: djangocms_frontend/contrib/carousel/forms.py:110
-#: djangocms_frontend/contrib/carousel/models.py:29
-msgid "Ride"
+#: contrib/carousel/forms.py:102
+msgid "Auto start"
 msgstr "Autostart"
 
-#: djangocms_frontend/contrib/carousel/forms.py:114
+#: contrib/carousel/forms.py:106
 msgid ""
 "Autoplays the carousel after the user manually cycles the first item. If "
 "\"carousel\", autoplays the carousel on load."
 msgstr "Startet das Karussell direkt nach dem Laden."
 
-#: djangocms_frontend/contrib/carousel/forms.py:119
-#: djangocms_frontend/contrib/carousel/models.py:30
+#: contrib/carousel/forms.py:111 contrib/carousel/models.py:30
 msgid "Wrap"
 msgstr "Endlos"
 
-#: djangocms_frontend/contrib/carousel/forms.py:123
+#: contrib/carousel/forms.py:115
 msgid "Whether the carousel should cycle continuously or have hard stops."
 msgstr "Startet nach einem Durchlauf wieder von vorne."
 
-#: djangocms_frontend/contrib/carousel/forms.py:127
+#: contrib/carousel/forms.py:119
 msgid "Aspect ratio"
 msgstr "Seitenverhältnis"
 
-#: djangocms_frontend/contrib/carousel/forms.py:132
+#: contrib/carousel/forms.py:124
 msgid ""
 "Determines width and height of the image according to the selected ratio."
 msgstr ""
 "Bestimmt die Höhe und Breite der Bilder anhand des ausgewählten "
 "Seitenverhältnises."
 
-#: djangocms_frontend/contrib/carousel/forms.py:175
+#: contrib/carousel/forms.py:129
+msgid "Transition"
+msgstr "Übergang"
+
+#: contrib/carousel/forms.py:133
+msgid "Determines if slides change by sliding or fading."
+msgstr "Legt fest, ob Karussell-Bild herein gleitet oder übergeblendet wird."
+
+#: contrib/carousel/forms.py:177
 msgid "Slide image"
 msgstr "Karussell-Bild"
 
-#: djangocms_frontend/contrib/carousel/forms.py:179
-#: djangocms_frontend/contrib/custom_plugins/forms.py:23
-#: djangocms_frontend/contrib/custom_plugins/forms.py:40
-#: djangocms_frontend/contrib/promo/forms.py:78
+#: contrib/carousel/forms.py:181
 msgid "Content"
 msgstr "Inhalt"
 
-#: djangocms_frontend/contrib/carousel/forms.py:182
+#: contrib/carousel/forms.py:184
 msgid "Content may also be added using child plugins."
 msgstr "Inhalt kann auch über weitere Plugins hinzugefügt werden."
 
-#: djangocms_frontend/contrib/carousel/forms.py:185
-#: djangocms_frontend/contrib/link/forms.py:279
-#: djangocms_frontend/contrib/promo/forms.py:64
-msgid "Display name"
-msgstr "Anzeige-Text"
+#: contrib/carousel/models.py:29
+msgid "Ride"
+msgstr "Autostart"
 
-#: djangocms_frontend/contrib/carousel/models.py:51
-#: djangocms_frontend/contrib/image/models.py:154
+#: contrib/carousel/models.py:51 contrib/image/models.py:155
 msgid "<file is missing>"
 msgstr "<Datei fehlt>"
 
-#: djangocms_frontend/contrib/carousel/templates/djangocms_frontend/bootstrap5/carousel/default/carousel.html:32
+#: contrib/carousel/templates/djangocms_frontend/bootstrap5/carousel/default/carousel.html:32
 msgid "Previous"
 msgstr "Zurück"
 
-#: djangocms_frontend/contrib/carousel/templates/djangocms_frontend/bootstrap5/carousel/default/carousel.html:36
+#: contrib/carousel/templates/djangocms_frontend/bootstrap5/carousel/default/carousel.html:36
 msgid "Next"
 msgstr "Weiter"
 
-#: djangocms_frontend/contrib/collapse/cms_plugins.py:20
-#: djangocms_frontend/contrib/collapse/models.py:21
+#: contrib/collapse/cms_plugins.py:20 contrib/collapse/models.py:21
 msgid "Collapse"
 msgstr "Collapse"
 
-#: djangocms_frontend/contrib/collapse/cms_plugins.py:49
-#: djangocms_frontend/contrib/collapse/models.py:35
+#: contrib/collapse/cms_plugins.py:49 contrib/collapse/models.py:35
 msgid "Collapse trigger"
 msgstr "Collapse-Auslöser"
 
-#: djangocms_frontend/contrib/collapse/cms_plugins.py:75
-#: djangocms_frontend/contrib/collapse/models.py:49
+#: contrib/collapse/cms_plugins.py:75 contrib/collapse/models.py:49
 msgid "Collapse container"
-msgstr "Collapse-Kontainer"
+msgstr "Collapse-Container"
 
-#: djangocms_frontend/contrib/collapse/forms.py:37
+#: contrib/collapse/forms.py:37
 msgid "Siblings"
 msgstr "Geschwister"
 
-#: djangocms_frontend/contrib/collapse/forms.py:40
+#: contrib/collapse/forms.py:40
 msgid "Element to be used to create accordions."
 msgstr "Element, welches genutzt wird, um Akkordions zu erstellen."
 
-#: djangocms_frontend/contrib/collapse/forms.py:63
-#: djangocms_frontend/contrib/collapse/forms.py:88
+#: contrib/collapse/forms.py:63 contrib/collapse/forms.py:88
 msgid "Unique identifier"
 msgstr "Einzigartige Kennung (ID)"
 
-#: djangocms_frontend/contrib/collapse/forms.py:65
-#: djangocms_frontend/contrib/collapse/forms.py:90
+#: contrib/collapse/forms.py:65 contrib/collapse/forms.py:90
 msgid "Identifier to connect trigger with container."
 msgstr "Kennung, welche den Auslöser mit dem Collapse-Kontainer verbindet."
 
-#: djangocms_frontend/contrib/collapse/templates/djangocms_frontend/admin/collapse.html:7
-#: djangocms_frontend/contrib/media/templates/djangocms_frontend/admin/media.html:7
-#: djangocms_frontend/contrib/utilities/templates/djangocms_frontend/admin/no_form.html:5
+#: contrib/collapse/templates/djangocms_frontend/admin/collapse.html:7
+#: contrib/media/templates/djangocms_frontend/admin/media.html:7
+#: contrib/utilities/templates/djangocms_frontend/admin/no_form.html:5
 msgid "There is no configuration required here."
 msgstr "Keine Konfiguration nötig"
 
-#: djangocms_frontend/contrib/content/cms_plugins.py:32
-#: djangocms_frontend/contrib/content/forms.py:59
+#: contrib/content/cms_plugins.py:30 contrib/content/forms.py:51
 msgid "Code"
 msgstr "Code"
 
-#: djangocms_frontend/contrib/content/cms_plugins.py:67
-#: djangocms_frontend/contrib/content/models.py:28
+#: contrib/content/cms_plugins.py:63 contrib/content/models.py:29
 msgid "Blockquote"
 msgstr "Blockquote"
 
-#: djangocms_frontend/contrib/content/cms_plugins.py:112
-#: djangocms_frontend/contrib/content/models.py:42
+#: contrib/content/cms_plugins.py:98 contrib/content/models.py:43
 msgid "Figure"
 msgstr "Abbildung"
 
-#: djangocms_frontend/contrib/content/constants.py:5
+#: contrib/content/constants.py:4
 msgid "Inline code"
 msgstr "Inline-Code"
 
-#: djangocms_frontend/contrib/content/constants.py:6
-#: djangocms_frontend/contrib/content/models.py:14
+#: contrib/content/constants.py:5 contrib/content/models.py:15
 msgid "Code block"
 msgstr "Code-Block"
 
-#: djangocms_frontend/contrib/content/constants.py:7
+#: contrib/content/constants.py:6
 msgid "Variables"
 msgstr "Variablen"
 
-#: djangocms_frontend/contrib/content/constants.py:8
+#: contrib/content/constants.py:7
 msgid "User input"
 msgstr "Benutzer-Eingabe"
 
-#: djangocms_frontend/contrib/content/constants.py:9
+#: contrib/content/constants.py:8
 msgid "Sample output"
 msgstr "Muster-Ausgabe"
 
-#: djangocms_frontend/contrib/content/forms.py:65
+#: contrib/content/forms.py:57
 msgid "Code type"
 msgstr "Code-Typ"
 
-#: djangocms_frontend/contrib/content/forms.py:109
+#: contrib/content/forms.py:90
 msgid "Quote"
-msgstr "Zitat"
+msgstr "Quote"
 
-#: djangocms_frontend/contrib/content/forms.py:114
-msgid "Name"
-msgstr ""
+#: contrib/content/forms.py:95
+msgid "Source"
+msgstr "Quelle"
 
-#: djangocms_frontend/contrib/content/forms.py:118
-msgid "Role"
-msgstr ""
-
-#: djangocms_frontend/contrib/content/forms.py:122
-msgid "Company"
-msgstr ""
-
-#: djangocms_frontend/contrib/content/forms.py:177
-#: djangocms_frontend/contrib/image/forms.py:102
+#: contrib/content/forms.py:132
 msgid "Caption"
 msgstr "Bildlegende"
 
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:16
-#: djangocms_frontend/contrib/custom_plugins/models.py:10
-msgid "Raw HTML"
-msgstr ""
-
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:45
-#: djangocms_frontend/contrib/custom_plugins/models.py:20
-msgid "Raw HTML With ID"
-msgstr ""
-
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:88
-#: djangocms_frontend/contrib/custom_plugins/models.py:30
-#, fuzzy
-#| msgid "Content"
-msgid "Gated Content"
-msgstr "Inhalt"
-
-#: djangocms_frontend/contrib/custom_plugins/cms_plugins.py:124
-#: djangocms_frontend/contrib/custom_plugins/models.py:40
-#, fuzzy
-#| msgid "Collapse trigger"
-msgid "Gated Trigger"
-msgstr "Collapse-Auslöser"
-
-#: djangocms_frontend/contrib/custom_plugins/forms.py:45
-msgid "parameters"
-msgstr ""
-
-#: djangocms_frontend/contrib/custom_plugins/forms.py:68
-#, fuzzy
-#| msgid "Link"
-msgid "Link url"
-msgstr "Link"
-
-#: djangocms_frontend/contrib/custom_plugins/forms.py:72
-#, fuzzy
-#| msgid "Field name"
-msgid "Cookie name"
-msgstr "Feldname"
-
-#: djangocms_frontend/contrib/grid/cms_plugins.py:44
-#: djangocms_frontend/contrib/grid/constants.py:19
-#: djangocms_frontend/contrib/grid/models.py:28
-#: djangocms_frontend/contrib/navigation/forms.py:48
+#: contrib/grid/cms_plugins.py:36 contrib/grid/constants.py:19
+#: contrib/grid/models.py:28 contrib/navigation/forms.py:48
 msgid "Container"
-msgstr "Kontainer"
+msgstr "Container"
 
-#: djangocms_frontend/contrib/grid/cms_plugins.py:88
-#: djangocms_frontend/contrib/grid/models.py:55
+#: contrib/grid/cms_plugins.py:72 contrib/grid/models.py:55
 msgid "Row"
 msgstr "Zeile"
 
-#: djangocms_frontend/contrib/grid/cms_plugins.py:182
-#: djangocms_frontend/contrib/grid/models.py:79
-#: djangocms_frontend/contrib/tabs/constants.py:15
+#: contrib/grid/cms_plugins.py:149 contrib/grid/models.py:79
+#: contrib/tabs/constants.py:15
 msgid "Column"
 msgstr "Spalte"
 
-#: djangocms_frontend/contrib/grid/cms_plugins.py:218
-#, fuzzy
-#| msgid "Link settings"
+#: contrib/grid/cms_plugins.py:184
 msgid "Title settings"
-msgstr "Link-Einstellungen"
+msgstr "Titel-Einstellungen"
 
-#: djangocms_frontend/contrib/grid/constants.py:20
+#: contrib/grid/constants.py:20
 msgid "Fluid container"
-msgstr "Kontainer mit voller Breite"
+msgstr "Container mit voller Breite"
 
-#: djangocms_frontend/contrib/grid/constants.py:21
+#: contrib/grid/constants.py:21
 msgid "Full container"
-msgstr "Kontainer mit voller Breite ohne Rand"
+msgstr "Container mit voller Breite ohne Rand"
 
-#: djangocms_frontend/contrib/grid/constants.py:28
+#: contrib/grid/constants.py:28
 msgid "Align items start"
 msgstr "Element-Ausrichtung Anfang"
 
-#: djangocms_frontend/contrib/grid/constants.py:29
+#: contrib/grid/constants.py:29
 msgid "Align items center"
 msgstr "Element-Ausrichtung Mittig"
 
-#: djangocms_frontend/contrib/grid/constants.py:30
+#: contrib/grid/constants.py:30
 msgid "Align items end"
 msgstr "Element-Ausrichtung Ende"
 
-#: djangocms_frontend/contrib/grid/constants.py:34
+#: contrib/grid/constants.py:34
 msgid "Justify content start"
 msgstr "Ausrichtung Inhalt Anfang"
 
-#: djangocms_frontend/contrib/grid/constants.py:35
+#: contrib/grid/constants.py:35
 msgid "Justify content center"
 msgstr "Ausrichtung Inhalt Mittig"
 
-#: djangocms_frontend/contrib/grid/constants.py:36
+#: contrib/grid/constants.py:36
 msgid "Justify content end"
 msgstr "Ausrichtung Inhalt Ende"
 
-#: djangocms_frontend/contrib/grid/constants.py:37
+#: contrib/grid/constants.py:37
 msgid "Justify content around"
 msgstr "Ausrichtung Inhalt herum"
 
-#: djangocms_frontend/contrib/grid/constants.py:38
+#: contrib/grid/constants.py:38
 msgid "Justify content between"
 msgstr "Ausrichtung Inhalt zwischen"
 
-#: djangocms_frontend/contrib/grid/constants.py:42
+#: contrib/grid/constants.py:42
 msgid "Align self start"
 msgstr "Selbst-Ausrichtung Anfang"
 
-#: djangocms_frontend/contrib/grid/constants.py:43
+#: contrib/grid/constants.py:43
 msgid "Align self center"
 msgstr "Selbst-Ausrichtung Mittig"
 
-#: djangocms_frontend/contrib/grid/constants.py:44
+#: contrib/grid/constants.py:44
 msgid "Align self end"
 msgstr "Selbst-Ausrichtung Ende"
 
-#: djangocms_frontend/contrib/grid/forms.py:67
+#: contrib/grid/forms.py:61
 msgid "Container type"
-msgstr "Kontainer-Typ"
+msgstr "Container-Typ"
 
-#: djangocms_frontend/contrib/grid/forms.py:71
-#, fuzzy
-#| msgid ""
-#| "Defines if the grid should use fixed width (<code>.container</code>) or "
-#| "fluid width (<code>.container-fluid</code>)."
+#: contrib/grid/forms.py:65
 msgid ""
 "Defines if the grid should use fixed width, fluid width or the container "
 "should fill the full width without margins or padding."
 msgstr ""
-"Definiert ob das Grid eine fixe Breite (<code>.container</code>) oder "
-"fließende Breite (<code>.container-fluid</code>) haben soll."
+"Legt fest, ob das Raster feste Breiten, variable Breiten nutzt oder der "
+"Container die volle Breite ohne Rand einnehmen soll."
 
-#: djangocms_frontend/contrib/grid/forms.py:77
-#: djangocms_frontend/contrib/grid/forms.py:118
-#: djangocms_frontend/contrib/grid/forms.py:188
-#: djangocms_frontend/contrib/listgroup/forms.py:38
-#, fuzzy
-#| msgid "Template"
-msgid "template"
-msgstr "Vorlage"
-
-#: djangocms_frontend/contrib/grid/forms.py:111
+#: contrib/grid/forms.py:97
 msgid "Create columns"
 msgstr "Spalten erstellen"
 
-#: djangocms_frontend/contrib/grid/forms.py:112
+#: contrib/grid/forms.py:98
 msgid "Number of columns to create when saving."
 msgstr "Anzahl der Spalten, die beim Speichern erstellt werden soll."
 
-#: djangocms_frontend/contrib/grid/forms.py:137
+#: contrib/grid/forms.py:104
+msgid "Vertical alignment"
+msgstr "Vertikale Ausrichtung"
+
+#: contrib/grid/forms.py:111
+msgid "Horizontal alignment"
+msgstr "Horizontale Ausrichtung"
+
+#: contrib/grid/forms.py:118
 msgid "Gutters"
 msgstr "Abstand"
 
-#: djangocms_frontend/contrib/grid/forms.py:141
+#: contrib/grid/forms.py:122
 msgid "To remove all spaces between rows set gutters to 0."
-msgstr "Um den Abstand zwischen Zeilen zu entfernen, auf 0 setzen."
+msgstr "Um den Abstand zwischen den Spalten zu entfernen hier 0 eintragen."
 
-#: djangocms_frontend/contrib/grid/forms.py:193
+#: contrib/grid/forms.py:167
 msgid "Column alignment"
 msgstr "Spalten-Ausrichtung"
 
-#: djangocms_frontend/contrib/grid/forms.py:221
+#: contrib/grid/forms.py:195
 #, python-format
 msgid ""
 "Column size needs to be empty, \"auto\", or a number between 1 and %(cols)d"
@@ -1010,112 +774,165 @@ msgstr ""
 "Spaltengröße muss entweder leer, \"auto\" oder eine Zahl zwischen 1 und "
 "%(cols)d sein."
 
-#: djangocms_frontend/contrib/grid/models.py:29
+#: contrib/grid/models.py:29
 msgid "GridContainer"
-msgstr "Kontainer"
+msgstr "Container"
 
-#: djangocms_frontend/contrib/grid/models.py:56
+#: contrib/grid/models.py:56
 msgid "GridRow"
 msgstr "Zeile"
 
-#: djangocms_frontend/contrib/grid/models.py:64
+#: contrib/grid/models.py:64
 #, python-format
 msgid "(1 column)"
 msgid_plural "(%(count)i columns)"
 msgstr[0] "(1 Spalte)"
 msgstr[1] "(%(count)i Spalten)"
 
-#: djangocms_frontend/contrib/grid/models.py:80
+#: contrib/grid/models.py:80
 msgid "GridColumn"
 msgstr "Spalte"
 
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_column.html:15
+#: contrib/grid/templates/djangocms_frontend/admin/grid_column.html:15
 msgid "Column size"
 msgstr "Spaltengröße"
 
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_column.html:16
+#: contrib/grid/templates/djangocms_frontend/admin/grid_column.html:16
 msgid "Order"
 msgstr "Anordnung"
 
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_column.html:17
+#: contrib/grid/templates/djangocms_frontend/admin/grid_column.html:17
 msgid "Offset"
 msgstr "Versatz"
 
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_column.html:18
+#: contrib/grid/templates/djangocms_frontend/admin/grid_column.html:18
 msgid "Margin left"
 msgstr "Rand links"
 
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_column.html:19
+#: contrib/grid/templates/djangocms_frontend/admin/grid_column.html:19
 msgid "Margin right"
 msgstr "Rand rechts"
 
-#: djangocms_frontend/contrib/grid/templates/djangocms_frontend/admin/grid_column.html:21
+#: contrib/grid/templates/djangocms_frontend/admin/grid_column.html:21
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: djangocms_frontend/contrib/image/cms_plugins.py:32
+#: contrib/icon/apps.py:7 contrib/icon/cms_plugins.py:29
+#: contrib/icon/models.py:14
+msgid "Icon"
+msgstr "Icon"
+
+#: contrib/icon/conf.py:54
+msgid "Regular"
+msgstr "Schriftgröße"
+
+#: contrib/icon/conf.py:55
+msgid "x 2"
+msgstr "x 2"
+
+#: contrib/icon/conf.py:56
+msgid "x 3"
+msgstr "x 3"
+
+#: contrib/icon/conf.py:57
+msgid "x 4"
+msgstr "x 4"
+
+#: contrib/icon/conf.py:58
+msgid "x 5"
+msgstr "x 5"
+
+#: contrib/icon/conf.py:59
+msgid "x 8"
+msgstr "x 8"
+
+#: contrib/icon/conf.py:60
+msgid "x 12"
+msgstr "x 12"
+
+#: contrib/icon/forms.py:45
+msgid "Icon size"
+msgstr "Icon-Größe"
+
+#: contrib/icon/forms.py:51
+msgid "Foreground context"
+msgstr "Kontext für Vordergrund"
+
+#: contrib/icon/forms.py:58
+msgid "Circular icon"
+msgstr "Kreisförmiges Icon"
+
+#: contrib/icon/models.py:17
+msgid "undefined"
+msgstr "undefiniert"
+
+#: contrib/icon/templates/djangocms_frontend/admin/widgets/icon_picker.html:5
+msgid "Click to add icon"
+msgstr "Klicken zum Hinzufügen"
+
+#: contrib/image/cms_plugins.py:30
 msgid "Picture / Image"
 msgstr "Bild"
 
-#: djangocms_frontend/contrib/image/cms_plugins.py:58
+#: contrib/image/cms_plugins.py:58
 msgid "Format"
 msgstr "Format"
 
-#: djangocms_frontend/contrib/image/cms_plugins.py:69
+#: contrib/image/cms_plugins.py:69
 msgid "Cropping"
-msgstr "Zuschneiden"
+msgstr "Beschneiden"
 
-#: djangocms_frontend/contrib/image/forms.py:25
+#: contrib/image/forms.py:25
 msgid "Align left"
 msgstr "Links ausrichten"
 
-#: djangocms_frontend/contrib/image/forms.py:26
+#: contrib/image/forms.py:26
 msgid "Align right"
 msgstr "Rechts ausrichten"
 
-#: djangocms_frontend/contrib/image/forms.py:27
+#: contrib/image/forms.py:27
 msgid "Align center"
 msgstr "Zentriert ausrichten"
 
-#: djangocms_frontend/contrib/image/forms.py:51
-#: djangocms_frontend/contrib/link/constants.py:30
+#: contrib/image/forms.py:50 contrib/link/constants.py:22
 msgid "Open in new window"
 msgstr "In neuem Fenster öffnen"
 
-#: djangocms_frontend/contrib/image/forms.py:52
-#: djangocms_frontend/contrib/link/constants.py:31
+#: contrib/image/forms.py:51 contrib/link/constants.py:23
 msgid "Open in same window"
 msgstr "Im selben Fenster öffnen"
 
-#: djangocms_frontend/contrib/image/forms.py:53
-#: djangocms_frontend/contrib/link/constants.py:32
+#: contrib/image/forms.py:52 contrib/link/constants.py:24
 msgid "Delegate to parent"
-msgstr ""
+msgstr "An Elternelement delegieren"
 
-#: djangocms_frontend/contrib/image/forms.py:54
-#: djangocms_frontend/contrib/link/constants.py:33
+#: contrib/image/forms.py:53 contrib/link/constants.py:25
 msgid "Delegate to top"
-msgstr ""
+msgstr "An oberstes Element delegieren"
 
-#: djangocms_frontend/contrib/image/forms.py:58
+#: contrib/image/forms.py:57
 msgid "Let settings.DJANGOCMS_PICTURE_RESPONSIVE_IMAGES decide"
 msgstr ""
 "Gemäß Einstellungen in <code>settings.DJANGOCMS_PICTURE_RESPONSIVE_IMAGES</"
 "code>"
 
-#: djangocms_frontend/contrib/image/forms.py:59
+#: contrib/image/forms.py:58
 msgid "Yes"
 msgstr "Ja"
 
-#: djangocms_frontend/contrib/image/forms.py:60
+#: contrib/image/forms.py:59
 msgid "No"
 msgstr "Nein"
 
-#: djangocms_frontend/contrib/image/forms.py:119
+#: contrib/image/forms.py:111 contrib/image/models.py:72
+msgid "Image"
+msgstr "Bild"
+
+#: contrib/image/forms.py:115
 msgid "External image"
 msgstr "Externes Bild"
 
-#: djangocms_frontend/contrib/image/forms.py:122
+#: contrib/image/forms.py:118
 msgid ""
 "If provided, overrides the embedded image. Certain options such as cropping "
 "are not applicable to external images."
@@ -1124,11 +941,11 @@ msgstr ""
 "internes. Bestimmte Optionen (wie Auschnitte) können nicht auf externe "
 "Bilder angewendet werden."
 
-#: djangocms_frontend/contrib/image/forms.py:127
+#: contrib/image/forms.py:123
 msgid "Load lazily"
 msgstr "Nachgelagert laden"
 
-#: djangocms_frontend/contrib/image/forms.py:130
+#: contrib/image/forms.py:126
 msgid ""
 "Use for images below the fold. This will load images only if user scrolls "
 "them into view. "
@@ -1136,78 +953,77 @@ msgstr ""
 "Für Bilder unterhalb des sichtbaren Beriechs. Bild wird erst geladen, wenn "
 "der Nutzer scrollt und sie sichtbar werden."
 
-#: djangocms_frontend/contrib/image/forms.py:135
+#: contrib/image/forms.py:131
 msgid "Width"
 msgstr "Breite"
 
-#: djangocms_frontend/contrib/image/forms.py:139
+#: contrib/image/forms.py:135
 msgid ""
 "The image width as number in pixels. Example: \"720\" and not \"720px\"."
 msgstr ""
 "Bild-Breite in Pixeln (ohne Enheit). Beispiel: \"720\" and not \"720px\"."
 
-#: djangocms_frontend/contrib/image/forms.py:143
+#: contrib/image/forms.py:139
 msgid "Height"
 msgstr "Höhe"
 
-#: djangocms_frontend/contrib/image/forms.py:147
+#: contrib/image/forms.py:143
 msgid ""
 "The image height as number in pixels. Example: \"720\" and not \"720px\"."
 msgstr ""
 "Bild-Höhe in Pixeln (ohne Enheit). Beispiel: \"720\" and not \"720px\"."
 
-#: djangocms_frontend/contrib/image/forms.py:154
+#: contrib/image/forms.py:150
 msgid "Aligns the image according to the selected option."
 msgstr "Richtet das Bild entsprechend der ausgewählten Option aus."
 
-#: djangocms_frontend/contrib/image/forms.py:157
-#: djangocms_frontend/contrib/utilities/forms.py:167
+#: contrib/image/forms.py:153 contrib/utilities/forms.py:167
 msgid "Link attributes"
 msgstr "Link-Attribute"
 
-#: djangocms_frontend/contrib/image/forms.py:158
+#: contrib/image/forms.py:154
 msgid "Attributes apply to the <b>link</b>."
 msgstr "Attribute werden auf den <b>Link</b> angewendet."
 
-#: djangocms_frontend/contrib/image/forms.py:164
+#: contrib/image/forms.py:160
 msgid "Automatic scaling"
 msgstr "Automatische Skalierung"
 
-#: djangocms_frontend/contrib/image/forms.py:167
+#: contrib/image/forms.py:163
 msgid "Uses the placeholder dimensions to automatically calculate the size."
 msgstr "Skaliert das Bild autmatisch auf die Größe des Platzhalters."
 
-#: djangocms_frontend/contrib/image/forms.py:173
+#: contrib/image/forms.py:169
 msgid "Use original image"
 msgstr "Original-Bild nutzen"
 
-#: djangocms_frontend/contrib/image/forms.py:175
+#: contrib/image/forms.py:171
 msgid "Outputs the raw image without cropping."
 msgstr "Erzeugt das Originalbild ohne Zuschneiden"
 
-#: djangocms_frontend/contrib/image/forms.py:180
+#: contrib/image/forms.py:176
 msgid "Crop image"
 msgstr "Bild beschneiden"
 
-#: djangocms_frontend/contrib/image/forms.py:183
+#: contrib/image/forms.py:179
 msgid ""
 "Crops the image according to the thumbnail settings provided in the template."
 msgstr "Schneidet das Bild gemäß der Vorschau-Einstellungen in der Vorlage zu."
 
-#: djangocms_frontend/contrib/image/forms.py:187
+#: contrib/image/forms.py:183
 msgid "Upscale image"
 msgstr "Bildgröße anpassen"
 
-#: djangocms_frontend/contrib/image/forms.py:190
+#: contrib/image/forms.py:186
 msgid ""
 "Upscales the image to the size of the thumbnail settings in the template."
 msgstr "Passt die Bildgröße auf die Vorschau-Einstellungen in der Vorlage"
 
-#: djangocms_frontend/contrib/image/forms.py:194
+#: contrib/image/forms.py:190
 msgid "Use responsive image"
 msgstr "Bild responsive darstellen"
 
-#: djangocms_frontend/contrib/image/forms.py:198
+#: contrib/image/forms.py:194
 msgid ""
 "Uses responsive image technique to choose better image to display based upon "
 "screen viewport. This configuration only applies to uploaded images "
@@ -1217,11 +1033,11 @@ msgstr ""
 "Bildschirmgröße des Nutzers auszuwählen. Dies erfolgt nur bei hochgeladenen "
 "Bildern."
 
-#: djangocms_frontend/contrib/image/forms.py:207
+#: contrib/image/forms.py:203
 msgid "Thumbnail options"
 msgstr "Optionen für Vorschaubilder"
 
-#: djangocms_frontend/contrib/image/forms.py:210
+#: contrib/image/forms.py:206
 msgid ""
 "Overrides width, height, and crop; scales up to the provided preset "
 "dimensions."
@@ -1229,31 +1045,31 @@ msgstr ""
 "Überschreibt Breite, Höhe und Zuschneide-Einstellungen. Passt die Bildgröße "
 "auf die Voreingestellung an."
 
-#: djangocms_frontend/contrib/image/forms.py:214
+#: contrib/image/forms.py:210
 msgid "Responsive"
 msgstr "Responsive"
 
-#: djangocms_frontend/contrib/image/forms.py:217
+#: contrib/image/forms.py:213
 msgid "Adds the .img-fluid class to make the image responsive."
 msgstr "Fügt die Klasse .img-fluid hinzu um das Bild responsiv zu machen."
 
-#: djangocms_frontend/contrib/image/forms.py:220
+#: contrib/image/forms.py:216
 msgid "Rounded"
 msgstr "Abgerundet"
 
-#: djangocms_frontend/contrib/image/forms.py:223
+#: contrib/image/forms.py:219
 msgid "Adds the .rounded class for round corners."
 msgstr "Fügt die Klasse .rounded für abgerundete Ecken hinzu."
 
-#: djangocms_frontend/contrib/image/forms.py:226
+#: contrib/image/forms.py:222
 msgid "Thumbnail"
 msgstr "Vorschaubild"
 
-#: djangocms_frontend/contrib/image/forms.py:229
+#: contrib/image/forms.py:225
 msgid "Adds the .img-thumbnail class."
 msgstr "Fügt die Klasse .img-thumbnail hinzu."
 
-#: djangocms_frontend/contrib/image/forms.py:250
+#: contrib/image/forms.py:246
 msgid ""
 "You have given more than one external, internal, or file link target. Only "
 "one option is allowed."
@@ -1261,11 +1077,11 @@ msgstr ""
 "Nur ein Ziel kann angegbenen werden: Extern, intern oder eine Datei. Es ist "
 "mehr als ein Ziel ausgewählt."
 
-#: djangocms_frontend/contrib/image/forms.py:259
+#: contrib/image/forms.py:255
 msgid "You need to add either an image, or a URL linking to an external image."
 msgstr "Entweder ein Bild oder eine URL für ein externed Bild angeben."
 
-#: djangocms_frontend/contrib/image/forms.py:285
+#: contrib/image/forms.py:281
 #, python-brace-format
 msgid ""
 "Invalid cropping settings. You cannot combine \"{field_a}\" with "
@@ -1274,146 +1090,141 @@ msgstr ""
 "Ungültige Zuschnitts-Einstellungen: \"{field_a}\" und \"{field_b}\" können "
 "nicht kombiniert werden."
 
-#: djangocms_frontend/contrib/jumbotron/cms_plugins.py:31
-#: djangocms_frontend/contrib/jumbotron/models.py:14
+#: contrib/jumbotron/cms_plugins.py:31 contrib/jumbotron/models.py:14
 msgid "Jumbotron"
 msgstr "Jumbotron"
 
-#: djangocms_frontend/contrib/jumbotron/forms.py:49
-#: djangocms_frontend/contrib/jumbotron/models.py:19
+#: contrib/jumbotron/forms.py:49 contrib/jumbotron/models.py:19
 msgid "Fluid"
 msgstr "Fließend"
 
-#: djangocms_frontend/contrib/jumbotron/forms.py:53
+#: contrib/jumbotron/forms.py:53
 msgid "Makes the jumbotron fill the full width of the container or window."
 msgstr ""
-"Erweitert Jas Jumbotron auf die volle Breite des Kontainers oder Fensters."
+"Erweitert Jas Jumbotron auf die volle Breite des Containers oder Fensters."
 
-#: djangocms_frontend/contrib/link/apps.py:11
-#: djangocms_frontend/contrib/link/constants.py:5
-#: djangocms_frontend/contrib/link/models.py:11
-#: djangocms_frontend/contrib/link/models.py:101
+#: contrib/link/apps.py:7 contrib/link/constants.py:5
+#: contrib/link/models.py:11 contrib/link/models.py:114
 msgid "Link"
 msgstr "Link"
 
-#: djangocms_frontend/contrib/link/cms_plugins.py:96
+#: contrib/link/cms_plugins.py:97
 msgid "Link / Button"
 msgstr "Link / Button"
 
-#: djangocms_frontend/contrib/link/constants.py:6
+#: contrib/link/constants.py:6
 msgid "Button"
 msgstr "Button"
 
-#: djangocms_frontend/contrib/link/constants.py:10
-msgid "URL"
-msgstr ""
-
-#: djangocms_frontend/contrib/link/constants.py:11
-msgid "Mail"
-msgstr ""
-
-#: djangocms_frontend/contrib/link/constants.py:12
-msgid "Phone"
-msgstr "Telefonnummer"
-
-#: djangocms_frontend/contrib/link/constants.py:13
-msgid "Anchor"
-msgstr "Anker"
-
-#: djangocms_frontend/contrib/link/constants.py:14
-#: djangocms_frontend/contrib/modal/cms_plugins.py:21
-#: djangocms_frontend/contrib/modal/models.py:10
-msgid "Modal"
-msgstr ""
-
-#: djangocms_frontend/contrib/link/constants.py:18
-#: djangocms_frontend/frameworks/bootstrap5.py:7
-#: djangocms_frontend/frameworks/bootstrap5.py:133
+#: contrib/link/constants.py:10 frameworks/bootstrap5.py:7
+#: frameworks/bootstrap5.py:133
 msgid "Small"
 msgstr "Klein"
 
-#: djangocms_frontend/contrib/link/constants.py:19
-#: djangocms_frontend/frameworks/bootstrap5.py:8
-#: djangocms_frontend/frameworks/bootstrap5.py:134
+#: contrib/link/constants.py:11 frameworks/bootstrap5.py:8
+#: frameworks/bootstrap5.py:134
 msgid "Medium"
 msgstr "Mittel"
 
-#: djangocms_frontend/contrib/link/constants.py:20
-#: djangocms_frontend/frameworks/bootstrap5.py:9
-#: djangocms_frontend/frameworks/bootstrap5.py:135
+#: contrib/link/constants.py:12 frameworks/bootstrap5.py:9
+#: frameworks/bootstrap5.py:135
 msgid "Large"
 msgstr "Groß"
 
-#: djangocms_frontend/contrib/link/forms.py:59
+#: contrib/link/forms.py:62
 msgid "Select a destination"
 msgstr "Ein Ziel auswählen"
 
-#: djangocms_frontend/contrib/link/forms.py:135
+#: contrib/link/forms.py:138
 msgid "Site"
 msgstr "Website"
 
-#: djangocms_frontend/contrib/link/forms.py:138
+#: contrib/link/forms.py:141
 msgid "Select site"
 msgstr "Ein Ziel auswählen"
 
-#: djangocms_frontend/contrib/link/forms.py:143
+#: contrib/link/forms.py:146
 msgid "Url"
 msgstr "URL"
 
-#: djangocms_frontend/contrib/link/forms.py:146
+#: contrib/link/forms.py:149
 msgid "Select URL object from list"
 msgstr "URL-Objekt aus der Liste wählen"
 
-#: djangocms_frontend/contrib/link/forms.py:176
+#: contrib/link/forms.py:177
 msgid "External link"
 msgstr "Externer Link"
 
-#: djangocms_frontend/contrib/link/forms.py:179
+#: contrib/link/forms.py:180
 msgid "Provide a link to an external source."
 msgstr "Vollständiger Link zu einer externen Quelle"
 
-#: djangocms_frontend/contrib/link/forms.py:182
+#: contrib/link/forms.py:183
 msgid "Internal link"
 msgstr "Interner Link"
 
-#: djangocms_frontend/contrib/link/forms.py:184
+#: contrib/link/forms.py:185
 msgid "If provided, overrides the external link."
 msgstr "Wenn angegeben, wird ein externer Link überschrieben."
 
-#: djangocms_frontend/contrib/link/forms.py:187
-#, fuzzy
-#| msgid "Inner type"
-msgid "Link type"
-msgstr "Inhalts-Typ"
-
-#: djangocms_frontend/contrib/link/forms.py:194
-#, fuzzy
-#| msgid "Open in new window"
-msgid "Open in New Window"
-msgstr "In neuem Fenster öffnen"
-
-#: djangocms_frontend/contrib/link/forms.py:202
+#: contrib/link/forms.py:191
 msgid "File link"
 msgstr "Datei-Link"
 
-#: djangocms_frontend/contrib/link/forms.py:204
+#: contrib/link/forms.py:193
 msgid "If provided links a file from the filer app."
 msgstr "Verlink eine Datei der Filer-App."
 
-#: djangocms_frontend/contrib/link/forms.py:244
+#: contrib/link/forms.py:197
+msgid "Anchor"
+msgstr "Anker"
+
+#: contrib/link/forms.py:200
+msgid ""
+"Appends the value only after the internal or external link. Do <em>not</em> "
+"include a preceding \"&#35;\" symbol."
+msgstr ""
+"Hängt bei internen oder externen Links einen Anker an. <em>Ohne</em> "
+"führendes \"&#35;\"-Symbol."
+
+#: contrib/link/forms.py:205
+msgid "Email address"
+msgstr "Email-Adresse"
+
+#: contrib/link/forms.py:209
+msgid "Phone"
+msgstr "Telefonnummer"
+
+#: contrib/link/forms.py:214
+msgid "Target"
+msgstr "Ziel"
+
+#: contrib/link/forms.py:266
 #, python-brace-format
 msgid "Only one of {0} or {1} may be given."
 msgstr "Nur einer aus {0} oder {1} können ausgewählt werden."
 
-#: djangocms_frontend/contrib/link/forms.py:255
+#: contrib/link/forms.py:278
 msgid "Please provide a link."
 msgstr "Bitte geben Sie ein Ziel an."
 
-#: djangocms_frontend/contrib/link/forms.py:288
+#: contrib/link/forms.py:284
+#, python-format
+msgid ""
+"%(anchor_field_verbose_name)s is not allowed together with %(field_name)s"
+msgstr ""
+"%(anchor_field_verbose_name)s kann nicht zusammen mit %(field_name)s gewählt "
+"werden."
+
+#: contrib/link/forms.py:320
+msgid "Display name"
+msgstr "Anzeige-Text"
+
+#: contrib/link/forms.py:329
 msgid "Stretch link"
 msgstr "Link ausdehnen"
 
-#: djangocms_frontend/contrib/link/forms.py:292
+#: contrib/link/forms.py:333
 msgid ""
 "Stretches the active link area to the containing block (with position: "
 "relative)."
@@ -1421,307 +1232,244 @@ msgstr ""
 "Dehnt die aktive Fläche des Link auf den umgebenden Block aus (sofern dieser "
 "mit position: relative markiert ist)."
 
-#: djangocms_frontend/contrib/link/forms.py:296
-#: djangocms_frontend/contrib/tabs/forms.py:53
+#: contrib/link/forms.py:337 contrib/tabs/forms.py:51
 msgid "Type"
 msgstr "Typ"
 
-#: djangocms_frontend/contrib/link/forms.py:300
+#: contrib/link/forms.py:341
 msgid "Adds either a text link or a button which links to the target."
 msgstr ""
 "Fügt entweder einen regulären Link oder einen Button hinzu, der das Ziel "
 "verlinkt."
 
-#: djangocms_frontend/contrib/link/forms.py:310
+#: contrib/link/forms.py:351
 msgid "Button size"
 msgstr "Button-Größe"
 
-#: djangocms_frontend/contrib/link/forms.py:319
+#: contrib/link/forms.py:360
 msgid "Outline"
 msgstr "Kontur"
 
-#: djangocms_frontend/contrib/link/forms.py:322
+#: contrib/link/forms.py:363
 msgid "Removes the coloring from a button and keeps the outline."
 msgstr "Beschränkt die Färbung auf den Umriß der Schaltfläche."
 
-#: djangocms_frontend/contrib/link/forms.py:325
+#: contrib/link/forms.py:366
 msgid "Block"
 msgstr "Block"
 
-#: djangocms_frontend/contrib/link/forms.py:328
+#: contrib/link/forms.py:369
 msgid "Extends the button to the width of its container."
-msgstr "Erweitert die Breite des Buttons auf den Kontainer."
+msgstr "Erweitert die Breite des Buttons auf den Container."
 
-#: djangocms_frontend/contrib/link/forms.py:331
+#: contrib/link/forms.py:372
 msgid "Icon left"
 msgstr "Icon links"
 
-#: djangocms_frontend/contrib/link/forms.py:336
+#: contrib/link/forms.py:377
 msgid "Icon right"
 msgstr "Icon rechts"
 
-#: djangocms_frontend/contrib/link/models.py:106
+#: contrib/link/models.py:119
 msgid "<link is missing>"
 msgstr "<Link fehlt>"
 
-#: djangocms_frontend/contrib/link/templates/djangocms_frontend/admin/link.html:12
+#: contrib/link/templates/djangocms_frontend/admin/link.html:12
 msgid "Preview"
 msgstr "Vorschau"
 
-#: djangocms_frontend/contrib/listgroup/cms_plugins.py:30
-#: djangocms_frontend/contrib/listgroup/models.py:14
+#: contrib/listgroup/cms_plugins.py:28 contrib/listgroup/models.py:14
 msgid "List group"
 msgstr "Listen-Gruppe"
 
-#: djangocms_frontend/contrib/listgroup/cms_plugins.py:62
+#: contrib/listgroup/cms_plugins.py:55
 msgid "List item"
 msgstr "Listen-Eintrag"
 
-#: djangocms_frontend/contrib/listgroup/constants.py:5
+#: contrib/listgroup/constants.py:4
 msgid "Active"
 msgstr "Aktiv"
 
-#: djangocms_frontend/contrib/listgroup/constants.py:6
+#: contrib/listgroup/constants.py:5
 msgid "Disabled"
 msgstr "Deaktiviert"
 
-#: djangocms_frontend/contrib/listgroup/forms.py:43
+#: contrib/listgroup/forms.py:36
 msgid "List group flush"
 msgstr "Eingebettete Listen-Gruppe"
 
-#: djangocms_frontend/contrib/listgroup/forms.py:46
+#: contrib/listgroup/forms.py:39
 msgid "Create lists of content in a card with a flush list group."
 msgstr ""
 "Erstellt eine Listengruppe, die in einer Karte eingebettet werden kann."
 
-#: djangocms_frontend/contrib/listgroup/forms.py:71
+#: contrib/listgroup/forms.py:64
 msgid "One line content"
 msgstr "Inhalt (eine Zeile)"
 
-#: djangocms_frontend/contrib/listgroup/forms.py:74
+#: contrib/listgroup/forms.py:67
 msgid "List item text. Is only show if this list item has no child plugins."
 msgstr ""
 "Text des Listen-Eintrags. Wird nur angezeigt, wenn der Listen-Eintrag keine "
 "Töchter-Plugins hat."
 
-#: djangocms_frontend/contrib/listgroup/forms.py:85
+#: contrib/listgroup/forms.py:78
 msgid "State"
 msgstr "Zustand"
 
-#: djangocms_frontend/contrib/listgroup/models.py:31
+#: contrib/listgroup/models.py:31
 msgid "List group item"
 msgstr "Listen-Eintrag"
 
-#: djangocms_frontend/contrib/media/cms_plugins.py:23
-#: djangocms_frontend/contrib/media/models.py:14
+#: contrib/media/cms_plugins.py:23 contrib/media/models.py:14
 msgid "Media"
 msgstr "Medien"
 
-#: djangocms_frontend/contrib/media/cms_plugins.py:40
-#: djangocms_frontend/contrib/media/models.py:28
+#: contrib/media/cms_plugins.py:40 contrib/media/models.py:28
 msgid "Media body"
 msgstr "Medienkörper"
 
-#: djangocms_frontend/contrib/modal/forms.py:41
-msgid "Modal ID"
-msgstr ""
-
-#: djangocms_frontend/contrib/modal/forms.py:45
-msgid "Percentage Scrolled"
-msgstr ""
-
-#: djangocms_frontend/contrib/modal/forms.py:51
-#, fuzzy
-#| msgid "Secondary"
-msgid "Seconds Passed"
-msgstr "Sekundär"
-
-#: djangocms_frontend/contrib/modal/forms.py:55
-#, fuzzy
-#| msgid "Settings"
-msgid "Cookie Settings"
-msgstr "Einstellungen"
-
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:29
-#: djangocms_frontend/contrib/navigation/models.py:15
+#: contrib/navigation/cms_plugins.py:29 contrib/navigation/models.py:15
 msgid "Navigation"
-msgstr ""
+msgstr "Navigation"
 
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:74
-#: djangocms_frontend/contrib/navigation/models.py:36
-#, fuzzy
-#| msgid "Badge text"
+#: contrib/navigation/cms_plugins.py:74 contrib/navigation/models.py:36
 msgid "Page tree"
-msgstr "Badge-Text"
+msgstr "Seitenbaum"
 
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:105
-#: djangocms_frontend/contrib/navigation/forms.py:102
-#: djangocms_frontend/contrib/navigation/models.py:42
+#: contrib/navigation/cms_plugins.py:105 contrib/navigation/forms.py:104
+#: contrib/navigation/models.py:42
 msgid "Brand"
-msgstr ""
+msgstr "Marke"
 
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:133
-#: djangocms_frontend/contrib/navigation/models.py:24
-#, fuzzy
-#| msgid "lg container"
+#: contrib/navigation/cms_plugins.py:133 contrib/navigation/models.py:24
 msgid "Navigation container"
-msgstr "lg-Kontainer"
+msgstr "Navigationscontainer"
 
-#: djangocms_frontend/contrib/navigation/cms_plugins.py:164
+#: contrib/navigation/cms_plugins.py:164
 msgid "Navigation link"
-msgstr ""
+msgstr "Navigationsverweis"
 
-#: djangocms_frontend/contrib/navigation/forms.py:45
+#: contrib/navigation/forms.py:45
 msgid "Defines the whole template set for this navigation."
-msgstr ""
+msgstr "Legt die Vorlagen für die Navigation fest."
 
-#: djangocms_frontend/contrib/navigation/forms.py:53
+#: contrib/navigation/forms.py:53
 msgid "Design"
-msgstr ""
+msgstr "Design"
 
-#: djangocms_frontend/contrib/navigation/forms.py:60
+#: contrib/navigation/forms.py:60
 msgid "Expand on device (and larger)"
-msgstr ""
+msgstr "Aufgeklappt für Gerät (oder größer)"
 
-#: djangocms_frontend/contrib/navigation/forms.py:81
+#: contrib/navigation/forms.py:81
 msgid "Start level"
-msgstr ""
+msgstr "Start-Ebene"
 
-#: djangocms_frontend/contrib/navigation/forms.py:83
+#: contrib/navigation/forms.py:84
 msgid "Start level of this page tree (0: root, 1: level below root, etc.)"
-msgstr ""
+msgstr "Start-Ebene dieser Seite (0: Wurzel, 1: erste Ebene, ...)"
 
-#: djangocms_frontend/contrib/navigation/forms.py:104
+#: contrib/navigation/forms.py:106
 msgid "Enter brand name or add child plugins for brand icon or image"
-msgstr ""
+msgstr "Marke eingeben oder Plugins für Markenlogo einfügen"
 
-#: djangocms_frontend/contrib/navigation/models.py:30
+#: contrib/navigation/models.py:30
 msgid "Navigation Link"
-msgstr ""
+msgstr "Navigationsverweis"
 
-#: djangocms_frontend/contrib/promo/cms_plugins.py:19
-#: djangocms_frontend/contrib/promo/models.py:12
-msgid "Promo"
-msgstr ""
-
-#: djangocms_frontend/contrib/promo/forms.py:73
-#, fuzzy
-#| msgid "Tab title"
-msgid "Sub title"
-msgstr "Reiter-Titel"
-
-#: djangocms_frontend/contrib/promo/forms.py:83
-#, fuzzy
-#| msgid "Icon left"
-msgid "Icon"
-msgstr "Icon links"
-
-#: djangocms_frontend/contrib/promo/forms.py:94
-msgid "Modal Video"
-msgstr ""
-
-#: djangocms_frontend/contrib/promo/forms.py:116
-#, fuzzy
-#| msgid "Please provide a link."
-msgid "Please provide a title, subtitle or content."
-msgstr "Bitte geben Sie ein Ziel an."
-
-#: djangocms_frontend/contrib/tabs/cms_plugins.py:26
-#: djangocms_frontend/contrib/tabs/constants.py:5
+#: contrib/tabs/cms_plugins.py:24 contrib/tabs/constants.py:5
 msgid "Tabs"
 msgstr "Reiter"
 
-#: djangocms_frontend/contrib/tabs/cms_plugins.py:60
-#: djangocms_frontend/contrib/tabs/models.py:27
+#: contrib/tabs/cms_plugins.py:58 contrib/tabs/models.py:27
 msgid "Tab item"
 msgstr "Reiter-Eintrag"
 
-#: djangocms_frontend/contrib/tabs/constants.py:6
+#: contrib/tabs/constants.py:6
 msgid "Pills"
 msgstr "Pillen-Form"
 
-#: djangocms_frontend/contrib/tabs/constants.py:10
+#: contrib/tabs/constants.py:10
 msgid "Fill"
 msgstr "Füllung"
 
-#: djangocms_frontend/contrib/tabs/constants.py:11
+#: contrib/tabs/constants.py:11
 msgid "Justified"
 msgstr "Bündig"
 
-#: djangocms_frontend/contrib/tabs/constants.py:12
+#: contrib/tabs/constants.py:12
 msgid "Justify start"
 msgstr "Ausrichtung Anfang"
 
-#: djangocms_frontend/contrib/tabs/constants.py:13
+#: contrib/tabs/constants.py:13
 msgid "Justify center"
 msgstr "Ausrichtung Mittig"
 
-#: djangocms_frontend/contrib/tabs/constants.py:14
+#: contrib/tabs/constants.py:14
 msgid "Justify end"
 msgstr "Ausrichtung Ende"
 
-#: djangocms_frontend/contrib/tabs/constants.py:21
-msgid "Fade"
-msgstr "Fading"
-
-#: djangocms_frontend/contrib/tabs/forms.py:66
+#: contrib/tabs/forms.py:64
 msgid "Index"
 msgstr "Index"
 
-#: djangocms_frontend/contrib/tabs/forms.py:69
+#: contrib/tabs/forms.py:67
 msgid "Index of element to open on page load starting at 1."
 msgstr ""
 "Index des Elementes, das beim Öffnen der Seite gezeigt werden soll, startet "
 "bei 1."
 
-#: djangocms_frontend/contrib/tabs/forms.py:72
+#: contrib/tabs/forms.py:70
 msgid "Animation effect"
 msgstr "Animationseffekt"
 
-#: djangocms_frontend/contrib/tabs/forms.py:98
+#: contrib/tabs/forms.py:96
 msgid "Tab title"
 msgstr "Reiter-Titel"
 
-#: djangocms_frontend/contrib/tabs/forms.py:101
+#: contrib/tabs/forms.py:99
 msgid "Bordered"
 msgstr "Mit Rand"
 
-#: djangocms_frontend/contrib/tabs/forms.py:103
+#: contrib/tabs/forms.py:101
 msgid "Add borders to the tab item"
 msgstr "Füge einen Rand zum Tab-Element hinzu"
 
-#: djangocms_frontend/contrib/tabs/models.py:9
+#: contrib/tabs/models.py:9
 msgid "Tab"
 msgstr "Reiter"
 
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:49
+#: contrib/utilities/cms_plugins.py:49
 msgid "Editor note"
 msgstr "Autoren-Anmerkung"
 
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:61
-#: djangocms_frontend/contrib/utilities/forms.py:120
-#: djangocms_frontend/contrib/utilities/models.py:44
+#: contrib/utilities/cms_plugins.py:61 contrib/utilities/forms.py:120
+#: contrib/utilities/models.py:44
 msgid "Heading"
 msgstr "Überschrift"
 
-#: djangocms_frontend/contrib/utilities/cms_plugins.py:122
-#: djangocms_frontend/contrib/utilities/models.py:59
+#: contrib/utilities/cms_plugins.py:122 contrib/utilities/models.py:59
 msgid "Table of contents"
 msgstr "Inhaltsverzeichnis"
 
-#: djangocms_frontend/contrib/utilities/forms.py:37
+#: contrib/utilities/forms.py:37
 msgid "Property"
 msgstr "Eigenschaft"
 
-#: djangocms_frontend/contrib/utilities/forms.py:43
+#: contrib/utilities/forms.py:43
 msgid "Sides"
 msgstr "Seiten"
 
-#: djangocms_frontend/contrib/utilities/forms.py:56
+#: contrib/utilities/forms.py:50
+msgid "Size"
+msgstr "Größe"
+
+#: contrib/utilities/forms.py:56
 msgid "Device"
 msgstr "Gerät"
 
-#: djangocms_frontend/contrib/utilities/forms.py:74
+#: contrib/utilities/forms.py:74
 msgid ""
 "Padding does not have an auto spacing. Either switch to margin or a defined "
 "size."
@@ -1729,7 +1477,7 @@ msgstr ""
 "\"Padding\" (innerer Abständ) hat keine automatische Größe. Entweder "
 "\"margin\" (äußerer Abstand) oder eine feste Größe wählen."
 
-#: djangocms_frontend/contrib/utilities/forms.py:78
+#: contrib/utilities/forms.py:78
 msgid ""
 "Padding does not have an auto spacing. Either switch to a defined size or "
 "change the spacing property."
@@ -1737,75 +1485,68 @@ msgstr ""
 "\"Padding\" (innerer Abständ) hat keine automatische Größe. Entweder eine "
 "feste Größe oder \"marin\" (äußerer Abstand) wählen."
 
-#: djangocms_frontend/contrib/utilities/forms.py:101
-#: djangocms_frontend/settings.py:85
+#: contrib/utilities/forms.py:101 settings.py:38
 msgid "Heading 1"
 msgstr "Überschrift 1"
 
-#: djangocms_frontend/contrib/utilities/forms.py:102
-#: djangocms_frontend/settings.py:86
+#: contrib/utilities/forms.py:102 settings.py:39
 msgid "Heading 2"
 msgstr "Überschrift 2"
 
-#: djangocms_frontend/contrib/utilities/forms.py:103
-#: djangocms_frontend/settings.py:87
+#: contrib/utilities/forms.py:103 settings.py:40
 msgid "Heading 3"
 msgstr "Überschrift 3"
 
-#: djangocms_frontend/contrib/utilities/forms.py:104
-#: djangocms_frontend/settings.py:88
+#: contrib/utilities/forms.py:104 settings.py:41
 msgid "Heading 4"
 msgstr "Überschrift 4"
 
-#: djangocms_frontend/contrib/utilities/forms.py:105
-#: djangocms_frontend/settings.py:89
+#: contrib/utilities/forms.py:105 settings.py:42
 msgid "Heading 5"
 msgstr "Überschrift 5"
 
-#: djangocms_frontend/contrib/utilities/forms.py:114
+#: contrib/utilities/forms.py:114
 msgid "Heading level"
 msgstr "Überschrifts-Stufe"
 
-#: djangocms_frontend/contrib/utilities/forms.py:125
+#: contrib/utilities/forms.py:125
 msgid "ID"
 msgstr "ID"
 
-#: djangocms_frontend/contrib/utilities/forms.py:128
+#: contrib/utilities/forms.py:128
 msgid ""
 "Fill in unique ID for table of contents. If empty heading will not appear in "
 "table of contents."
 msgstr ""
 "Eine eindeutige ID nimmt die Überschrift in das Inhaltsverzeichnis auf."
 
-#: djangocms_frontend/contrib/utilities/forms.py:132
-#, fuzzy
-#| msgid "Card outline context"
+#: contrib/utilities/forms.py:132
 msgid "Heading context"
-msgstr "Kontext Kartenrand"
+msgstr "Überschriften-Kontext"
 
-#: djangocms_frontend/contrib/utilities/forms.py:160
+#: contrib/utilities/forms.py:160
 msgid "List attributes"
 msgstr "Listen-Attribute"
 
-#: djangocms_frontend/contrib/utilities/forms.py:162
+#: contrib/utilities/forms.py:162
 msgid ""
 "Attributes apply to the <b>list</b> for each level in the table of contents."
 msgstr ""
 "Attribute werden auf die auf die Liste für jede Einrückungstiefe im "
 "Inhaltesverzeichnis angewendet."
 
-#: djangocms_frontend/contrib/utilities/forms.py:169
+#: contrib/utilities/forms.py:169
 msgid ""
 "Attributes apply to the <b>link</b> for each entry in the table of contents."
 msgstr ""
 "Attribute werden auf die auf die Links für jeden Eintrag im "
 "Inhaltesverzeichnis angewendet."
 
-#: djangocms_frontend/contrib/utilities/forms.py:173
+#: contrib/utilities/forms.py:173
 msgid "Item attributes"
 msgstr "Listen-Element-Attribute"
 
-#: djangocms_frontend/contrib/utilities/forms.py:175
+#: contrib/utilities/forms.py:175
 msgid ""
 "Attributes apply to the <b>list items</b> for each entry in the table of "
 "contents."
@@ -1813,562 +1554,126 @@ msgstr ""
 "Attribute werden auf die auf die Listen-Elemente für jeden Eintrag im "
 "Inhaltesverzeichnis angewendet."
 
-#: djangocms_frontend/fields.py:93
+#: fields.py:94
 msgid "Please select at least one device size"
 msgstr "Bitte mindestens eine Bildschirmgröße auswählen."
 
-#: djangocms_frontend/fields.py:101 djangocms_frontend/fields.py:109
+#: fields.py:102 fields.py:110
 msgid "Attributes"
 msgstr "Attribute"
 
-#: djangocms_frontend/fields.py:130
+#: fields.py:131
 msgid "Choices"
 msgstr "Optionen"
 
-#: djangocms_frontend/fields.py:141
+#: fields.py:142
 msgid ""
 "Please enter at least one choice. Use the <code>+</code> symbol to add a "
 "choice."
 msgstr ""
+"Mindestens eine Option angeben. <code>+</code>-Symbol nutzen, um eine Option "
+"hinzuzufügen."
 
-#: djangocms_frontend/fields.py:160 djangocms_frontend/fields.py:174
+#: fields.py:160 fields.py:170
 msgid "Tag type"
 msgstr "HTML-Tag"
 
-#: djangocms_frontend/fields.py:168
+#: fields.py:164
 msgid "Select the HTML tag to be used."
 msgstr "HTML-Tag auswählen, der genutzt werden soll."
 
-#: djangocms_frontend/frameworks/bootstrap5.py:6
-#: djangocms_frontend/frameworks/bootstrap5.py:132
+#: frameworks/bootstrap5.py:6 frameworks/bootstrap5.py:132
 msgid "Extra small"
 msgstr "Sehr klein"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:10
-#: djangocms_frontend/frameworks/bootstrap5.py:136
+#: frameworks/bootstrap5.py:10 frameworks/bootstrap5.py:136
 msgid "Extra large"
 msgstr "Sehr groß"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:11
+#: frameworks/bootstrap5.py:11
 msgid "Extra-extra large"
 msgstr "XXL"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:19
+#: frameworks/bootstrap5.py:19
 msgid "Primary"
 msgstr "Primär"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:20
+#: frameworks/bootstrap5.py:20
 msgid "Secondary"
 msgstr "Sekundär"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:21
+#: frameworks/bootstrap5.py:21
 msgid "Success"
 msgstr "Erfolg"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:22
+#: frameworks/bootstrap5.py:22
 msgid "Danger"
 msgstr "Gefahr"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:23
+#: frameworks/bootstrap5.py:23
 msgid "Warning"
 msgstr "Warnung"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:24
+#: frameworks/bootstrap5.py:24
 msgid "Info"
 msgstr "Info"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:25
-#: djangocms_frontend/frameworks/bootstrap5.py:178
+#: frameworks/bootstrap5.py:25 frameworks/bootstrap5.py:178
 msgid "Light"
 msgstr "Hell"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:26
-#: djangocms_frontend/frameworks/bootstrap5.py:179
+#: frameworks/bootstrap5.py:26 frameworks/bootstrap5.py:179
 msgid "Dark"
 msgstr "Dunkel"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:58
-#: djangocms_frontend/frameworks/bootstrap5.py:64
+#: frameworks/bootstrap5.py:58 frameworks/bootstrap5.py:64
 msgid "Both"
 msgstr "Beide Seiten"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:91
+#: frameworks/bootstrap5.py:65
+msgid "Top"
+msgstr "Oben"
+
+#: frameworks/bootstrap5.py:66
+msgid "Bottom"
+msgstr "Unten"
+
+#: frameworks/bootstrap5.py:91
 msgid "Screen"
 msgstr "Bildschirm"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:104
+#: frameworks/bootstrap5.py:104
 msgid "Screen (minimum)"
 msgstr "Bildschirm (Minimum)"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:124
+#: frameworks/bootstrap5.py:124
 msgctxt "shadow"
 msgid "None"
 msgstr "Keiner"
 
-#: djangocms_frontend/frameworks/bootstrap5.py:137
+#: frameworks/bootstrap5.py:137
 msgid "XX large"
 msgstr "XXL"
 
-#: djangocms_frontend/helpers.py:117
+#: helpers.py:112
 #, python-brace-format
 msgid ""
 "Read more in the <a href=\"{link}\" target=\"_blank\">documentation</a>."
 msgstr "Mehr in der <a href=\"{link}\" target=\"_blank\">Dokumentation</a>."
 
-#: djangocms_frontend/models.py:24
+#: models.py:24
 msgid "UI item"
 msgstr "Frontend-Element"
 
-#: djangocms_frontend/settings.py:61
+#: settings.py:14
 msgid "There are no further settings for this plugin. Please press save."
 msgstr ""
 "Für dieses Plugin gibt es keine weiteren Einstellungen. Bitte klicken Sie "
 "\"Speichern\"."
 
-#: djangocms_frontend/settings.py:114
+#: settings.py:73
 msgid "Offcanvas"
-msgstr ""
+msgstr "Off-Canvas"
 
-#~ msgid "Source"
-#~ msgstr "Quelle"
-
-#~ msgid ""
-#~ "Appends the value only after the internal or external link. Do <em>not</"
-#~ "em> include a preceding \"&#35;\" symbol."
-#~ msgstr ""
-#~ "Hängt bei internen oder externen Links einen Anker an. <em>Ohne</em> "
-#~ "führendes \"&#35;\"-Symbol."
-
-#~ msgid "Email address"
-#~ msgstr "Email-Adresse"
-
-#~ msgid "Target"
-#~ msgstr "Ziel"
-
-#, python-format
-#~ msgid ""
-#~ "%(anchor_field_verbose_name)s is not allowed together with %(field_name)s"
-#~ msgstr ""
-#~ "%(anchor_field_verbose_name)s kann nicht zusammen mit %(field_name)s "
-#~ "gewählt werden."
-
-#~ msgid "Cite"
-#~ msgstr "Zitat"
-
-#~ msgid "No forms registered"
-#~ msgstr "Keine Formulare registriert"
-
-#, fuzzy
-#~| msgid "No forms registered"
-#~ msgid "No actions registered"
-#~ msgstr "Keine Formulare registriert"
-
-#~ msgid "Save form submission"
-#~ msgstr "Formulareinsendungen speichern"
-
-#~ msgid "Send email to administrators"
-#~ msgstr "Email an Administratoren senden"
-
-#, python-format
-#~ msgid "%(form_name)s form submission"
-#~ msgstr "%(form_name)s: Einsendung erhalten"
-
-#~ msgid "Forms"
-#~ msgstr "Formulare"
-
-#~ msgid "No content in response from"
-#~ msgstr "Kein Inhalt"
-
-#~ msgid "Form"
-#~ msgstr "Formular"
-
-#~ msgid "Submit button"
-#~ msgstr "Absende-Button"
-
-#, fuzzy
-#~| msgid "Active"
-#~ msgid "Actions"
-#~ msgstr "Aktiv"
-
-#~ msgid "reCaptcha"
-#~ msgstr "ReCaptcha"
-
-#, python-brace-format
-#~ msgid ""
-#~ "<blockquote style=\"color: var(--error-fg);\">Please get a public and "
-#~ "secret key from <a href=\"{key_link}\" target=\"_blank\">Google</a> and "
-#~ "ensure that they are available through django settings "
-#~ "<code>RECAPTCHA_PUBLIC_KEY</code> and <code>RECAPTCHA_PRIVATE_KEY</code>. "
-#~ "Without these keys captcha protection will not work.</blockquote>"
-#~ msgstr ""
-#~ "<blockquote style=\"color: var(--error-fg);\">Bitte erhalte einen "
-#~ "öffentlichen und einen geheimen Schlüssel bei <a href=\"{key_link}\" "
-#~ "target=\"_blank\">Google</a> und stelle sicher, dass sie über die Django-"
-#~ "Einstellungen <code>RECAPTCHA_PUBLIC_KEY</code> und "
-#~ "<code>RECAPTCHA_PRIVATE_KEY</code> verfügbar sind. Ohne Schlüssel kann "
-#~ "keine Captcha-Überprüfung durchgeführt werden.</blockquote>"
-
-#~ msgid "Email"
-#~ msgstr "Email"
-
-#~ msgid "Decimal"
-#~ msgstr "Dezimalzahl"
-
-#, fuzzy
-#~| msgid "Interval"
-#~ msgid "Integer"
-#~ msgstr "Intervall"
-
-#~ msgid "Textarea"
-#~ msgstr "Textfeld"
-
-#~ msgid "Date"
-#~ msgstr "Datum"
-
-#~ msgid "Date and time"
-#~ msgstr "Datum und Uhrzeit"
-
-#~ msgid "Time"
-#~ msgstr "Uhrzeit"
-
-#~ msgid "Select"
-#~ msgstr "Auswahl"
-
-#~ msgid ""
-#~ "Use this field to quick edit choices. Choices can be added (<kbd>+</"
-#~ "kbd>), deleted (<kbd>&times;</kbd>) and updated. On the left side enter "
-#~ "the value to be stored in the database. On the right side enter the text "
-#~ "to be shown to the user. The order of choices can be adjusted in the "
-#~ "structure tree <b>after saving</b> the edits."
-#~ msgstr ""
-#~ "Dieses Feld dient der schnellen Erstellung von gültigen Optionen. "
-#~ "Optionen können hinzugefügt und gelöscht werden. Links steht der Wert, "
-#~ "der in der Datenbank gespeichert wird, rechts der Text, der dem Nutzer "
-#~ "angezeigt wird. Die Reihenfolge der Optionen kann im Struktur-Baum "
-#~ "geändert werden, <b>nachdem die Eingaben gespeichert sind.</b>"
-
-#~ msgid "Choice"
-#~ msgstr "Option"
-
-#~ msgid "Boolean"
-#~ msgstr "Ja/Nein-Feld"
-
-#~ msgid "Single choice"
-#~ msgstr "Einfach-Auswahl"
-
-#~ msgid "Drop down"
-#~ msgstr "Drop-Down-Menü"
-
-#~ msgid "Radio buttons"
-#~ msgstr "Radio-Buttons"
-
-#~ msgid "Multiple choice"
-#~ msgstr "Mehrfach-Auswahl"
-
-#~ msgid "Checkboxes"
-#~ msgstr "Auswahlkästchen"
-
-#~ msgid "List"
-#~ msgstr "Liste"
-
-#~ msgid "Form entry"
-#~ msgstr "Formular-Eintrag"
-
-#~ msgid "Form entries"
-#~ msgstr "Formular-Einträge"
-
-#~ msgid "User"
-#~ msgstr "Nutzer"
-
-#~ msgid "User-entered data"
-#~ msgstr "Nutzer-Eingaben"
-
-#~ msgid "Please login before submitting this form."
-#~ msgstr "Bitte zuerst anmelden. Dann kann das Formular abgeschickt werden."
-
-#~ msgid "Action not available any more"
-#~ msgstr "Aktion nicht mehr verfügbar."
-
-#~ msgid "No action registered"
-#~ msgstr "Keine Aktionen registriert"
-
-#~ msgid "Form name"
-#~ msgstr "Formularname"
-
-#~ msgid "Login required to submit form"
-#~ msgstr "Anmeldung notwendig, um Formular abzusenden"
-
-#~ msgid ""
-#~ "To avoid issues with user experience use this type of form only on pages, "
-#~ "which require login."
-#~ msgstr ""
-#~ "Um Probleme mit der Nutzererfahrung zu vermeiden, bitte nur auf Seiten "
-#~ "nutzen, die angemeldete Nutzer voraussetzen."
-
-#~ msgid "User can reopen form"
-#~ msgstr "Nutzer kann Formular wider öffnen"
-
-#~ msgid "Requires \"Login required\" to be checked to work."
-#~ msgstr "Benötigt \"Anmeldung notwendig, um Formular abzusenden\"."
-
-#~ msgid "Floating labels"
-#~ msgstr "Fließende Feldbezeichnungen"
-
-#~ msgid "Margin between fields"
-#~ msgstr "Abstand zwischen Feldern"
-
-#~ msgid "Submit message"
-#~ msgstr "Absende-Aufforderung"
-
-#~ msgid "Submit"
-#~ msgstr "Absenden"
-
-#~ msgid "Submit context"
-#~ msgstr "Kontext Absende-Button"
-
-#~ msgid "Submit button alignment"
-#~ msgstr "Ausrichtung Absende-Button"
-
-#~ msgid "Actions to be taken after form submission"
-#~ msgstr "Aktionen nach erfolgreicher Formular-Abgabe"
-
-#~ msgid "reCaptcha widget"
-#~ msgstr "ReCaptche-Sicherung"
-
-#~ msgid "Minimum score requirement"
-#~ msgstr "Minimaler Bewertung durch ReCaptcha"
-
-#~ msgid "Only for reCaptcha v3: Minimum score required to accept challenge."
-#~ msgstr ""
-#~ "Nur für ReCaptcha V3: Minimale Bewertung, damit das Formular angenommen "
-#~ "wird."
-
-#~ msgid "Please provide a form name to be able to evaluate form submissions."
-#~ msgstr ""
-#~ "Bitte einen eindeutigen Formularnamen angeben, um die Formulare auswerten "
-#~ "zu können."
-
-#~ msgid ""
-#~ "No form action to save form contents available. Users will not be able to "
-#~ "reopen a form."
-#~ msgstr ""
-#~ "Keine Aktion zur Speicherung der Formularinhalte verfügbar. Nutzer werden "
-#~ "abgesendete Formular nicht wieder öffnen können."
-
-#~ msgid ""
-#~ "At least one action needs to be selected for the form to have an effect."
-#~ msgstr ""
-#~ "Mindestens eine Aktion muss ausgewählt werden, damit das Absenden eines "
-#~ "Formulars auch einen Effekt haben kann."
-
-#~ msgid "Label"
-#~ msgstr "Beschriftung"
-
-#~ msgid "Placeholder"
-#~ msgstr "Platzhalter"
-
-#~ msgid "Required"
-#~ msgstr "Notwendig"
-
-#~ msgid "Minimum text length"
-#~ msgstr "Minimale Textlänge"
-
-#~ msgid "Minimum value"
-#~ msgstr "Minimaler Wert"
-
-#~ msgid "Maximum value"
-#~ msgstr "Maximaler Wert"
-
-#~ msgid "Decimal places"
-#~ msgstr "Anzahl Dezimalstellen"
-
-#~ msgid "Rows"
-#~ msgstr "Zeilen"
-
-#~ msgid "Defines the vertical size of the text area in number of rows."
-#~ msgstr "Legt die vertikale Größe des Textfeldes in Anzahl Zeilen fest."
-
-#~ msgid "Maximum text length"
-#~ msgstr "Maximale Textlänge"
-
-#~ msgid "Not visible on most browsers."
-#~ msgstr "Auf den meisten Browsern nicht sichtbar"
-
-#~ msgid "Selection type"
-#~ msgstr "Art der Auswahl"
-
-#~ msgid "Value"
-#~ msgstr "Wert"
-
-#~ msgid "Stored in database if the choice is selected."
-#~ msgstr "Wird in der Datenbank gespeichert, wenn die Auswahl getroffen wird."
-
-#~ msgid "Display text"
-#~ msgstr "Anzeigter Text"
-
-#~ msgid "Layout"
-#~ msgstr "Layout"
-
-#~ msgid "Checkbox"
-#~ msgstr "Auswahlkästchen"
-
-#~ msgid "Switch"
-#~ msgstr "Schalter"
-
-#~ msgid "Character field"
-#~ msgstr "Zeichenkette"
-
-#~ msgid "Email field"
-#~ msgstr "Email"
-
-#~ msgid "URL field"
-#~ msgstr "URL-Feld"
-
-#~ msgid "Decimal field"
-#~ msgstr "Dezimalfeld"
-
-#~ msgid "Integer field"
-#~ msgstr "Ganzzahliges Feld"
-
-#~ msgid "Text field"
-#~ msgstr "Textfeld"
-
-#~ msgid "Date field"
-#~ msgstr "Datumsfeld"
-
-#~ msgid "Boolean field"
-#~ msgstr "Ja/Nein-Feld"
-
-#~ msgid "v2 checkbox"
-#~ msgstr "v2 mit Auswahlkästchen"
-
-#~ msgid "v2 invisible"
-#~ msgstr "v2 unsichtbar"
-
-#~ msgid "Form submission"
-#~ msgstr "Formular abschicken"
-
-#~ msgid "by"
-#~ msgstr "von"
-
-#~ msgid "Field"
-#~ msgstr "Feld"
-
-#~ msgid "time"
-#~ msgstr "time"
-
-#~ msgid "user agent"
-#~ msgstr "user agent"
-
-#~ msgid "referer"
-#~ msgstr "referer"
-
-#~ msgid ""
-#~ "Network connection or server error. Please try again later. We apologize "
-#~ "for the inconvenience."
-#~ msgstr ""
-#~ "Netzwerk-Verbindungs-Problem oder Server-Problem. Bitte versuchen Sie es "
-#~ "später nochenmal. Wir entschuldigen uns für die Unannehmlichkeit."
-
-#~ msgid "Only unique slugs accepted for form views"
-#~ msgstr "Nur eindeutige Slugs für Formular-Anschten akzeptiert."
-
-#~ msgid "Caption text"
-#~ msgstr "Text für Bildlegende"
-
-#~ msgid "Provide a description, attribution, copyright or other information."
-#~ msgstr ""
-#~ "Eine Beschreibung, Zuschreibung, Urheberschaft oder andere Information."
-
-#~ msgid "Contact form"
-#~ msgstr "Kontaktformular"
-
-#~ msgid "Subject"
-#~ msgstr "Betreff"
-
-#~ msgid "Message from"
-#~ msgstr "Nachricht von"
-
-#~ msgid "Thank you"
-#~ msgstr "Danke"
-
-#~ msgid "Your message has been sent."
-#~ msgstr "Die Nachricht wurde verschickt."
-
-#~ msgid "Remove gutters"
-#~ msgstr "Zwischenräume entfernen"
-
-#~ msgid "Removes the marginal gutters from the grid."
-#~ msgstr "Entfernt die Zwischenräume im Grid,"
-
-#~ msgid "Fully Centered"
-#~ msgstr "Zentriert"
-
-#~ msgid "Top left"
-#~ msgstr "Oben links"
-
-#~ msgid "Top center"
-#~ msgstr "Oben Mitte"
-
-#~ msgid "Top right"
-#~ msgstr "Oben rechts"
-
-#~ msgid "Center left"
-#~ msgstr "Mitte links"
-
-#~ msgid "Center right"
-#~ msgstr "Mitte rechts"
-
-#~ msgid "Bottom left"
-#~ msgstr "Unten links"
-
-#~ msgid "Bottom center"
-#~ msgstr "Unten Mitte"
-
-#~ msgid "Bottom right"
-#~ msgstr "Unten rechts"
-
-#~ msgid "Applies the .btn-outline class to the elements."
-#~ msgstr "Fügt die Klasse .btn-outline bei allen Elementen hinzu."
-
-#~ msgid "Adds either the .btn-* or .text-* classes."
-#~ msgstr "Fügt entweder die Klassen .btn-* oder .text-* hinzu."
-
-#~ msgid "Opacity of card inner background color"
-#~ msgstr "Deckkraft der Hintergrund-Farbe"
-
-#~ msgid "Adds the .jumbotron-fluid class."
-#~ msgstr "Erstellt einen Kontainer mit fließender Breite"
-
-#~ msgid "Tab item border"
-#~ msgstr "Rand für Reiter-Eintrag"
-
-#~ msgid "Internal padding size"
-#~ msgstr "Innerer Abstand zum Rand"
-
-#~ msgid "Internal padding sides"
-#~ msgstr "Seiten mit innerem Abstand"
-
-#~ msgid "sm container"
-#~ msgstr "sm-Kontainer"
-
-#~ msgid "md container"
-#~ msgstr "md-Kontainer"
-
-#~ msgid "SM Container"
-#~ msgstr "Kontainer (klein)"
-
-#~ msgid "MD Container"
-#~ msgstr "Kontainer (mittel)"
-
-#~ msgid "LG Container"
-#~ msgstr "Kontainer (groß)"
-
-#~ msgid "XL Container"
-#~ msgstr "Kontainer (XL)"
-
-#~ msgid "Break"
-#~ msgstr "Umbruch"
-
-#~ msgid "Empty"
-#~ msgstr "Leer"
+#~ msgid "Template"
+#~ msgstr "Vorlage"

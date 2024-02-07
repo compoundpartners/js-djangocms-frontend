@@ -1,3 +1,8 @@
+.colM ul:not(.object-tools).nav {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
 ul.nav {
     .nav-item {
         margin-right: 1rem;
@@ -60,6 +65,9 @@ div.tab-pk {
     margin-left: auto;
 }
 
-.djangocms-admin-style .djangocms-frontend li.nav-item {
-    border-top: none;
+.djangocms-admin-style .colM ul.nav:not(.object-tools):not(.messagelist) {
+    margin-top: 0;
+    li.nav-item {
+        border-top: none;
+    }
 }

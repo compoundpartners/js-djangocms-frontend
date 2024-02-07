@@ -22,8 +22,8 @@ def get_alignment():
         settings,
         "DJANGOCMS_PICTURE_ALIGN",
         (
-            ("start", _("Align left")),
-            ("end", _("Align right")),
+            ("start", _("Float left")),
+            ("end", _("Float right")),
             ("center", _("Align center")),
         ),
     )
@@ -43,7 +43,7 @@ def get_templates():
 
 
 
-# required for backwards compability
+# required for backwards compatibility
 PICTURE_ALIGNMENT = get_alignment()
 
 
@@ -63,7 +63,10 @@ RESPONSIVE_IMAGE_CHOICES = (
 
 class ImageForm(
     TemplateChoiceMixin,
-    AbstractLinkForm, ResponsiveFormMixin, MarginFormMixin, EntangledModelForm
+    AbstractLinkForm,
+    ResponsiveFormMixin,
+    MarginFormMixin,
+    EntangledModelForm,
 ):
     """
     Content > "Image" Plugin
@@ -104,7 +107,7 @@ class ImageForm(
         required=False,
     )
     template = forms.ChoiceField(
-        label=_("Template"),
+        label=_("Layout"),
         choices=get_templates(),
         initial=first_choice(get_templates()),
     )
@@ -149,7 +152,8 @@ class ImageForm(
     )
     alignment = forms.ChoiceField(
         label=_("Alignment"),
-        choices=get_alignment(),
+        choices=settings.EMPTY_CHOICE + get_alignment(),
+        initial=settings.EMPTY_CHOICE[0][0],
         required=False,
         help_text=_("Aligns the image according to the selected option."),
     )

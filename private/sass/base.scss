@@ -1,8 +1,9 @@
 @charset "utf-8";
+
+@import "components/variables";
 // Bootstrap5 (parts)
 @import "import_bootstrap";
 // our components
-@import "components/variables";
 @import "components/icons";
 @import "components/button-group";
 @import "components/grid-layout";
@@ -10,6 +11,7 @@
 @import "components/forms";
 @import "components/tooltip";
 @import "components/title";
+@import "components/icon-picker";
 
 .sr-only {
     @include visually-hidden;

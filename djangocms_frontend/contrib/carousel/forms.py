@@ -55,7 +55,7 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
         untangled_fields = ("tag_type",)
 
     template = forms.ChoiceField(
-        label=_("Template"),
+        label=_("Layout"),
         choices=CAROUSEL_TEMPLATE_CHOICES,
         initial=first_choice(CAROUSEL_TEMPLATE_CHOICES),
         help_text=_("This is the template that will be used for the component."),
@@ -133,6 +133,14 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
             "according to the selected ratio."
         ),
     )
+    carousel_transition = forms.ChoiceField(
+        label=_("Transition"),
+        choices=CAROUSEL_TRANSITION_CHOICES,
+        required=False,
+        initial=CAROUSEL_TRANSITION_CHOICES[0][0],
+        help_text=_("Determines if slides change by sliding or fading."),
+        widget=ButtonGroup(attrs=dict(property="text")),
+    )
     attributes = AttributesFormField(
         excluded_keys=[
             "id",
@@ -147,7 +155,10 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
 
 
 class CarouselSlideForm(
-    mixin_factory("CarouselSlide"), AbstractLinkForm, EntangledModelForm
+    mixin_factory("CarouselSlide"),
+    AbstractLinkForm,
+    BackgroundFormMixin,
+    EntangledModelForm,
 ):
     """
     Components > "Slide" Plugin

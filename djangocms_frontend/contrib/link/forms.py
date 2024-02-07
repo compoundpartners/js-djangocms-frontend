@@ -27,6 +27,7 @@ from ...fields import (
 )
 from ...helpers import first_choice, get_related_object
 from ...models import FrontendUIItem
+# <<<<<<< HEAD
 from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES, LINK_TYPE_CHOICES
 from .helpers import get_choices, get_object_for_value
 
@@ -37,6 +38,25 @@ if "djangocms_icon" in django_settings.INSTALLED_APPS:
     from djangocms_icon.fields import IconField
 else:
     class IconField(forms.CharField):  # lgtm [py/missing-call-to-init]
+# =======
+# from .. import link
+# from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES
+# from .helpers import ensure_select2_url_is_available, get_choices, get_object_for_value
+
+# mixin_factory = settings.get_forms(link)
+
+# if "djangocms_frontend.contrib.icon" in django_settings.INSTALLED_APPS:
+#     # Weak dependency on djangocms_frontend.contrib.icon
+#     from djangocms_frontend.contrib.icon.fields import IconPickerField
+# elif "djangocms_icon" in django_settings.INSTALLED_APPS:  # pragma: no cover
+#     # Weak dependency on djangocms_icon
+#     # (Even if djangocms_icon is in the python path, the admin form will fail due to missing
+#     # templates if it's not in INSTALLED_APPS)
+#     from djangocms_icon.fields import IconField as IconPickerField
+# else:  # pragma: no cover
+
+#     class IconPickerField(forms.CharField):  # lgtm [py/missing-call-to-init]
+# >>>>>>> upstream/master
         def __init__(self, *args, **kwargs):
             kwargs["widget"] = forms.HiddenInput
             super().__init__(*args, **kwargs)
@@ -90,7 +110,7 @@ class Select2jqWidget(HeavySelect2Widget if MINIMUM_INPUT_LENGTH else Select2Wid
 
 
 class SmartLinkField(forms.ChoiceField):
-    widget = Select2jqWidget()
+    widget = Select2jqWidget
 
     def prepare_value(self, value):
         if value:
@@ -206,6 +226,7 @@ else:
 
         def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
+            ensure_select2_url_is_available()
             self.fields["internal_link"].choices = self.get_choices
 
         def get_choices(self):
@@ -255,7 +276,10 @@ else:
                 raise ValidationError(_("Please provide a link."))
 
 
-class LinkForm(SpacingFormMixin, TemplateChoiceMixin, AbstractLinkForm):
+
+class LinkForm(
+    mixin_factory("Link"), SpacingFormMixin, TemplateChoiceMixin, AbstractLinkForm
+):
     class Meta:
         model = FrontendUIItem
         entangled_fields = {
@@ -327,12 +351,12 @@ class LinkForm(SpacingFormMixin, TemplateChoiceMixin, AbstractLinkForm):
         required=False,
         help_text=_("Extends the button to the width of its container."),
     )
-    icon_left = IconField(
+    icon_left = IconPickerField(
         label=_("Icon left"),
         initial="",
         required=False,
     )
-    icon_right = IconField(
+    icon_right = IconPickerField(
         label=_("Icon right"),
         initial="",
         required=False,

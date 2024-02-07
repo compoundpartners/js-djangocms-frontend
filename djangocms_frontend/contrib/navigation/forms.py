@@ -39,7 +39,7 @@ class NavigationForm(
         untangled_fields = ()
 
     template = forms.ChoiceField(
-        label=_("Template"),
+        label=_("Layout"),
         choices=settings.NAVIGATION_TEMPLATE_CHOICES,
         initial=first_choice(settings.NAVIGATION_TEMPLATE_CHOICES),
         help_text=_("Defines the whole template set for this navigation."),
@@ -80,7 +80,9 @@ class PageTreeForm(mixin_factory("PageTree"), EntangledModelForm):
     start_level = forms.IntegerField(
         label=_("Start level"),
         initial=0,
-        help_text=_("Start level of this page tree (0: root, 1: level below root, etc.)"),
+        help_text=_(
+            "Start level of this page tree (0: root, 1: level below root, etc.)"
+        ),
     )
     attributes = AttributesFormField()
 

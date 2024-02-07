@@ -11,7 +11,7 @@ REQUIREMENTS = [
     "djangocms-attributes-field>=1",
     "djangocms-text-ckeditor>=3.1.0",
     "django-select2",
-    "django-entangled",
+    "django-entangled>=0.5.4",
 ]
 
 EXTRA_REQUIREMENTS = {
@@ -20,6 +20,16 @@ EXTRA_REQUIREMENTS = {
     ],
     "static-ace": [
         "djangocms-static-ace",
+    ],
+    "cms-4": [
+        "django-cms>=4.1.0rc4",
+        "django-parler",
+        "djangocms-versioning>=2.0.0rc1",
+        "djangocms-alias>=2.0.0rc1",
+    ],
+    "cms-3": [
+        "django-cms<4",
+        "django-parler",
     ],
 }
 
@@ -41,6 +51,7 @@ CLASSIFIERS = [
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
     "Framework :: Django CMS",
     "Framework :: Django CMS :: 3.8",
     "Framework :: Django CMS :: 3.9",

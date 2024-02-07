@@ -30,10 +30,11 @@ class ImageMixin:
 
         # calculate height when not given according to the
         # golden ratio or fallback to the image size
+        picture_ratio = self.rel_image.width / self.rel_image.height if self.rel_image else PICTURE_RATIO
         if not height and width:
-            height = width / PICTURE_RATIO
+            height = width / picture_ratio
         elif not width and height:
-            width = height * PICTURE_RATIO
+            width = height * picture_ratio
         elif not width and not height and getattr(self, "picture", None):
             if self.rel_image:
                 width = self.rel_image.width
@@ -41,7 +42,7 @@ class ImageMixin:
             else:
                 width = 0
                 height = 0
-        else:
+        elif not width and not height:  # pragma: no cover
             # If no information is available on the image size whatsoever,
             # make it 640px wide and use PICTURE_RATIO
             width, height = 640, 640 / PICTURE_RATIO
@@ -143,7 +144,7 @@ class Image(GetLinkMixin, ImageMixin, FrontendUIItem):
         except ValueError:
             # get_thumbnailer() raises this if it can't establish a `relative_name`.
             # This may mean that the filer image has been deleted
-            url = ''
+            url = ""
         return url
 
     def get_short_description(self):

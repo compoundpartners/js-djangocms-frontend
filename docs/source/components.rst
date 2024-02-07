@@ -1,6 +1,6 @@
+
 .. index::
     single: Plugins
-
 
 ###################
  Component plugins
@@ -160,10 +160,18 @@ A `Carousel <https://getbootstrap.com/docs/5.3/components/carousel/>`_
 is a set of images (potentially with some description) that slide in
 (or fade in) one after the other after a certain amount of time.
 
-Each slide requires a Carousel Slide child plugin. The simplest case specifies an image, potentially a caption and a link which is followed once the slide is clicked.
+Each slide requires a Carousel Slide child plugin. The simplest case specifies
+an image, potentially a caption and a link which is followed once the slide is
+clicked.
 
-Since the design of carousels is somewhat opinionated template sets can be specified using the ``DJANGOCMS_FRONTEND_CAROUSEL_TEMPLATES`` setting.
-.. note:: A Carousel Slide plugin can have child plugins itself. If an image is specified the child plugins add to the caption. If no image is specified the child plugins make up the slide.
+Since the design of carousels is somewhat opinionated template sets can be
+specified using the ``DJANGOCMS_FRONTEND_CAROUSEL_TEMPLATES`` setting.
+
+.. note::
+
+    A Carousel Slide plugin can have child plugins itself. If an image is
+    specified the child plugins add to the caption. If no image is specified
+    the child plugins make up the slide.
 
 ******************
 Collapse component
@@ -286,6 +294,25 @@ Picture / image component
 The image or picture component make responsive picture uploads available as
 well as responsive embedding of external pictures.
 
+.. versionadded:: 1.2
+
+   djangocms-text-ckeditor supports dragging and dropping images into a rich
+   text field. If you add the following line to your `settings.py` file,
+   djangocms-text-ckeditor will automatically convert an image dropped into it
+   to a djangocms-frontend image component.
+
+   .. code-block::
+
+      TEXT_SAVE_IMAGE_FUNCTION = 'djangocms_frontend.contrib.image.image_save.create_image_plugin'
+
+   Please note, that images dropped into djangocms-text-ckeditor are base64-
+   encoded and take a quite a bit of band width. You may have to increase your
+   `DATA_UPLOAD_MAX_MEMORY_SIZE` setting in `settings.py`.
+
+   We recommend not using this feature but instead adding a image component
+   through the "CMS Plugin" menu of Ckeditor.
+
+
 
 .. index::
     single: Spacing
@@ -330,6 +357,7 @@ djangocms-frontend offers the `ace code editor <https://ace.c9.io>`_
 to enter code bits.
 
 .. warning::
+
     By default the ace code editor javascript code is retrieved over the internet
     from a cdn. If you do not want this to happen, e.g., for data privacy reasons
     or because your system is not connected to the internet, please use the
@@ -361,3 +389,152 @@ Tabs component
     be provided by you or a third party. If you use a CSS animation library,
     you can make these animations available by adjusting the
     ``DJANGOCMS_FRONTEND_TAB_EFFECTS`` setting.
+
+
+.. index::
+    single: Icon
+
+**************
+Icon component
+**************
+
+.. versionadded:: 1.1
+
+djangocms-frontend's icon plugin supports a variety of popular icon fonts. The
+icon component is centered around Gilles Migliori's
+`universal icon picker <https://github.com/migliori/universal-icon-picker>`_.
+
+.. image:: screenshots/icon-picker.png
+
+A version of it is bundled with djangocms-frontend. It currently contains
+support for the following icon sets:
+
+* `Bootstrap icons <https://icons.getbootstrap.com>`_
+* `Elegant icons <https://www.elegantthemes.com/blog/resources/elegant-icon-font>`_ (bundled)
+* `Feather icons <https://feathericons.com>`_ (bundled)
+* `Fomatic UI icons <https://fomantic-ui.com/elements/icon.html>`_ (bundled)
+* `Font awesome (regular, solid and brands) <https://fontawesome.com>`_
+* `Foundation icons <https://zurb.com/playground/foundation-icon-fonts-3>`_ (bundled)
+* `Material icons (filled, outlined, sharp, two-tone) <https://fonts.google.com/icons>`_
+* `Open iconic <https://github.com/iconic/open-iconic>`_
+* `Tabler icons <https://tabler-icons.io>`_
+* Eric Flower's `Weather icons <https://erikflowers.github.io/weather-icons/>`_ (bundled)
+
+
+.. note::
+
+    The icon picker needs a config file for each icon set. This requires regular
+    update. Please be patient if new icons do not appear immediately in
+    djangocms-frontend's icon picker or - even better -
+    `create a pull request! <https://github.com/django-cms/djangocms-frontend/>`_
+
+.. warning::
+
+    You may either use djangocms-icon or djangocms-frontent's icon contrib
+    package but not both, since they both register an ``IconPlugin``.
+
+
+Icon fonts
+==========
+
+As marked in the overview above, some MIT licenced icon fonts are bundled for
+convenience. They are available to the web page through static files.
+
+For other icon sets source files are loaded from CDN through the internet by
+default. This is not necessarily a configuration you want to have in a production
+situation. To specify where to get the required css files from please use the
+:py:attr:`~settings.DJANGOCMS_FRONTEND_ICON_LIBRARIES` setting.
+
+To just restrict the available choices of icon sets for the user use the
+:py:attr:`~settings.DJANGOCMS_FRONTEND_ICON_LIBRARIES_SHOWN` setting.
+
+Icons can be sized. Options for icon sizes are defined by the :py:attr:`~settings.DJANGOCMS_FRONTEND_ICON_SIZE_CHOICES` setting.
+
+
+Adding custom icon fonts
+========================
+
+To add a custom icon font you need to generate a config file. This is a json
+file that tells the icon picker which icons are available. As an example check
+out the `config file for Bootstrap Icons <https://github.com/migliori/universal-icon-picker/blob/main/assets/icons-libraries/bootstrap-icons.json>`_::
+
+    {
+        "prefix": "bi bi-",
+        "icon-style": "bi",
+        "list-icon": "bi bi-badge1",
+        "icons": [
+            "123",
+            "alarm-fill",
+            "alarm",
+            "align-bottom",
+            "align-center",
+            "align-end",
+            ...
+       ]
+    }
+
+Icons are rendered as ``<i>>`` tags with classes.
+
+``.prefix`` defines a string that is prepended to all icons. For Bootstrap icons
+that's the class ``bi`` and the prefix for the icon selecting class ``bi-``.
+
+The list ``.icons`` contains all available icons in the set.
+
+``.list-icon`` contains the classes for the example icon. You can probably ignore it.
+
+``.icon-style`` currently is unused. It may in future determine how icons are
+rendered. Currently all icons a re rendered by ``<i class"bla"></i>`` except
+material design icon which are rendered by ``<i class="material-icon">bla</i>``.
+
+
+Using svg sprites
+=================
+
+Currently only font-based icons are supported.
+
+
+Icon plugins inside text plugins
+================================
+
+The icon plugin is text-enabled, i.e., you can add it to a text plugin through
+djangocms-text-ckeditor's CKEDITOR. By default, however, CKEDITOR removes empty
+``<span>`` or ``<i>`` tags which most icons use.
+
+To disable this behavior of CKEDITOR, you need to add a ``customConfig`` entry
+in ``CKEDITOR_SETTINGS``, e.g.,
+
+.. code-block:: python
+
+    CKEDITOR_SETTINGS = {
+        ...,
+        "customConfig": "icon/ckeditor.icons.js",
+        ...,
+    }
+
+This will load the ``ckeditor.icons.js`` file which in turn will allow empty
+``span``and ``i`` tags.
+
+If you already have a ``customConfig`` file specified it will suffice to add
+the following two lines to it.
+
+.. code-block:: javascript
+
+    CKEDITOR.dtd.$removeEmpty.span = 0;
+    CKEDITOR.dtd.$removeEmpty.i = 0;
+
+Finally, you potentially need to add the necessary icon css files to the
+``contentCss`` property of ``CKEDITOR_SETTINGS``, e.g., for bootstrap icons
+from their cdn
+
+.. code-block:: python
+
+    CKEDITOR_SETTINGS = {
+        ...,
+        "contentsCss": [
+            ...,
+            "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css",
+            ...,
+        ],
+        ...,
+    }
+

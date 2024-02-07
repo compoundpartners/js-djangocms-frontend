@@ -1,6 +1,10 @@
 // #############################################################################
 // BUTTON GROUPS
 
+.aligned .frontend-button-group label {
+    min-width: unset;
+}
+
 .frontend-button-group {
     .btn {
         box-sizing: border-box;
@@ -50,7 +54,7 @@
 .frontend-button-group-icons,
 .frontend-grid-icons {
     .icon {
-        font-size: 21px;
+        font-size: 24px;
     }
 
     // custom icon sizes

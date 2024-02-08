@@ -145,3 +145,17 @@ def coerce_decimal(value):
         return decimal.Decimal(value)
     except TypeError:
         return None
+
+def is_first_child(instance, parent):
+    if hasattr(instance.placeholder, "add_plugin"):  # available as of CMS v4
+        return instance.position == parent.position + 1
+    else:
+        return instance.position == 0
+
+
+def coerce_decimal(value):
+    """Force value to be converted to decimal.Decimal or return None"""
+    try:
+        return decimal.Decimal(value)
+    except TypeError:
+        return None

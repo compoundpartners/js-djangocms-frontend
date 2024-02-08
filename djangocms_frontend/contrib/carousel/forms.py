@@ -8,6 +8,7 @@ from filer.models import Image
 from djangocms_frontend.common.background import BackgroundFormMixin
 from djangocms_frontend.fields import (
     AttributesFormField,
+    ButtonGroup,
     TagTypeFormField,
     TemplateChoiceMixin,
 )
@@ -23,6 +24,7 @@ from .constants import (
     CAROUSEL_PAUSE_CHOICES,
     CAROUSEL_RIDE_CHOICES,
     CAROUSEL_TEMPLATE_CHOICES,
+    CAROUSEL_TRANSITION_CHOICES,
 )
 
 mixin_factory = settings.get_forms(carousel)

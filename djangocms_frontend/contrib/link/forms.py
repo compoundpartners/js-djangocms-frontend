@@ -28,34 +28,34 @@ from ...fields import (
 from ...helpers import first_choice, get_related_object
 from ...models import FrontendUIItem
 # <<<<<<< HEAD
-from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES, LINK_TYPE_CHOICES
-from .helpers import get_choices, get_object_for_value
+# from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES, LINK_TYPE_CHOICES
+# from .helpers import get_choices, get_object_for_value
 
-# Weak dependency on djangocms_icon
-# (Even if djangocms_icon is in the python path, the admin form will fail due to missing
-# templates if it's not in INSTALLED_APPS)
-if "djangocms_icon" in django_settings.INSTALLED_APPS:
-    from djangocms_icon.fields import IconField
-else:
-    class IconField(forms.CharField):  # lgtm [py/missing-call-to-init]
+# # Weak dependency on djangocms_icon
+# # (Even if djangocms_icon is in the python path, the admin form will fail due to missing
+# # templates if it's not in INSTALLED_APPS)
+# if "djangocms_icon" in django_settings.INSTALLED_APPS:
+#     from djangocms_icon.fields import IconField
+# else:
+#     class IconField(forms.CharField):  # lgtm [py/missing-call-to-init]
 # =======
-# from .. import link
-# from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES
-# from .helpers import ensure_select2_url_is_available, get_choices, get_object_for_value
+from .. import link
+from .constants import LINK_CHOICES, LINK_SIZE_CHOICES, TARGET_CHOICES, LINK_TYPE_CHOICES
+from .helpers import ensure_select2_url_is_available, get_choices, get_object_for_value
 
-# mixin_factory = settings.get_forms(link)
+mixin_factory = settings.get_forms(link)
 
-# if "djangocms_frontend.contrib.icon" in django_settings.INSTALLED_APPS:
-#     # Weak dependency on djangocms_frontend.contrib.icon
-#     from djangocms_frontend.contrib.icon.fields import IconPickerField
-# elif "djangocms_icon" in django_settings.INSTALLED_APPS:  # pragma: no cover
-#     # Weak dependency on djangocms_icon
-#     # (Even if djangocms_icon is in the python path, the admin form will fail due to missing
-#     # templates if it's not in INSTALLED_APPS)
-#     from djangocms_icon.fields import IconField as IconPickerField
-# else:  # pragma: no cover
+if "djangocms_frontend.contrib.icon" in django_settings.INSTALLED_APPS:
+    # Weak dependency on djangocms_frontend.contrib.icon
+    from djangocms_frontend.contrib.icon.fields import IconPickerField
+elif "djangocms_icon" in django_settings.INSTALLED_APPS:  # pragma: no cover
+    # Weak dependency on djangocms_icon
+    # (Even if djangocms_icon is in the python path, the admin form will fail due to missing
+    # templates if it's not in INSTALLED_APPS)
+    from djangocms_icon.fields import IconField as IconPickerField
+else:  # pragma: no cover
 
-#     class IconPickerField(forms.CharField):  # lgtm [py/missing-call-to-init]
+    class IconPickerField(forms.CharField):  # lgtm [py/missing-call-to-init]
 # >>>>>>> upstream/master
         def __init__(self, *args, **kwargs):
             kwargs["widget"] = forms.HiddenInput

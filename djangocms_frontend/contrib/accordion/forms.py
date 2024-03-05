@@ -4,13 +4,19 @@ from entangled.forms import EntangledModelForm
 
 from djangocms_frontend import settings
 from djangocms_frontend.contrib import accordion
-from djangocms_frontend.fields import AttributesFormField, TagTypeFormField
+from djangocms_frontend.fields import (
+    AttributesFormField, 
+    TagTypeFormField,
+    TemplateChoiceMixin,
+)
+from djangocms_frontend.helpers import first_choice
 from djangocms_frontend.models import FrontendUIItem
+from .constants import ACCORDION_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_forms(accordion)
 
 
-class AccordionForm(mixin_factory("Accordion"), EntangledModelForm):
+class AccordionForm(mixin_factory("Accordion"), TemplateChoiceMixin, EntangledModelForm):
     """
     Components > "Accordion" Plugin
     https://getbootstrap.com/docs/5.0/components/accordion/
@@ -22,6 +28,7 @@ class AccordionForm(mixin_factory("Accordion"), EntangledModelForm):
             "config": [
                 "accordion_header_type",
                 "accordion_flush",
+                "template",
                 "attributes",
             ]
         }
@@ -52,6 +59,12 @@ class AccordionForm(mixin_factory("Accordion"), EntangledModelForm):
             "Removes the default background-color, some borders, and some rounded corners "
             "to render accordions edge-to-edge with their parent container "
         ),
+    )
+    template = forms.ChoiceField(
+        label=_("Layout"),
+        choices=ACCORDION_TEMPLATE_CHOICES,
+        initial=first_choice(ACCORDION_TEMPLATE_CHOICES),
+        help_text=_("This is the template that will be used for the component."),
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

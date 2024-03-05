@@ -1,12 +1,13 @@
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from ... import settings
-from ...cms_plugins import CMSUIPlugin
-from ...common.attributes import AttributesMixin
-from ...helpers import add_plugin
-from .. import accordion
+from djangocms_frontend import settings
+from djangocms_frontend.cms_plugins import CMSUIPlugin
+from djangocms_frontend.common.attributes import AttributesMixin
+from djangocms_frontend.helpers import add_plugin, get_plugin_template
+from djangocms_frontend.contrib import accordion
 from . import forms, models
+from .constants import ACCORDION_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_renderer(accordion)
 
@@ -36,6 +37,7 @@ class AccordionPlugin(mixin_factory("Accordion"), AttributesMixin, CMSUIPlugin):
                     (
                         "accordion_header_type",
                         "accordion_flush",
+                        "template",
                     ),
                 )
             },
@@ -59,6 +61,11 @@ class AccordionPlugin(mixin_factory("Accordion"), AttributesMixin, CMSUIPlugin):
                 ),
             ).initialize_from_form(forms.AccordionItemForm)
             add_plugin(obj.placeholder, item)
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_plugin_template(
+            instance, "accordion", "accordion", ACCORDION_TEMPLATE_CHOICES
+        )
 
 
 @plugin_pool.register_plugin

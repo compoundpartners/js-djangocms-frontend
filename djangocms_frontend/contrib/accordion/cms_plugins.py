@@ -105,3 +105,11 @@ class AccordionItemPlugin(mixin_factory("AccordionItem"), CMSUIPlugin):
             },
         ),
     ]
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_plugin_template(
+            instance.parent.get_plugin_instance()[0],
+            "accordion",
+            "accordion_item",
+            ACCORDION_TEMPLATE_CHOICES,
+        )

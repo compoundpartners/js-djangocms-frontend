@@ -1,0 +1,31 @@
+{% load cms_tags static thumbnail sekizai_tags %}
+<div class="col" {{ instance.get_attributes }}>
+{% if instance.image %}
+    {% thumbnail instance.foreground_image 800x600 as thumbnail %}
+    <img class="w-100" src="{{ thumbnail.url }}" alt="{{ instance.title }}" >
+{% elif instance.icon %}
+    <div class="text-center display-4">
+    {% with icon_class=instance.icon instance=instance.icon %}{% include "djangocms_icon/includes/icon.html" %}{% endwith %}
+    </div>
+{% endif %}
+    <p class="display-2 text-center" id="counter{{ instance.pk }}">{{ instance.prefix|default:'' }}0{{ instance.suffix|default:'' }}</p>
+    <p class="text-center">{{ instance.title }}</p>
+</div>
+{% addtoblock "js" %}<script type="text/javascript" src="{% static 'countUp.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script type="text/javascript" src="{% static 'jquery.appear.js' %}"></script>{% endaddtoblock %}
+{% addtoblock "js" %}<script>
+$(document).ready(function(){
+    var options{{ instance.pk }} = {
+    {% if instance.prefix %}prefix: '{{ instance.prefix }}'{% if instance.suffix %},{% endif %}{% endif %}
+    {% if instance.suffix %}suffix: '{{ instance.suffix }}'{% endif %}
+    };
+    $('#counter{{ instance.pk }}').appear();
+    var counter{{ instance.pk }} = new CountUp('counter{{ instance.pk }}', 0, {{ instance.counter }}, 0, 1, options{{ instance.pk }});
+    $('#counter{{ instance.pk }}').on('appear', function(event) {
+        if (!counter{{ instance.pk }}.error) {
+            counter{{ instance.pk }}.start();
+        }
+    });
+
+});
+</script>{% endaddtoblock %}

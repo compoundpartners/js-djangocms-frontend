@@ -36,6 +36,11 @@ from .constants import (
 
 mixin_factory = settings.get_forms(grid)
 
+try:
+    from showcase.forms import ShowcaseFormMixin
+except ImportError:
+    class ShowcaseFormMixin():
+        pass
 
 class GridContainerForm(
     mixin_factory("GridContainer"),
@@ -45,6 +50,7 @@ class GridContainerForm(
     ResponsiveFormMixin,
     SpacingFormMixin,
     SizingFormMixin,
+    ShowcaseFormMixin,
     EntangledModelForm,
 ):
     """

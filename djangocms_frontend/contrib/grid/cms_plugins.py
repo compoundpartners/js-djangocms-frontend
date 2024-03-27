@@ -23,6 +23,12 @@ from .constants import (
 
 mixin_factory = settings.get_renderer(grid)
 
+try:
+    from showcase.forms import ShowcaseMixin
+except ImportError:
+    class ShowcaseMixin():
+        pass
+
 
 @plugin_pool.register_plugin
 class GridContainerPlugin(
@@ -34,6 +40,7 @@ class GridContainerPlugin(
     ForegroundMixin,
     SizingMixin,
     TitleMixin,
+    ShowcaseMixin,
     CMSUIPlugin,
 ):
     """
@@ -91,7 +98,7 @@ class GridRowPlugin(
     form = forms.GridRowForm
     change_form_template = "djangocms_frontend/admin/grid_row.html"
     allow_children = True
-    child_classes = ["GridColumnPlugin", "CardPlugin"]
+    child_classes = ["GridColumnPlugin", "CardPlugin", "ShowcaseObjectPlugin"]
 
     fieldsets = [
         (
@@ -188,7 +195,7 @@ class GridColumnPlugin(
     require_parent = True
     # TODO it should allow for the responsive utilitiy class
     # https://getbootstrap.com/docs/5.0/layout/grid/#column-resets
-    parent_classes = ["GridRowPlugin"]
+    parent_classes = ["GridRowPlugin", "ShowcaseObjectPlugin"]
 
     fieldsets = [
         (

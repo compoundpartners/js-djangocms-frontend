@@ -67,7 +67,7 @@ class GridContainerForm(
                 "attributes",
             ]
         }
-        untangled_fields = ("tag_type",)
+        untangled_fields = ("tag_type", 'foreground_image')
 
     container_type = forms.ChoiceField(
         label=_("Container type"),
@@ -111,6 +111,7 @@ class GridRowBaseForm(
         untangled_fields = (
             "tag_type",
             "create",
+            "foreground_image",
         )
 
     create = forms.IntegerField(
@@ -188,7 +189,7 @@ class GridColumnBaseForm(
                 "attributes",
             ]
         }
-        untangled_fields = ("tag_type",)
+        untangled_fields = ("tag_type", "foreground_image")
 
     template = forms.ChoiceField(
         label=_("template"),

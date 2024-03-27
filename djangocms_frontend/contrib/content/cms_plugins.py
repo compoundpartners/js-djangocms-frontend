@@ -1,13 +1,14 @@
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
 
-from ... import settings
-from ...cms_plugins import CMSUIPlugin
-from ...common.attributes import AttributesMixin
-from ...common.background import BackgroundMixin
-from ...common.responsive import ResponsiveMixin
-from ...common.spacing import SpacingMixin
-from ...helpers import get_plugin_template
+from djangocms_frontend import settings
+from djangocms_frontend.cms_plugins import CMSUIPlugin
+from djangocms_frontend.common.attributes import AttributesMixin
+from djangocms_frontend.common.background import BackgroundMixin
+from djangocms_frontend.common.foreground import ForegroundMixin
+from djangocms_frontend.common.responsive import ResponsiveMixin
+from djangocms_frontend.common.spacing import SpacingMixin
+from djangocms_frontend.helpers import get_plugin_template
 from .. import content
 from .constants import BLOCKQUOTE_TEMPLATE_CHOICES
 from . import forms, models
@@ -57,6 +58,7 @@ if settings.PLUGINS_AND_FIELDS.get('Blockquote'):
         ResponsiveMixin,
         SpacingMixin,
         BackgroundMixin,
+        ForegroundMixin,
         CMSUIPlugin,
     ):
         """
@@ -82,7 +84,6 @@ if settings.PLUGINS_AND_FIELDS.get('Blockquote'):
                         "quote_origin_role",
                         "quote_origin_company",
                         "quote_alignment",
-                        "foreground_color",
                     )
                 },
             ),

@@ -7,19 +7,20 @@ from js_color_picker.widgets import ColorFieldWidget
 
 from djangocms_frontend.settings import ALIGN_CHOICES
 
-from ... import settings
-from ...common.background import BackgroundFormMixin
-from ...common.responsive import ResponsiveFormMixin
-from ...common.spacing import SpacingFormMixin
-from ...fields import (
+from djangocms_frontend import settings
+from djangocms_frontend.common.background import BackgroundFormMixin
+from djangocms_frontend.common.foreground import ForegroundFormMixin
+from djangocms_frontend.common.responsive import ResponsiveFormMixin
+from djangocms_frontend.common.spacing import SpacingFormMixin
+from djangocms_frontend.fields import (
     AttributesFormField,
     HTMLFormField,
     IconGroup,
     TagTypeFormField,
     TemplateChoiceMixin
 )
-from ...helpers import first_choice
-from ...models import FrontendUIItem
+from djangocms_frontend.helpers import first_choice
+from djangocms_frontend.models import FrontendUIItem
 from .. import content
 from .constants import CODE_TYPE_CHOICES, BLOCKQUOTE_TEMPLATE_CHOICES
 
@@ -77,6 +78,7 @@ class BlockquoteForm(
     SpacingFormMixin,
     ResponsiveFormMixin,
     BackgroundFormMixin,
+    ForegroundFormMixin,
     EntangledModelForm,
 ):
     """
@@ -94,10 +96,10 @@ class BlockquoteForm(
                 "quote_origin_role",
                 "quote_origin_company",
                 "quote_alignment",
-                "foreground_color",
                 "attributes",
             ]
         }
+        untangled_fields = ['alternate_text_color']
 
     template = forms.ChoiceField(
         label=_("Template"),
@@ -129,14 +131,6 @@ class BlockquoteForm(
         required=False,
         widget=IconGroup(),
     )
-    foreground_color = RGBColorField(
-        label=_('Foreground color'),
-        required=False,
-        widget=ColorFieldWidget(
-            mode=settings.COLORPICKER_MODE,
-            colors=settings.COLORPICKER_COLORS
-        ),
-    )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()
 
@@ -149,6 +143,7 @@ class BlockquoteForm(
         super().__init__(*args, **kwargs)
         if not FIELD_SETTINGS['quote_is_richtext']:
             self.fields['quote_content'].widget = forms.Textarea()
+        self._meta.entangled_fields['config'].remove('alternate_text_color')
 
 
 class FigureForm(

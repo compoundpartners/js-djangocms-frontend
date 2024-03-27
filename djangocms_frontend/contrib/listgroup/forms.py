@@ -38,7 +38,7 @@ class ListGroupForm(MarginFormMixin,
                 "attributes",
             ]
         }
-        untangled_fields = ("tag_type",)
+        untangled_fields = ("tag_type", "foreground_image")
 
     template = forms.ChoiceField(
         label=_("template"),

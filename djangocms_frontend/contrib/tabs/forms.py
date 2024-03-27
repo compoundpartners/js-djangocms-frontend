@@ -41,7 +41,7 @@ class TabForm(ForegroundFormMixin, BackgroundFormMixin, TemplateChoiceMixin, Ent
                 "attributes",
             ]
         }
-        untangled_fields = ("tag_type",)
+        untangled_fields = ("tag_type", "foreground_image")
 
     template = forms.ChoiceField(
         label=_("Layout"),
@@ -92,7 +92,7 @@ class TabItemForm(ForegroundFormMixin, BackgroundFormMixin, PaddingFormMixin, En
                 "attributes",
             ]
         }
-        untangled_fields = ("tag_type",)
+        untangled_fields = ("tag_type", "foreground_image")
 
     tab_title = forms.CharField(
         label=_("Tab title"),

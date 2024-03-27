@@ -22,11 +22,13 @@ class ForegroundMixin:
             getattr(django_settings, 'DJANGOCMS_FRONTEND_%s_FOREGROUND_SETTINGS' % model_name, {})
         )
         fields = ()
-        fieldsets = ()
+        #fieldsets = ()
+        untangled_fields = getattr(self.form._meta, 'untangled_fields', [])
+        entangled_fields = [f for f in self.form._meta.entangled_fields['config'] if f not in untangled_fields]
         added = 0
         for field, value in setup.items():
             if value:
-                if field in self.form._meta.entangled_fields['config']:
+                if field in entangled_fields:
                     fields += (field,)
                     added += 1
         old = super().get_fieldsets(request, obj)
@@ -40,15 +42,15 @@ class ForegroundMixin:
                     position=-1,
                     blockname=_('Foreground'),
                 )
-            for name, fields in fieldsets:
-                old = insert_fields(
-                    old,
-                    fields,
-                    block=None,
-                    position=-1,
-                    blockname=name,
-                    blockattrs={'classes': ()}
-                )
+            # for name, fields in fieldsets:
+            #     old = insert_fields(
+            #         old,
+            #         fields,
+            #         block=None,
+            #         position=-1,
+            #         blockname=name,
+            #         blockattrs={'classes': ()}
+            #     )
         return old
 
     def render(self, context, instance, placeholder):
@@ -65,7 +67,7 @@ class ForegroundFormMixin(EntangledModelFormMixin):
             'config': [
                 'alternate_text_color',
                 'foreground_color',
-                #'foreground_image',
+                'foreground_image',
             ]
         }
 

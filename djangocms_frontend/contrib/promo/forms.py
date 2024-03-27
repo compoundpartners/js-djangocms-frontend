@@ -49,7 +49,6 @@ class PromoForm(BackgroundFormMixin, ForegroundFormMixin, TemplateChoiceMixin, A
                 "alignment",
                 "modal_video",
                 "attributes",
-                "foreground_image",
             ]
         }
     link_is_optional = True

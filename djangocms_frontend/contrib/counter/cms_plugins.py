@@ -30,7 +30,6 @@ class CounterPlugin(AttributesMixin, BackgroundMixin, ForegroundMixin, CMSUIPlug
                     "template",
                     "title",
                     "counter",
-                    "foreground_image",
                     "icon",
                     "prefix",
                     "suffix",

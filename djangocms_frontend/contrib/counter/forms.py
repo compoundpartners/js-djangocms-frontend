@@ -41,6 +41,7 @@ class CounterForm(BackgroundFormMixin, ForegroundFormMixin, TemplateChoiceMixin,
                 "template",
                 "title",
                 "counter",
+                "label",
                 "icon",
                 "prefix",
                 "suffix",
@@ -63,6 +64,11 @@ class CounterForm(BackgroundFormMixin, ForegroundFormMixin, TemplateChoiceMixin,
     counter = forms.CharField(
         label=_("Counter"),
         required=True,
+        initial="",
+    )
+    label = forms.CharField(
+        label=_("Label"),
+        required=False,
         initial="",
     )
     icon = IconField(

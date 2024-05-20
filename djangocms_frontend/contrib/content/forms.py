@@ -99,7 +99,7 @@ class BlockquoteForm(
                 "attributes",
             ]
         }
-        untangled_fields = ['alternate_text_color']
+        #untangled_fields = ['alternate_text_color']
 
     template = forms.ChoiceField(
         label=_("Template"),
@@ -143,7 +143,7 @@ class BlockquoteForm(
         super().__init__(*args, **kwargs)
         if not FIELD_SETTINGS['quote_is_richtext']:
             self.fields['quote_content'].widget = forms.Textarea()
-        self._meta.entangled_fields['config'].remove('alternate_text_color')
+        #self._meta.entangled_fields['config'].remove('alternate_text_color')
 
 
 class FigureForm(

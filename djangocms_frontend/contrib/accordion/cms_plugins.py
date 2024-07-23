@@ -4,6 +4,8 @@ from django.utils.translation import gettext_lazy as _
 from djangocms_frontend import settings
 from djangocms_frontend.cms_plugins import CMSUIPlugin
 from djangocms_frontend.common.attributes import AttributesMixin
+from djangocms_frontend.common.background import BackgroundMixin
+from djangocms_frontend.common.foreground import ForegroundMixin
 from djangocms_frontend.helpers import add_plugin, get_plugin_template
 from djangocms_frontend.contrib import accordion
 from . import forms, models
@@ -13,7 +15,13 @@ mixin_factory = settings.get_renderer(accordion)
 
 
 @plugin_pool.register_plugin
-class AccordionPlugin(mixin_factory("Accordion"), AttributesMixin, CMSUIPlugin):
+class AccordionPlugin(
+    mixin_factory("Accordion"), 
+    BackgroundMixin,
+    ForegroundMixin,
+    AttributesMixin, 
+    CMSUIPlugin
+):
     """
     Component > "Accordion" Plugin
     https://getbootstrap.com/docs/5.0/components/accordion/

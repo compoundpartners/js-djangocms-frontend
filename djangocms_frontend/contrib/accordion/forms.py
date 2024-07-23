@@ -9,6 +9,8 @@ from djangocms_frontend.fields import (
     TagTypeFormField,
     TemplateChoiceMixin,
 )
+from djangocms_frontend.common.background import BackgroundFormMixin
+from djangocms_frontend.common.foreground import ForegroundFormMixin
 from djangocms_frontend.helpers import first_choice
 from djangocms_frontend.models import FrontendUIItem
 from .constants import ACCORDION_TEMPLATE_CHOICES
@@ -16,7 +18,13 @@ from .constants import ACCORDION_TEMPLATE_CHOICES
 mixin_factory = settings.get_forms(accordion)
 
 
-class AccordionForm(mixin_factory("Accordion"), TemplateChoiceMixin, EntangledModelForm):
+class AccordionForm(
+    mixin_factory("Accordion"), 
+    BackgroundFormMixin,
+    ForegroundFormMixin,
+    TemplateChoiceMixin, 
+    EntangledModelForm
+):
     """
     Components > "Accordion" Plugin
     https://getbootstrap.com/docs/5.0/components/accordion/

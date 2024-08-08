@@ -21,6 +21,7 @@ from djangocms_frontend.fields import (
 from djangocms_frontend.helpers import first_choice, link_to_framework_doc
 from djangocms_frontend.models import FrontendUIItem
 
+from ...common.animation import AnimationFormMixin
 from ...common.title import TitleFormMixin
 from .. import grid
 from .constants import (
@@ -50,6 +51,7 @@ class GridContainerForm(
     ResponsiveFormMixin,
     SpacingFormMixin,
     SizingFormMixin,
+    AnimationFormMixin,
     ShowcaseFormMixin,
     EntangledModelForm,
 ):
@@ -95,6 +97,7 @@ class GridRowBaseForm(
     ForegroundFormMixin,
     ResponsiveFormMixin,
     SpacingFormMixin,
+    AnimationFormMixin,
     EntangledModelForm,
 ):
     class Meta:
@@ -177,6 +180,7 @@ class GridColumnBaseForm(
     ForegroundFormMixin,
     ResponsiveFormMixin,
     SpacingFormMixin,
+    AnimationFormMixin,
     EntangledModelForm,
 ):
     class Meta:

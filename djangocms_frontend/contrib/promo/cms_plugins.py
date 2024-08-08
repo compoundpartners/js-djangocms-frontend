@@ -8,14 +8,21 @@ from djangocms_frontend.cms_plugins import CMSUIPlugin
 from djangocms_frontend.common.attributes import AttributesMixin
 from djangocms_frontend.common.background import BackgroundMixin
 from djangocms_frontend.common.foreground import ForegroundMixin
-from .. import carousel
+from djangocms_frontend.common.animation import AnimationMixin
 from ..link.cms_plugins import LinkPluginMixin
 from . import forms, models
 from .constants import PROMO_TEMPLATE_CHOICES
 
 
 @plugin_pool.register_plugin
-class PromoPlugin(LinkPluginMixin, AttributesMixin, BackgroundMixin, ForegroundMixin, CMSUIPlugin):
+class PromoPlugin(
+    LinkPluginMixin, 
+    AttributesMixin, 
+    BackgroundMixin, 
+    ForegroundMixin, 
+    AnimationMixin,
+    CMSUIPlugin
+):
     name = _("Promo")
     module = _("Frontend")
     model = models.Promo

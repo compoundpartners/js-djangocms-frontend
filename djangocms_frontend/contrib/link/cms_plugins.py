@@ -7,6 +7,7 @@ from djangocms_frontend.helpers import get_plugin_template, insert_fields
 
 from ... import settings
 from ...cms_plugins import CMSUIPlugin
+from ...common.animation import AnimationMixin
 from ...common.attributes import AttributesMixin
 from ...common.spacing import SpacingMixin
 from .. import link
@@ -95,7 +96,12 @@ class LinkPluginMixin:
 
 
 class LinkPlugin(
-    mixin_factory("Link"), AttributesMixin, SpacingMixin, LinkPluginMixin, CMSUIPlugin
+    mixin_factory("Link"), 
+    AnimationMixin,
+    AttributesMixin, 
+    SpacingMixin, 
+    LinkPluginMixin, 
+    CMSUIPlugin
 ):
     """
     Components > "Button" Plugin

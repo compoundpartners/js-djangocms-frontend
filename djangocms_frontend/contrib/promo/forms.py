@@ -26,6 +26,7 @@ else:
             super().__init__(*args, **kwargs)
 
 from ... import settings
+from ...common.animation import AnimationFormMixin
 from ...fields import HTMLFormField
 from ...helpers import first_choice
 from ...models import FrontendUIItem
@@ -34,7 +35,14 @@ from .constants import PROMO_TEMPLATE_CHOICES
 from djangocms_frontend.fields import IconGroup
 
 
-class PromoForm(BackgroundFormMixin, ForegroundFormMixin, TemplateChoiceMixin, AbstractLinkForm, EntangledModelForm):
+class PromoForm(
+    BackgroundFormMixin, 
+    ForegroundFormMixin, 
+    TemplateChoiceMixin, 
+    AnimationFormMixin,
+    AbstractLinkForm, 
+    EntangledModelForm
+):
 
     class Meta:
         model = FrontendUIItem

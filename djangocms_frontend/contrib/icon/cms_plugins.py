@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 
 from ... import settings
 from ...cms_plugins import CMSUIPlugin
+from ...common.animation import AnimationMixin
 from ...common.attributes import AttributesMixin
 from ...common.background import BackgroundMixin
 from ...common.responsive import ResponsiveMixin
@@ -19,6 +20,7 @@ class IconPlugin(
     ResponsiveMixin,
     SpacingMixin,
     BackgroundMixin,
+    AnimationMixin,
     CMSUIPlugin,
 ):
     """

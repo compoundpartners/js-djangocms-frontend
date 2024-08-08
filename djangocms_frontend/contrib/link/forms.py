@@ -17,6 +17,7 @@ from filer.fields.image import AdminFileFormField, FilerFileField
 from filer.models import File
 
 from ... import settings
+from ...common.animation import AnimationFormMixin
 from ...common.spacing import SpacingFormMixin
 from ...fields import (
     AttributesFormField,
@@ -278,7 +279,11 @@ else:
 
 
 class LinkForm(
-    mixin_factory("Link"), SpacingFormMixin, TemplateChoiceMixin, AbstractLinkForm
+    mixin_factory("Link"), 
+    AnimationFormMixin,
+    SpacingFormMixin, 
+    TemplateChoiceMixin, 
+    AbstractLinkForm
 ):
     class Meta:
         model = FrontendUIItem

@@ -8,6 +8,7 @@ from filer.models import Image, ThumbnailOption
 
 from djangocms_frontend import settings
 
+from ...common.animation import AnimationFormMixin
 from ...common.responsive import ResponsiveFormMixin
 from ...common.spacing import MarginFormMixin
 from ...fields import AttributesFormField, TagTypeFormField, TemplateChoiceMixin, HTMLFormField
@@ -66,6 +67,7 @@ class ImageForm(
     AbstractLinkForm,
     ResponsiveFormMixin,
     MarginFormMixin,
+    AnimationFormMixin,
     EntangledModelForm,
 ):
     """

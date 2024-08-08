@@ -12,6 +12,7 @@ from djangocms_frontend.helpers import get_plugin_template
 
 from ...cms_plugins import CMSUIPlugin
 from ...common.title import TitleMixin
+from ...common.animation import AnimationMixin
 from ...helpers import add_plugin
 from .. import grid
 from . import forms, models
@@ -40,6 +41,7 @@ class GridContainerPlugin(
     ForegroundMixin,
     SizingMixin,
     TitleMixin,
+    AnimationMixin,
     ShowcaseMixin,
     CMSUIPlugin,
 ):
@@ -85,6 +87,7 @@ class GridRowPlugin(
     BackgroundMixin,
     ForegroundMixin,
     TitleMixin,
+    AnimationMixin,
     CMSUIPlugin,
 ):
     """
@@ -179,6 +182,7 @@ class GridColumnPlugin(
     BackgroundMixin,
     ForegroundMixin,
     TitleMixin,
+    AnimationMixin,
     CMSUIPlugin,
 ):
     """

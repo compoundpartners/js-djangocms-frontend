@@ -16,7 +16,7 @@ from ...common.title import TitleMixin
 from ...helpers import add_plugin
 from .. import grid
 from . import forms, models
-from .constants import LIGHTBOX_TEMPLATE_CHOICES
+from .constants import LIGHTBOX_TEMPLATE_CHOICES, LIGHTBOX_PLACEHOLDER_IMAGE
 
 
 @plugin_pool.register_plugin
@@ -73,7 +73,7 @@ class LightboxPlugin(
                 'link_attributes': {}, 
                 'picture_rounded': False, 
                 'use_no_cropping': False, 
-                'external_picture': 'https://picsum.photos/200/300', 
+                'external_picture': LIGHTBOX_PLACEHOLDER_IMAGE, 
                 'picture_thumbnail': False, 
                 'thumbnail_options': None, 
                 'external_link_type': '', 

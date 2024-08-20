@@ -73,7 +73,7 @@ class LightboxPlugin(
                 'link_attributes': {}, 
                 'picture_rounded': False, 
                 'use_no_cropping': False, 
-                'external_picture': LIGHTBOX_PLACEHOLDER_IMAGE, 
+                'external_picture': str(LIGHTBOX_PLACEHOLDER_IMAGE), 
                 'picture_thumbnail': False, 
                 'thumbnail_options': None, 
                 'external_link_type': '', 

@@ -8,8 +8,8 @@ LIGHTBOX_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
     ()
 ))
 
-LIGHTBOX_PLACEHOLDER_IMAGE = (
+LIGHTBOX_PLACEHOLDER_IMAGE = getattr(
     settings,
-    "LIGHTBOX_TEMPLATE_CHOICES",
+    "LIGHTBOX_PLACEHOLDER_IMAGE",
     "https://placehold.co/600x400?text=Placeholder"
 )

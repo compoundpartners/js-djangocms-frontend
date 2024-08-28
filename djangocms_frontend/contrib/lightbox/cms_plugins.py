@@ -14,7 +14,6 @@ from djangocms_frontend.contrib.image.cms_plugins import ImagePlugin
 from ...cms_plugins import CMSUIPlugin
 from ...common.title import TitleMixin
 from ...helpers import add_plugin
-from .. import grid
 from . import forms, models
 from .constants import LIGHTBOX_TEMPLATE_CHOICES, LIGHTBOX_PLACEHOLDER_IMAGE
 
@@ -31,7 +30,9 @@ class LightboxPlugin(
     model = models.Lightbox
     form = forms.LightboxForm
     allow_children = True
-    child_classes = ["GridColumnPlugin", "CardPlugin", "ShowcaseObjectPlugin"]
+    child_classes = [
+        "GridColumnPlugin", "CardPlugin", "ShowcaseObjectPlugin", "ImagePlugin"
+    ]
 
     fieldsets = [
         (
@@ -73,7 +74,7 @@ class LightboxPlugin(
                 'link_attributes': {}, 
                 'picture_rounded': False, 
                 'use_no_cropping': False, 
-                'external_picture': str(LIGHTBOX_PLACEHOLDER_IMAGE), 
+                'external_picture': LIGHTBOX_PLACEHOLDER_IMAGE, 
                 'picture_thumbnail': False, 
                 'thumbnail_options': None, 
                 'external_link_type': '', 

@@ -6,6 +6,13 @@ from django.utils.translation import gettext_lazy as _
 COLORPICKER_COLORS = getattr(django_settings, 'COLORPICKER_COLORS', None)
 COLORPICKER_MODE = getattr(django_settings, 'COLORPICKER_MODE', None)
 
+ANIMATIONS = getattr(django_settings, 'DJANGOCMS_FRONTEND_ANIMATIONS', [
+    'Pulse', 'Bounce', 'Bounce Up', 'Bounce Down', 'Bounce Left',
+    'Bounce Right', 'Fade Up', 'Fade Down', 'Fade Left', 'Fade Right',
+    'Zoom In',
+])
+ANIMATION_CHOICES = (('', 'None'),) + tuple((a.replace(' ', ''), a) for a in ANIMATIONS)
+
 LINK_SETTINGS = {
     "name": True, 
     "link_type": True,

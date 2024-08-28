@@ -3,22 +3,7 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 from entangled.forms import EntangledModelFormMixin
 from djangocms_frontend.helpers import insert_fields
-
-
-ANIMATION_CHOICES = [
-    ['', 'None'],
-    ['pulse','Pulse'],
-    ['bounce','Bounce'],
-    ['bounce-up','Bounce Up'],
-    ['bounce-down','Bounce Down'],
-    ['bounce-left','Bounce Left'],
-    ['bounce-right','Bounce Right'],
-    ['fade-up','Fade Up'],
-    ['fade-down','Fade Down'],
-    ['fade-left','Fade Left'],
-    ['fade-right','Fade Right'],
-    ['zoom-in','Zoom In'],
-]
+from djangocms_frontend.settings import ANIMATION_CHOICES
 
 
 class AnimationMixin:

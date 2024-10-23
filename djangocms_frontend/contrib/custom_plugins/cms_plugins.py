@@ -176,5 +176,5 @@ class CustomPlugin(AttributesMixin, CMSUIPlugin):
 
     def get_render_template(self, context, instance, placeholder, template=None):
         return get_plugin_template(
-            instance, "custom_plugins", "custom_plugins", CUSTOM_PLUGIN_TEMPLATES_CHOICES
+            instance, "custom_plugins", "custom", CUSTOM_PLUGIN_TEMPLATES_CHOICES
         )

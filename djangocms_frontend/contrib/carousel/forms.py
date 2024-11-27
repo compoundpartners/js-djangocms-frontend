@@ -25,6 +25,7 @@ from .constants import (
     CAROUSEL_RIDE_CHOICES,
     CAROUSEL_TEMPLATE_CHOICES,
     CAROUSEL_TRANSITION_CHOICES,
+    CAROUSEL_DESCRIPTION_USE_CKEDITOR,
 )
 
 mixin_factory = settings.get_forms(carousel)
@@ -154,6 +155,14 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
         ],
     )
     tag_type = TagTypeFormField()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if CAROUSEL_DESCRIPTION_USE_CKEDITOR:
+            self.fields['description'] = HTMLFormField(
+                label=_("Description"),
+                required=False,
+            )
 
 
 class CarouselSlideForm(

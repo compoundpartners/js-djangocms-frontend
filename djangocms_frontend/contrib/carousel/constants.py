@@ -43,3 +43,9 @@ CAROUSEL_TRANSITION_CHOICES = (
     ("", _("Slide")),
     ("carousel-fade", _("Fade")),
 )
+
+CAROUSEL_DESCRIPTION_USE_CKEDITOR = getattr(
+    settings,
+    "DJANGOCMS_CAROUSEL_DESCRIPTION_USE_CKEDITOR",
+    False,
+)

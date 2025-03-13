@@ -189,6 +189,7 @@ class BackgroundMixin:
             except:
                 background_opacity = 100
         context['background_opacity'] = background_opacity / 100
+        context['background_allow_crop'] = getattr(instance, 'background_allow_crop', True)
         return super().render(context, instance, placeholder)
 
 

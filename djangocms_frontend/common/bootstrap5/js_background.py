@@ -155,15 +155,14 @@ class BackgroundMixin:
             background.append(', '.join(images))
             if getattr(instance, 'background_position_alignment_horizontal', ''):
                 aligment.append(ALIGN_MAP[instance.background_position_alignment_horizontal])
+            if getattr(instance, 'background_position_x', '') and len(instance.background_position_x)==2 and instance.background_position_x[0]:
+                aligment.append('%s%s' % tuple(instance.background_position_x))
             if getattr(instance, 'background_position_alignment_vertical', ''):
-                if not getattr(instance, 'background_position_alignment_horizontal', ''):
+                if not aligment:
                     aligment.append('left')
                 aligment.append(ALIGN_MAP[instance.background_position_alignment_vertical])
-            if not aligment:
-                if getattr(instance, 'background_position_x', '') and len(instance.background_position_x)==2 and instance.background_position_x[0]:
-                    aligment.append('%s%s' % tuple(instance.background_position_x))
-                if getattr(instance, 'background_position_y', '') and len(instance.background_position_y)==2 and instance.background_position_y[0]:
-                    aligment.append('%s%s' % tuple(instance.background_position_y))
+            if getattr(instance, 'background_position_y', '') and len(instance.background_position_y)==2 and instance.background_position_y[0]:
+                aligment.append('%s%s' % tuple(instance.background_position_y))
             if aligment:
                 background += aligment
             else:
@@ -204,6 +203,7 @@ class BackgroundFormMixin(EntangledModelFormMixin):
                 'background_attachment',
                 'background_repeat',
                 'background_opacity',
+                'background_allow_crop',
                 'background_position_alignment_horizontal',
                 'background_position_alignment_vertical',
                 'background_position_x',
@@ -256,7 +256,7 @@ class BackgroundFormMixin(EntangledModelFormMixin):
     )
     background_repeat = forms.ChoiceField(
         label=_('Repeat'),
-        choices=[('repeat', 'repeat'), ('repeat-x', 'repeat-x'), ('repeat-y', 'repeat-y'), ('no-repeat', 'no-repeat')],
+        choices=[('no-repeat', 'no-repeat'), ('repeat', 'repeat'), ('repeat-x', 'repeat-x'), ('repeat-y', 'repeat-y')],
         required=False,
         initial='no-repeat',
     )
@@ -266,6 +266,11 @@ class BackgroundFormMixin(EntangledModelFormMixin):
         initial=100,
         min_value=0,
         max_value=100,
+    )
+    background_allow_crop = forms.BooleanField(
+        label=_('Allow Crop'),
+        required=False,
+        initial=True,
     )
     background_position_alignment_horizontal = forms.ChoiceField(
         label=_('Horizontal alignment'),
@@ -289,9 +294,9 @@ class BackgroundFormMixin(EntangledModelFormMixin):
     )
     background_size = forms.ChoiceField(
         label=_('Size'),
-        choices=[('auto', 'auto'), ('', 'length/percentage'), ('cover', 'cover'), ('contain', 'contain')],
+        choices=[('cover', 'cover'), ('auto', 'auto'), ('', 'length/percentage'), ('contain', 'contain')],
         required=False,
-        initial='auto',
+        initial='cover',
     )
     background_size_x = SizeField(
         label='',

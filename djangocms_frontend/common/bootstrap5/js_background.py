@@ -21,6 +21,7 @@ VALIGN_CHOICES = (
 )
 
 ALIGN_MAP = {
+    '': '',
     'start': 'left',
     'center': 'center',
     'end': 'right',
@@ -135,7 +136,6 @@ class BackgroundMixin:
         #background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment
         background = []
         images = []
-        aligment = []
         background_size = []
         if getattr(instance, 'background_color', ''):
             background.append(instance.background_color)
@@ -153,26 +153,28 @@ class BackgroundMixin:
                 instance.background_image_obj = img
         if images:
             background.append(', '.join(images))
-            if getattr(instance, 'background_position_alignment_horizontal', ''):
-                aligment.append(ALIGN_MAP[instance.background_position_alignment_horizontal])
+            positions_x = 0
+            positions_y = 0
             if getattr(instance, 'background_position_x', '') and len(instance.background_position_x)==2 and instance.background_position_x[0]:
-                aligment.append('%s%s' % tuple(instance.background_position_x))
-            if getattr(instance, 'background_position_alignment_vertical', ''):
-                if not aligment:
-                    aligment.append('left')
-                aligment.append(ALIGN_MAP[instance.background_position_alignment_vertical])
+                positions_x = '%s%s' % tuple(instance.background_position_x)
             if getattr(instance, 'background_position_y', '') and len(instance.background_position_y)==2 and instance.background_position_y[0]:
-                aligment.append('%s%s' % tuple(instance.background_position_y))
-            if aligment:
-                background += aligment
-            else:
-                if getattr(instance, 'background_size', '') and instance.background_size != 'auto':
-                    background_size.append(instance.background_size)
+                positions_y = '%s%s' % tuple(instance.background_position_y)
+            alignment_horizontal = ALIGN_MAP[getattr(instance, 'background_position_alignment_horizontal', '')]
+            alignment_vertical = ALIGN_MAP[getattr(instance, 'background_position_alignment_vertical', '')]
+            if alignment_horizontal or alignment_vertical:
+                if positions_x or positions_y:
+                    background += [alignment_horizontal, positions_x, alignment_vertical, positions_y]
                 else:
-                    if getattr(instance, 'background_size_x', '') and len(instance.background_size_x)==2 and instance.background_size_x[0]:
-                        background_size.append('%s%s' % tuple(instance.background_size_x))
-                    if getattr(instance, 'background_size_y', '') and len(instance.background_size_y)==2 and instance.background_size_y[0]:
-                        background_size.append('%s%s' % tuple(instance.background_size_y))
+                    background += [alignment_horizontal, alignment_vertical]
+            elif positions_x or positions_y:
+                background += [positions_x, positions_y]
+            if getattr(instance, 'background_size', '') and instance.background_size != 'auto':
+                background_size.append(instance.background_size)
+            else:
+                if getattr(instance, 'background_size_x', '') and len(instance.background_size_x)==2 and instance.background_size_x[0]:
+                    background_size.append('%s%s' % tuple(instance.background_size_x))
+                if getattr(instance, 'background_size_y', '') and len(instance.background_size_y)==2 and instance.background_size_y[0]:
+                    background_size.append('%s%s' % tuple(instance.background_size_y))
             if getattr(instance, 'background_repeat', ''):
                 background.append(instance.background_repeat)
             if getattr(instance, 'background_attachment', ''):

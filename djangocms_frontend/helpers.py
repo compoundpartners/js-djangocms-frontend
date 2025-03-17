@@ -90,6 +90,10 @@ def get_template_path(prefix, template, name):
     #return f"djangocms_frontend/{settings.framework}/{prefix}/{template}/{name}.html"
 
 
+def get_default_template_path(*args, **kwargs):
+    return f"djangocms_frontend/html_container.html"
+
+
 def get_plugin_template(instance, prefix, name, templates):
     template = getattr(instance, "template", first_choice(templates))
     template_path = get_template_path(prefix, template, name)
@@ -99,6 +103,19 @@ def get_plugin_template(instance, prefix, name, templates):
     except TemplateDoesNotExist:
         # TODO render a warning inside the template
         template_path = get_template_path(prefix, None, name)
+
+    return template_path
+
+
+def get_plugin_template_or_default(instance, prefix, name, templates):
+    template = getattr(instance, "template", first_choice(templates))
+    template_path = get_template_path(prefix, template, name)
+
+    try:
+        select_template([template_path])
+    except TemplateDoesNotExist:
+        # TODO render a warning inside the template
+        template_path = get_default_template_path(prefix, None, name)
 
     return template_path
 

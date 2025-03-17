@@ -8,7 +8,10 @@ from djangocms_frontend.common.background import BackgroundMixin
 from djangocms_frontend.common.foreground import ForegroundMixin
 from djangocms_frontend.common.responsive import ResponsiveMixin
 from djangocms_frontend.common.spacing import MarginMixin, PaddingMixin
-from djangocms_frontend.helpers import get_plugin_template
+from djangocms_frontend.helpers import (
+    get_plugin_template, 
+    get_plugin_template_or_default,
+)
 from djangocms_frontend.contrib import listgroup
 from . import forms, models
 from .constants import LISTGROUP_TEMPLATE_CHOICES
@@ -83,3 +86,8 @@ class ListGroupItemPlugin(
             },
         ),
     ]
+
+    def get_render_template(self, context, instance, placeholder):
+        return get_plugin_template_or_default(
+            instance, "listgroup", "listitem", LISTGROUP_TEMPLATE_CHOICES
+        )

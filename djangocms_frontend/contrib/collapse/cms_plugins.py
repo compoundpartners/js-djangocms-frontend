@@ -3,7 +3,10 @@ from django.utils.translation import gettext_lazy as _
 
 from ... import settings
 from ...cms_plugins import CMSUIPlugin
-from ...common.attributes import AttributesMixin
+from djangocms_frontend.common.attributes import AttributesMixin
+from djangocms_frontend.common.background import BackgroundMixin
+from djangocms_frontend.common.foreground import ForegroundMixin
+
 from .. import collapse
 from . import forms, models
 
@@ -11,7 +14,11 @@ mixin_factory = settings.get_renderer(collapse)
 
 
 @plugin_pool.register_plugin
-class CollapsePlugin(mixin_factory("Collapse"), AttributesMixin, CMSUIPlugin):
+class CollapsePlugin(mixin_factory("Collapse"), 
+                     AttributesMixin, 
+                     BackgroundMixin,
+                     ForegroundMixin,
+                     CMSUIPlugin):
     """
     Component > "Collapse" Plugin
     https://getbootstrap.com/docs/5.0/components/collapse/

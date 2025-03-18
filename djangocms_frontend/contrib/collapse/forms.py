@@ -5,6 +5,9 @@ from entangled.forms import EntangledModelForm
 from ... import settings
 from ...fields import AttributesFormField, TagTypeFormField
 from ...models import FrontendUIItem
+from djangocms_frontend.common.background import BackgroundFormMixin
+from djangocms_frontend.common.foreground import ForegroundFormMixin
+
 from .. import collapse
 
 # TODO leaving this comment for now
@@ -17,7 +20,10 @@ from .. import collapse
 mixin_factory = settings.get_forms(collapse)
 
 
-class CollapseForm(mixin_factory("Collapse"), EntangledModelForm):
+class CollapseForm(mixin_factory("Collapse"), 
+                   BackgroundFormMixin,
+                   ForegroundFormMixin,
+                   EntangledModelForm):
     """
     Component > "Collapse" Plugin
     https://getbootstrap.com/docs/5.0/components/collapse/

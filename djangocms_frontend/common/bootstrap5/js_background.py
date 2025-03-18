@@ -21,6 +21,7 @@ VALIGN_CHOICES = (
 )
 
 ALIGN_MAP = {
+    '': '',
     'start': 'left',
     'center': 'center',
     'end': 'right',
@@ -80,30 +81,56 @@ class BackgroundMixin:
         )
         fields = ()
         fieldsets = ()
+        form_fields = self.form._meta.entangled_fields['config']
+        if hasattr(self.form, 'background_fields') and self.form.background_fields:
+            form_fields = self.form.background_fields
         for field, value in setup.items():
             if value:
                 if field == 'position':
                     if type(value) == dict:
                         subfields = ()
-                        if 'alignment' in value and value['alignment']:
-                            child = 'alignment'
-                            subfields += (('background_%s_%s_horizontal' % (field, child), 'background_%s_%s_vertical' % (field, child)),)
+                        child = 'alignment'
+                        add_child = True
+                        if child in value and value['alignment']:
+                            children = ('background_%s_%s_horizontal' % (field, child), 'background_%s_%s_vertical' % (field, child))
+                            for subfield in children:
+                                if not subfield in form_fields:
+                                    add_child = False
+                                    break
+                            if add_child:
+                                subfields += (children,)
+                        add_child = True
                         if 'empirical' in value and value['empirical']:
-                            subfields += (('background_%s_x' % field, 'background_%s_y' % field),)
+                            children = ('background_%s_x' % field, 'background_%s_y' % field)
+                            for subfield in children:
+                                if not subfield in form_fields:
+                                    add_child = False
+                                    break
+                            if add_child:
+                                subfields += (children,)
                         if subfields:
                             fieldsets += ((_('Position'), subfields),)
                 if field == 'size':
                     if type(value) == dict:
                         subfields = ()
                         if 'select' in value and value['select']:
-                            subfields += ('background_%s' % field,)
+                            subfield = 'background_%s' % field
+                            if subfield in form_fields:
+                                subfields += (subfield,)
+                        add_child = True
                         if 'empirical' in value and value['empirical']:
-                            subfields += (('background_%s_x' % field, 'background_%s_y' % field),)
+                            children = ('background_%s_x' % field, 'background_%s_y' % field)
+                            for subfield in children:
+                                if not subfield in form_fields:
+                                    add_child = False
+                                    break
+                            if add_child:
+                                subfields += (children,)
                         if subfields:
                             fieldsets += ((_('Size'), subfields),)
                 else:
                     field = 'background_%s' % field
-                    if field in self.form._meta.entangled_fields['config']:
+                    if field in form_fields:
                         fields += (field,)
         old = super().get_fieldsets(request, obj)
         index = len(old)
@@ -301,4 +328,3 @@ class BackgroundFormMixin(EntangledModelFormMixin):
         label='',
         required=False,
     )
-

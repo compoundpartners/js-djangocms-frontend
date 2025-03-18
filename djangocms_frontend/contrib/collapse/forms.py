@@ -37,7 +37,9 @@ class CollapseForm(mixin_factory("Collapse"),
                 "attributes",
             ]
         }
-        untangled_fields = ("tag_type",)
+        untangled_fields = ("tag_type", "foreground_image", "alternate_text_color")
+    
+    background_fields = ('background_color',)
 
     collapse_siblings = forms.CharField(
         label=_("Siblings"),

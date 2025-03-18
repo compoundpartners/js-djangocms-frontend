@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings as django_settings
 from django.utils.translation import gettext_lazy as _
 from entangled.forms import EntangledModelForm
 
@@ -17,6 +18,14 @@ from djangocms_frontend.fields import (
 from djangocms_frontend.models import FrontendUIItem
 from djangocms_frontend.helpers import first_choice
 from .constants import LISTGROUP_STATE_CHOICES, LISTGROUP_TEMPLATE_CHOICES
+
+if "djangocms_icon" in django_settings.INSTALLED_APPS:
+    from djangocms_icon.fields import IconField
+else:
+    class IconField(forms.CharField):  # lgtm [py/missing-call-to-init]
+        def __init__(self, *args, **kwargs):
+            kwargs["widget"] = forms.HiddenInput
+            super().__init__(*args, **kwargs)
 
 
 class ListGroupForm(MarginFormMixin, 
@@ -55,7 +64,10 @@ class ListGroupForm(MarginFormMixin,
     tag_type = TagTypeFormField()
 
 
-class ListGroupItemForm(PaddingFormMixin, ResponsiveFormMixin, EntangledModelForm):
+class ListGroupItemForm(PaddingFormMixin, 
+                        ForegroundFormMixin,
+                        ResponsiveFormMixin, 
+                        EntangledModelForm):
     """
     Components > "List Group Item" Plugin
     https://getbootstrap.com/docs/5.0/components/list-group/
@@ -68,6 +80,7 @@ class ListGroupItemForm(PaddingFormMixin, ResponsiveFormMixin, EntangledModelFor
                 "simple_content",
                 "list_context",
                 "list_state",
+                "icon",
                 "attributes",
             ]
         }
@@ -93,6 +106,11 @@ class ListGroupItemForm(PaddingFormMixin, ResponsiveFormMixin, EntangledModelFor
         initial=settings.EMPTY_CHOICE[0][0],
         required=False,
         widget=ButtonGroup(attrs=dict(property="list_state")),
+    )
+    icon = IconField(
+        label=_("Icon"),
+        initial="",
+        required=False,
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

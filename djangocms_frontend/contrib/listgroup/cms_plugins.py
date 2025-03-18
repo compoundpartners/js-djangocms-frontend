@@ -59,6 +59,7 @@ class ListGroupItemPlugin(
     AttributesMixin,
     ResponsiveMixin,
     PaddingMixin,
+    ForegroundMixin,
     CMSUIPlugin,
 ):
     """
@@ -82,6 +83,7 @@ class ListGroupItemPlugin(
                     "simple_content",
                     "list_context",
                     "list_state",
+                    "icon",
                 )
             },
         ),

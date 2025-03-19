@@ -1,4 +1,5 @@
 from cms.plugin_base import CMSPluginBase
+from django.utils.html import mark_safe
 from django.utils.encoding import force_str
 from .helpers import get_template_path
 
@@ -24,3 +25,18 @@ class CMSUIPlugin(CMSPluginBase):
                 prefix = name.split('_')[0]
             return get_template_path(prefix, None, name)
         return default
+
+    def render(self, context, instance, placeholder):
+        for child_plugin in instance.child_plugin_instances:
+            class_name = child_plugin.__class__.__name__
+            if class_name == 'Tooltip':
+                if not hasattr(instance, 'attributes'):
+                    instance.attributes = {}
+                instance.attributes['data-bs-toggle'] = 'tooltip' 
+                instance.attributes['data-bs-placement'] = child_plugin.tooltip_position
+                instance.attributes['data-bs-custom-class'] = "custom-tooltip"
+                instance.attributes['data-bs-html'] = "true"
+                instance.attributes['data-bs-title'] = mark_safe(child_plugin.content)
+                break
+        return super().render(context, instance, placeholder)
+

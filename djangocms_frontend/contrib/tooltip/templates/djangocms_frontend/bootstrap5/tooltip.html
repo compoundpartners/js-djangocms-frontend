@@ -1,0 +1,12 @@
+{% load cms_tags sekizai_tags %}
+{% if instance.icon %}
+    {% with icon_class=instance.icon instance=instance.icon %}{% include "djangocms_icon/includes/icon.html" %}{% endwith %}
+{% endif %}
+{% addtoblock "js" %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+        });
+    </script>
+{% endaddtoblock %}

@@ -210,7 +210,7 @@ class BackgroundMixin:
             if background_size:
                 styles.append('background-size: %s;' % ' '.join(background_size))
         instance.attributes['style'] = ' '.join(styles)
-        background_opacity = getattr(instance, 'background_opacity', 100)
+        background_opacity = getattr(instance, 'background_opacity', 100) or 100
         if type(background_opacity) == str:
             try:
                 background_opacity = int(background_opacity)

@@ -89,7 +89,7 @@ CardLayoutForm = type(
     copy(extra_fields_row_cols),
 )
 
-CardLayoutForm.Meta.entangled_fields["config"] += extra_fields_row_cols.keys()
+CardLayoutForm._meta.entangled_fields["config"] += extra_fields_row_cols.keys()
 
 
 class CardForm(
@@ -230,4 +230,4 @@ CardDeckForm = type(
     copy(extra_fields_column),
 )
 
-CardDeckForm.Meta.entangled_fields["config"] += extra_fields_column.keys()
+CardDeckForm._meta.entangled_fields["config"] += extra_fields_column.keys()

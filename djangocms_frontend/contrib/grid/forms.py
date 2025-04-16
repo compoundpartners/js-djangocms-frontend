@@ -170,7 +170,7 @@ GridRowForm = type(
     copy(extra_fields_column),
 )
 
-GridRowForm.Meta.entangled_fields["config"] += extra_fields_column.keys()
+GridRowForm._meta.entangled_fields["config"] += extra_fields_column.keys()
 
 
 class GridColumnBaseForm(
@@ -288,4 +288,4 @@ GridColumnForm = type(
     copy(extra_fields_column),
 )
 
-GridColumnForm.Meta.entangled_fields["config"] += extra_fields_column.keys()
+GridColumnForm._meta.entangled_fields["config"] += extra_fields_column.keys()

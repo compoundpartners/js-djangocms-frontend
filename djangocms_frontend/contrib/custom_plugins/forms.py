@@ -13,6 +13,7 @@ from djangocms_frontend.fields import (
 from .constants import (
     GATED_CONTENT_TEMPLATES_CHOICES,
     CUSTOM_PLUGIN_TEMPLATES_CHOICES,
+    get_template_choices,
 )
 
 
@@ -97,3 +98,13 @@ class CustomForm(TemplateChoiceMixin, EntangledModelForm):
         help_text=_("This is the template that will be used for the component."),
     )
     attributes = AttributesFormField()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        module = getattr(self, 'module', None)
+        plugin = getattr(self, 'plugin', None)
+        print(f'{module.upper()}_{plugin.upper()}')
+        if module and plugin:
+            self.fields['template'].widget = forms.Select()
+            self.fields['template'].choices = get_template_choices(f'{module}_{plugin}')
+

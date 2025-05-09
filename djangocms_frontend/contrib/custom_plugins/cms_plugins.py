@@ -10,7 +10,8 @@ from ...helpers import get_plugin_template
 from . import forms, models
 from .constants import (
     GATED_CONTENT_TEMPLATES_CHOICES,
-    CUSTOM_PLUGIN_TEMPLATES_CHOICES,
+    DEFAULT_TEMPLATE_CHOICES,
+    PLUGINS_CHILD_CLASSES,
 )
 
 
@@ -176,5 +177,56 @@ class CustomPlugin(AttributesMixin, CMSUIPlugin):
 
     def get_render_template(self, context, instance, placeholder, template=None):
         return get_plugin_template(
-            instance, "custom_plugins", "custom", CUSTOM_PLUGIN_TEMPLATES_CHOICES
+            instance, "custom_plugins", "custom", DEFAULT_TEMPLATE_CHOICES
         )
+
+
+class Meta:
+    model = models.Custom
+
+cammel = lambda x: ''.join(c.capitalize() for c in x.split(' '))
+
+def create_custom_plugin(properties):
+    name = properties.get('name')
+    cammel_name = cammel(name)
+    form_properties = properties.get('form_properties', {})
+    form_bases = properties.get('form_bases', [])
+    plugin_properties = properties.get('plugin_properties', {})
+    plugin_bases = properties.get('plugin_bases', [])
+    module = properties.get('module', plugin_properties.get('module', 'Custom'))
+    
+    entangled_fields = []
+    form_properties['plugin'] = f'{cammel_name}Plugin'
+    form_properties['module'] = cammel(module)
+
+    meta_properties  = {
+        'entangled_fields': {
+            "config": [
+                "template",
+                ] + entangled_fields
+        }
+    }
+    form_properties['Meta'] = type(
+        f'{cammel_name}Meta',
+        (Meta,),
+        meta_properties
+    )
+    form = type(
+        f'{cammel_name}Form',
+        tuple(form_bases) + (forms.CustomForm,),
+        form_properties
+    )
+
+    plugin_properties['name'] = name
+    plugin_properties['module'] = module
+    plugin_properties['form'] = form
+    child_classes = PLUGINS_CHILD_CLASSES.get(f'{cammel_name}Plugin', [])
+    plugin_properties['child_classes'] = child_classes
+    plugin_properties['allow_children'] = len(child_classes)
+
+    plugin = type(
+        f'{cammel_name}Plugin',
+        tuple(plugin_bases) + (CustomPlugin,),
+        plugin_properties
+    )
+    plugin_pool.register_plugin(plugin)

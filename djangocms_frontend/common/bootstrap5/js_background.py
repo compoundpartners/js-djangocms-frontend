@@ -162,7 +162,6 @@ class BackgroundMixin:
         #background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment
         background = []
         images = []
-        aligment = []
         background_size = []
         if getattr(instance, 'background_color', ''):
             background.append(instance.background_color)
@@ -180,27 +179,28 @@ class BackgroundMixin:
                 instance.background_image_obj = img
         if images:
             background.append(', '.join(images))
-            if getattr(instance, 'background_position_alignment_horizontal', ''):
-                aligment.append(ALIGN_MAP[instance.background_position_alignment_horizontal])
-            if getattr(instance, 'background_position_alignment_vertical', ''):
-                if not getattr(instance, 'background_position_alignment_horizontal', ''):
-                    aligment.append('left')
-                aligment.append(ALIGN_MAP[instance.background_position_alignment_vertical])
-            if not aligment:
-                if getattr(instance, 'background_position_x', '') and len(instance.background_position_x)==2 and instance.background_position_x[0]:
-                    aligment.append('%s%s' % tuple(instance.background_position_x))
-                if getattr(instance, 'background_position_y', '') and len(instance.background_position_y)==2 and instance.background_position_y[0]:
-                    aligment.append('%s%s' % tuple(instance.background_position_y))
-            if aligment:
-                background += aligment
-            else:
-                if getattr(instance, 'background_size', '') and instance.background_size != 'auto':
-                    background_size.append(instance.background_size)
+            positions_x = 0
+            positions_y = 0
+            if getattr(instance, 'background_position_x', '') and len(instance.background_position_x)==2 and instance.background_position_x[0]:
+                positions_x = '%s%s' % tuple(instance.background_position_x)
+            if getattr(instance, 'background_position_y', '') and len(instance.background_position_y)==2 and instance.background_position_y[0]:
+                positions_y = '%s%s' % tuple(instance.background_position_y)
+            alignment_horizontal = ALIGN_MAP[getattr(instance, 'background_position_alignment_horizontal', '')]
+            alignment_vertical = ALIGN_MAP[getattr(instance, 'background_position_alignment_vertical', '')]
+            if alignment_horizontal or alignment_vertical:
+                if positions_x or positions_y:
+                    background += [alignment_horizontal, positions_x, alignment_vertical, positions_y]
                 else:
-                    if getattr(instance, 'background_size_x', '') and len(instance.background_size_x)==2 and instance.background_size_x[0]:
-                        background_size.append('%s%s' % tuple(instance.background_size_x))
-                    if getattr(instance, 'background_size_y', '') and len(instance.background_size_y)==2 and instance.background_size_y[0]:
-                        background_size.append('%s%s' % tuple(instance.background_size_y))
+                    background += [alignment_horizontal, alignment_vertical]
+            elif positions_x or positions_y:
+                background += [positions_x, positions_y]
+            if getattr(instance, 'background_size', '') and instance.background_size != 'auto':
+                background_size.append(instance.background_size)
+            else:
+                if getattr(instance, 'background_size_x', '') and len(instance.background_size_x)==2 and instance.background_size_x[0]:
+                    background_size.append('%s%s' % tuple(instance.background_size_x))
+                if getattr(instance, 'background_size_y', '') and len(instance.background_size_y)==2 and instance.background_size_y[0]:
+                    background_size.append('%s%s' % tuple(instance.background_size_y))
             if getattr(instance, 'background_repeat', ''):
                 background.append(instance.background_repeat)
             if getattr(instance, 'background_attachment', ''):
@@ -217,6 +217,7 @@ class BackgroundMixin:
             except:
                 background_opacity = 100
         context['background_opacity'] = background_opacity / 100
+        context['background_allow_crop'] = getattr(instance, 'background_allow_crop', True)
         return super().render(context, instance, placeholder)
 
 
@@ -231,6 +232,7 @@ class BackgroundFormMixin(EntangledModelFormMixin):
                 'background_attachment',
                 'background_repeat',
                 'background_opacity',
+                'background_allow_crop',
                 'background_position_alignment_horizontal',
                 'background_position_alignment_vertical',
                 'background_position_x',
@@ -283,7 +285,7 @@ class BackgroundFormMixin(EntangledModelFormMixin):
     )
     background_repeat = forms.ChoiceField(
         label=_('Repeat'),
-        choices=[('repeat', 'repeat'), ('repeat-x', 'repeat-x'), ('repeat-y', 'repeat-y'), ('no-repeat', 'no-repeat')],
+        choices=[('no-repeat', 'no-repeat'), ('repeat', 'repeat'), ('repeat-x', 'repeat-x'), ('repeat-y', 'repeat-y')],
         required=False,
         initial='no-repeat',
     )
@@ -293,6 +295,11 @@ class BackgroundFormMixin(EntangledModelFormMixin):
         initial=100,
         min_value=0,
         max_value=100,
+    )
+    background_allow_crop = forms.BooleanField(
+        label=_('Allow Crop'),
+        required=False,
+        initial=True,
     )
     background_position_alignment_horizontal = forms.ChoiceField(
         label=_('Horizontal alignment'),
@@ -316,9 +323,9 @@ class BackgroundFormMixin(EntangledModelFormMixin):
     )
     background_size = forms.ChoiceField(
         label=_('Size'),
-        choices=[('auto', 'auto'), ('', 'length/percentage'), ('cover', 'cover'), ('contain', 'contain')],
+        choices=[('cover', 'cover'), ('auto', 'auto'), ('', 'length/percentage'), ('contain', 'contain')],
         required=False,
-        initial='auto',
+        initial='cover',
     )
     background_size_x = SizeField(
         label='',

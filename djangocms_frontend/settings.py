@@ -48,6 +48,7 @@ BACKGROUND_SETTINGS = {
   'attachment': True,
   'repeat': True,
   'opacity': True,
+  'allow_crop': True,
   'position':{
     'alignment': True, # controls whether alignemtn icons are shown
     'empirical': True, # shows wherther px/% text boxes are shown

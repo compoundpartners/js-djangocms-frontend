@@ -25,6 +25,7 @@ class LightboxForm(
             "config": [
                 "template",
                 "attributes",
+                "items_per_page",
             ]
         }
         untangled_fields = (
@@ -43,6 +44,10 @@ class LightboxForm(
         label=_("template"),
         choices=LIGHTBOX_TEMPLATE_CHOICES,
         initial=first_choice(LIGHTBOX_TEMPLATE_CHOICES),
+    )
+    items_per_page = forms.IntegerField(
+        label=_("Items per page"),
+        initial=0,
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

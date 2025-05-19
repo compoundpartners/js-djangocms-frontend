@@ -51,6 +51,7 @@ class CarouselForm(mixin_factory("Carousel"), BackgroundFormMixin, TemplateChoic
                 "carousel_keyboard",
                 "carousel_pause",
                 "carousel_ride",
+                "carousel_transition",
                 "carousel_wrap",
                 "attributes",
             ]

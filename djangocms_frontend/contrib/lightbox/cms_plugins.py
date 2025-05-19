@@ -42,6 +42,7 @@ class LightboxPlugin(
                     (
                         "create",
                         "template",
+                        "items_per_page",
                     ),
                 )
             },

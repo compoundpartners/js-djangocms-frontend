@@ -2,9 +2,11 @@ class LinkRenderMixin:
     def render(self, context, instance, placeholder):
         link_classes = []
         if instance.parent and instance.parent.plugin_type == "ListGroupPlugin":
-            link_classes.append("list-group-item")
-            link_classes.append("list-group-item-action")
-            background_prefix = "list-group-item"
+            #NEW05-175
+            #link_classes.append("list-group-item")
+            #link_classes.append("list-group-item-action")
+            #background_prefix = "list-group-item"
+            pass
         elif (
             getattr(instance, "link_type", "link") == "link"
             and instance.parent

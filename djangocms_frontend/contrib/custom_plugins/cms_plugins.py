@@ -1,4 +1,5 @@
 from cms.plugin_pool import plugin_pool
+from django import forms as django_forms
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import escape_uri_path
@@ -157,6 +158,7 @@ class CustomPlugin(AttributesMixin, CMSUIPlugin):
     model = models.Custom
     form = forms.CustomForm
     allow_children = True
+    custom_fields = None
 
     fieldsets = [
         (
@@ -180,6 +182,15 @@ class CustomPlugin(AttributesMixin, CMSUIPlugin):
             instance, "custom_plugins", "custom", DEFAULT_TEMPLATE_CHOICES
         )
 
+    def get_fieldsets(self, request, obj=None):
+        fieldsets = super().get_fieldsets(request, obj)
+        if self.custom_fields:
+            for field in self.custom_fields:
+                if field not in fieldsets[0][1]['fields']:
+                    fieldsets[0][1]['fields'].append(field)
+        return fieldsets
+
+
 
 class Meta:
     model = models.Custom
@@ -196,6 +207,12 @@ def create_custom_plugin(properties):
     module = properties.get('module', plugin_properties.get('module', 'Custom'))
     
     entangled_fields = []
+    for property_name, property in form_properties.items():
+        if issubclass(property, django_forms.Field):
+            entangled_fields.append(property_name)
+    for form_base in form_bases:
+        if hasattr(form_base, 'base_fields'):
+            entangled_fields += list(form_base.base_fields.keys())
     form_properties['plugin'] = f'{cammel_name}Plugin'
     form_properties['module'] = cammel(module)
 
@@ -223,6 +240,7 @@ def create_custom_plugin(properties):
     child_classes = PLUGINS_CHILD_CLASSES.get(f'{cammel_name}Plugin', [])
     plugin_properties['child_classes'] = child_classes
     plugin_properties['allow_children'] = len(child_classes)
+    plugin_properties['custom_fields'] = entangled_fields
 
     plugin = type(
         f'{cammel_name}Plugin',

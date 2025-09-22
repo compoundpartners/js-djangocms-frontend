@@ -34,12 +34,10 @@ class LightboxPlugin(
             None,
             {
                 "fields": (
-                    (
-                        "create",
-                        "folder",
-                        "template",
-                        "items_per_page",
-                    ),
+                    "create",
+                    "folder",
+                    "template",
+                    "items_per_page",
                 )
             },
         ),

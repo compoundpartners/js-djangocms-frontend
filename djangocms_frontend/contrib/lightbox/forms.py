@@ -1,8 +1,11 @@
 from copy import copy
 
 from django import forms
+from django.db.models.fields.related import ManyToOneRel
 from django.utils.translation import gettext_lazy as _
 from entangled.forms import EntangledModelForm
+from filer.fields.folder import AdminFolderFormField, FilerFolderField
+from filer.models import Folder
 
 from djangocms_frontend.fields import (
     AttributesFormField,
@@ -31,6 +34,7 @@ class LightboxForm(
         untangled_fields = (
             "tag_type",
             "create",
+            "folder",
         )
 
     create = forms.IntegerField(
@@ -39,6 +43,13 @@ class LightboxForm(
         required=False,
         min_value=0,
         max_value=99,
+    )
+    folder = AdminFolderFormField(
+        rel=ManyToOneRel(FilerFolderField, Folder, 'id'),
+        queryset=Folder.objects.all(),
+        to_field_name='id',
+        required=False,
+        label=_("or select folder"),
     )
     template = forms.ChoiceField(
         label=_("template"),

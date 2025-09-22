@@ -1,13 +1,8 @@
 from cms.plugin_pool import plugin_pool
 from django.utils.translation import gettext_lazy as _
+from filer.models import Image as FilerImage
 
-from djangocms_frontend import settings
 from djangocms_frontend.common.attributes import AttributesMixin
-from djangocms_frontend.common.background import BackgroundMixin
-from djangocms_frontend.common.foreground import ForegroundMixin
-from djangocms_frontend.common.responsive import ResponsiveMixin
-from djangocms_frontend.common.sizing import SizingMixin
-from djangocms_frontend.common.spacing import SpacingMixin
 from djangocms_frontend.helpers import get_plugin_template
 from djangocms_frontend.contrib.image.models import Image
 from djangocms_frontend.contrib.image.cms_plugins import ImagePlugin
@@ -41,6 +36,7 @@ class LightboxPlugin(
                 "fields": (
                     (
                         "create",
+                        "folder",
                         "template",
                         "items_per_page",
                     ),
@@ -51,13 +47,23 @@ class LightboxPlugin(
 
     def save_model(self, request, obj, form, change):
         super().save_model(request, obj, form, change)
+        files = []
         data = form.cleaned_data
-        for pos in range(data["create"] if data["create"] is not None else 0):
+        if data["folder"]: 
+            files = data["folder"].files.all()
+        if files:
+            for pos, image in enumerate(files):
+                self.create_child(obj, pos, image.pk)
+        else:
+            for pos in range(data["create"] if data["create"] is not None else 0):
+                self.create_child(obj, pos)
+
+    def create_child(self, obj, pos, image_pk=None):
             extra = {
                 'width': None, 
                 'height': None, 
                 'caption': '', 
-                'picture': None, 
+                'picture': {'model': f'{FilerImage._meta.app_label}.{FilerImage._meta.model_name}', 'pk': image_pk} if image_pk else None, 
                 'margin_x': '', 
                 'margin_y': '', 
                 'template': 'default', 
@@ -75,7 +81,7 @@ class LightboxPlugin(
                 'link_attributes': {}, 
                 'picture_rounded': False, 
                 'use_no_cropping': False, 
-                'external_picture': LIGHTBOX_PLACEHOLDER_IMAGE, 
+                'external_picture': '' if image_pk else LIGHTBOX_PLACEHOLDER_IMAGE, 
                 'picture_thumbnail': False, 
                 'thumbnail_options': None, 
                 'external_link_type': '', 

@@ -15,7 +15,7 @@ from .constants import (
 
 
 @plugin_pool.register_plugin
-class RawHTMLPlugin(CMSUIPlugin):
+class RawHTMLPlugin2(CMSUIPlugin):
 
     name = _("Raw HTML")
     module = _("Frontend")
@@ -44,7 +44,7 @@ class RawHTMLPlugin(CMSUIPlugin):
 
 
 @plugin_pool.register_plugin
-class RawHTMLPluginWithID(CMSUIPlugin):
+class RawHTMLPluginWithID2(CMSUIPlugin):
 
     name = _("Raw HTML With ID")
     module = _("Frontend")
@@ -87,7 +87,7 @@ class RawHTMLPluginWithID(CMSUIPlugin):
 
 
 @plugin_pool.register_plugin
-class GatedContentPlugin(CMSUIPlugin):
+class GatedContentPlugin2(CMSUIPlugin):
 
     name = _("Gated Content")
     module = _("Frontend")
@@ -123,7 +123,7 @@ class GatedContentPlugin(CMSUIPlugin):
 
 
 @plugin_pool.register_plugin
-class GatedTriggerPlugin(CMSUIPlugin):
+class GatedTriggerPlugin2(CMSUIPlugin):
 
     name = _("Gated Trigger")
     module = _("Frontend")
@@ -149,7 +149,7 @@ class GatedTriggerPlugin(CMSUIPlugin):
 
 
 @plugin_pool.register_plugin
-class CustomPlugin(AttributesMixin, CMSUIPlugin):
+class CustomPlugin2(AttributesMixin, CMSUIPlugin):
 
     name = _("Custom Plugin")
     module = _("Frontend")

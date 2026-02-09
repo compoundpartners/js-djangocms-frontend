@@ -15,7 +15,7 @@ from .constants import PROMO_TEMPLATE_CHOICES
 
 
 @plugin_pool.register_plugin
-class PromoPlugin2(LinkPluginMixin, AttributesMixin, BackgroundMixin, ForegroundMixin, CMSUIPlugin):
+class PromoPlugin(LinkPluginMixin, AttributesMixin, BackgroundMixin, ForegroundMixin, CMSUIPlugin):
     name = _("Promo")
     module = _("Frontend")
     model = models.Promo

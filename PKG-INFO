@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: js-djangocms-frontend
-Version: 1.0.2.12
+Version: 1.0.2.5
 Summary: Adds abstract User Interface items as plugins to django CMS.
 Home-page: https://github.com/django-cms/djangocms-frontend
 Author: Compound Partners Ltd, fsbraun
@@ -12,7 +12,6 @@ Project-URL: Documentation, https://djangocms-frontend.readthedocs.io
 Project-URL: Release notes, https://github.com/django-cms/djangocms-frontend/blob/master/CHANGELOG.rst
 Project-URL: Issues, https://github.com/django-cms/djangocms-frontend/issues
 Project-URL: Source, https://github.com/django-cms/djangocms-frontend
-Platform: UNKNOWN
 Classifier: Development Status :: 5 - Production/Stable
 Classifier: Environment :: Web Environment
 Classifier: Intended Audience :: Developers
@@ -219,5 +218,3 @@ See readthedocs for the `documentation
 
 .. |djangocms4| image:: https://img.shields.io/badge/django%20CMS-4-blue.svg
    :target: https://www.django-cms.org/en/preview-django-cms-40/
-
-

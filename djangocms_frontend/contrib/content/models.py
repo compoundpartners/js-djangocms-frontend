@@ -1,5 +1,6 @@
 from django.utils.translation import gettext_lazy as _
 
+from ..link.models import GetLinkMixin
 from ...models import FrontendUIItem
 
 
@@ -17,7 +18,7 @@ class CodeBlock(FrontendUIItem):
         return f"<{self.code_type}>"
 
 
-class Blockquote(FrontendUIItem):
+class Blockquote(GetLinkMixin, FrontendUIItem):
     """
     Content > "Blockquote" Plugin
     https://getbootstrap.com/docs/5.0/content/typography/#blockquotes

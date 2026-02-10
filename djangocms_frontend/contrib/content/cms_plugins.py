@@ -9,6 +9,7 @@ from ...common.responsive import ResponsiveMixin
 from ...common.spacing import SpacingMixin
 from ...helpers import get_plugin_template
 from .. import content
+from ..link.cms_plugins import LinkPluginMixin
 from .constants import BLOCKQUOTE_TEMPLATE_CHOICES
 from . import forms, models
 
@@ -53,6 +54,7 @@ if settings.PLUGINS_AND_FIELDS.get('Blockquote'):
     @plugin_pool.register_plugin
     class BlockquotePlugin(
         mixin_factory("Blockquote"),
+        LinkPluginMixin,
         AttributesMixin,
         ResponsiveMixin,
         SpacingMixin,
@@ -70,6 +72,8 @@ if settings.PLUGINS_AND_FIELDS.get('Blockquote'):
         form = forms.BlockquoteForm
         change_form_template = "djangocms_frontend/admin/blockquote.html"
         allow_children = True
+
+        link_fieldset_position = -1
 
         fieldsets = [
             (

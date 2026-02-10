@@ -1,9 +1,8 @@
 from cms.plugin_pool import plugin_pool
-from django.conf import settings
+from django.conf import settings as django_settings
 from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import escape_uri_path
 
-from ... import settings
 from ...cms_plugins import CMSUIPlugin
 from ...common.attributes import AttributesMixin
 from ...helpers import get_plugin_template
@@ -13,8 +12,18 @@ from .constants import (
     CUSTOM_PLUGIN_TEMPLATES_CHOICES,
 )
 
+CUSTOM_PLUGINS = getattr(
+    django_settings, 
+    'DJANGOCMS_FRONTEND_CUSTOM_PLUGINS', 
+    {
+        'RawHTMLPlugin': True,
+        'RawHTMLPluginWithID': True,
+        'GatedContentPlugin': True,
+        'GatedTriggerPlugin': True,
+        'CustomPlugin': True,
+    }
+)
 
-@plugin_pool.register_plugin
 class RawHTMLPlugin(CMSUIPlugin):
 
     name = _("Raw HTML")
@@ -42,8 +51,10 @@ class RawHTMLPlugin(CMSUIPlugin):
         })
         return context
 
+if CUSTOM_PLUGINS.get('RawHTMLPlugin', True):
+    plugin_pool.register_plugin(RawHTMLPlugin)
 
-@plugin_pool.register_plugin
+
 class RawHTMLPluginWithID(CMSUIPlugin):
 
     name = _("Raw HTML With ID")
@@ -84,9 +95,10 @@ class RawHTMLPluginWithID(CMSUIPlugin):
         })
         return context
 
+if CUSTOM_PLUGINS.get('RawHTMLPluginWithID', True):
+    plugin_pool.register_plugin(RawHTMLPluginWithID)
 
 
-@plugin_pool.register_plugin
 class GatedContentPlugin(CMSUIPlugin):
 
     name = _("Gated Content")
@@ -121,8 +133,10 @@ class GatedContentPlugin(CMSUIPlugin):
             instance, "custom_plugins", "gated_content", GATED_CONTENT_TEMPLATES_CHOICES
         )
 
+if CUSTOM_PLUGINS.get('GatedContentPlugin', True):
+    plugin_pool.register_plugin(GatedContentPlugin)
 
-@plugin_pool.register_plugin
+
 class GatedTriggerPlugin(CMSUIPlugin):
 
     name = _("Gated Trigger")
@@ -147,8 +161,10 @@ class GatedTriggerPlugin(CMSUIPlugin):
         })
         return context
 
+if CUSTOM_PLUGINS.get('GatedTriggerPlugin', True):
+    plugin_pool.register_plugin(GatedTriggerPlugin)
 
-@plugin_pool.register_plugin
+
 class CustomPlugin(AttributesMixin, CMSUIPlugin):
 
     name = _("Custom Plugin")
@@ -178,3 +194,6 @@ class CustomPlugin(AttributesMixin, CMSUIPlugin):
         return get_plugin_template(
             instance, "custom_plugins", "custom_plugins", CUSTOM_PLUGIN_TEMPLATES_CHOICES
         )
+
+if CUSTOM_PLUGINS.get('CustomPlugin', True):
+    plugin_pool.register_plugin(CustomPlugin)

@@ -11,6 +11,7 @@ from ... import settings
 from ...common.background import BackgroundFormMixin
 from ...common.responsive import ResponsiveFormMixin
 from ...common.spacing import SpacingFormMixin
+
 from ...fields import (
     AttributesFormField,
     HTMLFormField,
@@ -21,6 +22,7 @@ from ...fields import (
 from ...helpers import first_choice
 from ...models import FrontendUIItem
 from .. import content
+from ..link.forms import AbstractLinkForm
 from .constants import CODE_TYPE_CHOICES, BLOCKQUOTE_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_forms(content)
@@ -77,6 +79,7 @@ class BlockquoteForm(
     SpacingFormMixin,
     ResponsiveFormMixin,
     BackgroundFormMixin,
+    AbstractLinkForm,
     EntangledModelForm,
 ):
     """
@@ -96,8 +99,11 @@ class BlockquoteForm(
                 "quote_alignment",
                 "foreground_color",
                 "attributes",
+                "link_name",
             ]
         }
+
+    link_is_optional = True
 
     template = forms.ChoiceField(
         label=_("Template"),
@@ -136,6 +142,10 @@ class BlockquoteForm(
             mode=settings.COLORPICKER_MODE,
             colors=settings.COLORPICKER_COLORS
         ),
+    )
+    link_name = forms.CharField(
+        label=_("Link display name"),
+        required=False,
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

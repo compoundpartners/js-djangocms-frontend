@@ -46,6 +46,16 @@ class Heading(FrontendUIItem):
     def get_short_description(self):
         return f"({self.heading})"
 
+    def get_toc_tuple(self):
+        heading_id = getattr(self, "heading_id", "")
+        if heading_id:
+                return(
+                    heading_id,
+                    getattr(self, "heading", ""),
+                    getattr(self, "heading_level", "h2"),
+                )
+
+
 
 class TableOfContents(FrontendUIItem):
     """

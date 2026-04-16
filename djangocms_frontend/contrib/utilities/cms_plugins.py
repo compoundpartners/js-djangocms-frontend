@@ -1,4 +1,5 @@
 from cms.plugin_pool import plugin_pool
+from cms.utils.plugins import get_bound_plugins
 from django.utils.translation import gettext_lazy as _
 
 from djangocms_frontend import settings
@@ -83,15 +84,8 @@ class HeadingPlugin(
     def render(self, context, instance, placeholder):
         if not hasattr(context["request"], "TOC"):
             context["request"].TOC = []
-        heading_id = getattr(instance, "heading_id", "")
-        if heading_id:
-            context["request"].TOC.append(
-                (
-                    heading_id,
-                    getattr(instance, "heading", ""),
-                    getattr(instance, "heading_level", "h2"),
-                )
-            )
+        if toc := instance.get_toc_tuple():
+            context["request"].TOC.append(toc)
         context["instance"] = instance
         return super().render(context, instance, placeholder)
 
@@ -131,11 +125,22 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
     fieldsets = settings.EMPTY_FIELDSET
 
     def render(self, context, instance, placeholder):
-        if hasattr(context["request"], "TOC"):
-            toc_tree = create_tree(context["request"].TOC)
+        if toc_tree := (getattr(context["request"], "TOC", None) or self.get_toc(instance)):
+            toc_tree = create_tree(toc_tree)
             context["toc"] = toc_tree
         else:
             context["toc"] = []
         context["template"] = self.render_template
         context["instance"] = instance
         return super().render(context, instance, placeholder)
+
+    def get_toc(self, instance):
+        content = []
+        for p in get_bound_plugins(
+                instance.placeholder.get_plugins(
+                    language=instance.language
+                ).filter(plugin_type='HeadingPlugin')
+            ):
+            if toc := p.get_toc_tuple():
+                content.append(toc)
+        return content

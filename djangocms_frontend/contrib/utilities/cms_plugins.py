@@ -8,7 +8,7 @@ from ...cms_plugins import CMSUIPlugin
 from ...common.attributes import AttributesMixin
 from ...common.spacing import SpacingMixin
 from .. import utilities
-from . import forms, models
+from . import forms, models, constants
 
 mixin_factory = settings.get_renderer(utilities)
 
@@ -139,8 +139,12 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
         for p in get_bound_plugins(
                 instance.placeholder.get_plugins(
                     language=instance.language
-                ).filter(plugin_type='HeadingPlugin')
+                ).filter(plugin_type__in=['HeadingPlugin'] + list(constants.TOC_PLUGIN_TUPLES.keys()))
             ):
-            if toc := p.get_toc_tuple():
+            if hasattr(p, 'get_toc_tuple'):
+                toc = p.get_toc_tuple()
+            else:
+                toc = constants.TOC_PLUGIN_TUPLES.get(p.plugin_type, lambda x: tuple())(p)                
+            if toc and len(toc) == 3 and toc[0]:
                 content.append(toc)
         return content

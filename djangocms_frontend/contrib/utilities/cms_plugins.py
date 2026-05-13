@@ -90,6 +90,22 @@ class HeadingPlugin(
         return super().render(context, instance, placeholder)
 
 
+class TOCMixin:
+    """Mixin for CMS plugins that register entries in the Table of Contents.
+    Uses DJANGOCMS_FRONTEND_TOC_PLUGIN_TUPLES setting to map plugin classes to TOC tuples."""
+
+    def render(self, context, instance, placeholder):
+        if not hasattr(context["request"], "TOC"):
+            context["request"].TOC = []
+        tuples_config = constants.TOC_PLUGIN_TUPLES
+        plugin_name = self.__class__.__name__
+        if plugin_name in tuples_config:
+            toc_tuple = tuples_config[plugin_name](instance)
+            if toc_tuple and toc_tuple[0] and toc_tuple[1]:
+                context["request"].TOC.append(toc_tuple)
+        return super().render(context, instance, placeholder)
+
+
 def create_tree(request_toc):
     def process_level():
         nonlocal i

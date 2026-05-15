@@ -7,3 +7,9 @@ TOC_PLUGIN_TUPLES = getattr(
     "DJANGOCMS_FRONTEND_TOC_PLUGIN_TUPLES",
     {},
 )
+
+TOC_TEMPLATE_CHOICES = (("default", _("Default")),) + tuple(getattr(
+    settings,
+    "DJANGOCMS_FRONTEND_TOC_TEMPLATES",
+    ()
+))

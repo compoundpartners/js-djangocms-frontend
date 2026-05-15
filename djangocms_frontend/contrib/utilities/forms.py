@@ -11,10 +11,12 @@ from ...fields import (
     ColoredButtonGroup,
     IconGroup,
     TagTypeFormField,
+    TemplateChoiceMixin,
 )
 from ...helpers import first_choice
 from ...models import FrontendUIItem
 from .. import utilities
+from .constants import TOC_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_forms(utilities)
 
@@ -144,17 +146,25 @@ class HeadingForm(mixin_factory("Heading"), SpacingFormMixin, EntangledModelForm
     attributes = AttributesFormField()
 
 
-class TableOfContentsForm(mixin_factory("TableOfContents"), EntangledModelForm):
+class TableOfContentsForm(mixin_factory("TableOfContents"), TemplateChoiceMixin, EntangledModelForm):
     class Meta:
         model = FrontendUIItem
         entangled_fields = {
             "config": [
+                "template",
                 "list_attributes",
                 "link_attributes",
                 "attributes",
             ],
         }
         untangled_fields = ()
+
+    template = forms.ChoiceField(
+        label=_("Template"),
+        choices=TOC_TEMPLATE_CHOICES,
+        initial=first_choice(TOC_TEMPLATE_CHOICES),
+        help_text=_("This is the template that will be used for the component."),
+    )
 
     list_attributes = AttributesFormField(
         label=_("List attributes"),

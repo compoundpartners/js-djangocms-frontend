@@ -3,12 +3,14 @@ from cms.utils.plugins import get_bound_plugins
 from django.utils.translation import gettext_lazy as _
 
 from djangocms_frontend import settings
+from djangocms_frontend.helpers import get_plugin_template
 
 from ...cms_plugins import CMSUIPlugin
 from ...common.attributes import AttributesMixin
 from ...common.spacing import SpacingMixin
 from .. import utilities
 from . import forms, models, constants
+from .constants import TOC_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_renderer(utilities)
 
@@ -135,10 +137,21 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
     model = models.TableOfContents
     form = forms.TableOfContentsForm
 
-    render_template = "djangocms_frontend/toc.html"
-    change_form_template = "djangocms_frontend/admin/no_form.html"
+    fieldsets = [
+        (
+            None,
+            {
+                "fields": (
+                    "template",
+                )
+            },
+        ),
+    ]
 
-    fieldsets = settings.EMPTY_FIELDSET
+    def get_render_template(self, context, instance, placeholder):
+        return get_plugin_template(
+            instance, "toc", "toc", TOC_TEMPLATE_CHOICES
+        )
 
     def render(self, context, instance, placeholder):
         if toc_tree := (getattr(context["request"], "TOC", None) or self.get_toc(instance)):
@@ -146,7 +159,9 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
             context["toc"] = toc_tree
         else:
             context["toc"] = []
-        context["template"] = self.render_template
+        context["template"] = get_plugin_template(
+            instance, "toc", "toc", TOC_TEMPLATE_CHOICES
+        )
         context["instance"] = instance
         return super().render(context, instance, placeholder)
 

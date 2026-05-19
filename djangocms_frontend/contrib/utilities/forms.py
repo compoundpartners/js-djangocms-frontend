@@ -92,6 +92,8 @@ class HeadingForm(mixin_factory("Heading"), SpacingFormMixin, EntangledModelForm
                 "heading_level",
                 "heading",
                 "heading_id",
+                "heading_number",
+                "heading_overline",
                 "heading_context",
                 "heading_alignment",
                 "attributes",
@@ -129,6 +131,20 @@ class HeadingForm(mixin_factory("Heading"), SpacingFormMixin, EntangledModelForm
         help_text=_(
             "Fill in unique ID for table of contents. If empty heading will not appear in table of contents."
         ),
+    )
+
+    heading_number = forms.IntegerField(
+        label=_("Number"),
+        required=False,
+        min_value=1,
+        max_value=999,
+        help_text=_("Optional number displayed beside the heading."),
+    )
+
+    heading_overline = forms.CharField(
+        label=_("Overline"),
+        required=False,
+        help_text=_("Optional small text displayed above the heading."),
     )
     heading_context = forms.ChoiceField(
         label=_("Heading context"),

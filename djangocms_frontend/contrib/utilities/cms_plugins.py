@@ -75,7 +75,8 @@ class HeadingPlugin(
                 "fields": (
                     ("heading_level", "heading_id"),
                     "heading",
-                    "heading_alignment",
+                    "heading_overline",
+                    ("heading_number", "heading_alignment"),
                     "heading_context",
                 )
             },

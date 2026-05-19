@@ -1,5 +1,7 @@
 {% load cms_tags %}{% spaceless %}
-    <{{ instance.heading_level }}{% if instance.heading_id %} id="{{ instance.heading_id }}"{% endif %}{{ instance.get_attributes }}>{{ instance.heading|safe }}</{{ instance.heading_level }}>
+<div class="heading-plugin">
+    {% if instance.heading_overline %}<p class="heading-plugin__overline">{{ instance.heading_overline }}</p>{% endif %}
+    <{{ instance.heading_level }}{% if instance.heading_id %} id="{{ instance.heading_id }}"{% endif %}{{ instance.get_attributes }}>{% if instance.heading_number %}<span class="heading-plugin__number">{{ instance.heading_number }}</span> {% endif %}{{ instance.heading|safe }}</{{ instance.heading_level }}>
     {% if instance.child_plugin_instances %}
         {% if request.toolbar.edit_mode_active %}<div style="margin-bottom: 1rem;">{% endif %}
         {% for plugin in instance.child_plugin_instances %}
@@ -7,4 +9,5 @@
         {% endfor %}
         {% if request.toolbar.edit_mode_active %}</div>{% endif %}
     {% endif %}
+</div>
 {% endspaceless %}

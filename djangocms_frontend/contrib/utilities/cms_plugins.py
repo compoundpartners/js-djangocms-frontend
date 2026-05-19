@@ -10,7 +10,6 @@ from ...common.attributes import AttributesMixin
 from ...common.spacing import SpacingMixin
 from .. import utilities
 from . import forms, models, constants
-from .constants import TOC_TEMPLATE_CHOICES
 
 mixin_factory = settings.get_renderer(utilities)
 
@@ -116,11 +115,14 @@ def create_tree(request_toc):
         toc_tree = []
         while i < len(request_toc):
             if previous_level is None or previous_level == request_toc[i][2]:
-                toc_tree.append((request_toc[i][0], request_toc[i][1]))
+                toc_tree.append((request_toc[i][0], request_toc[i][1], None))
                 previous_level = request_toc[i][2]
                 i += 1
             elif previous_level < request_toc[i][2]:
-                toc_tree.append((None, process_level()))
+                children = process_level()
+                if toc_tree:
+                    last = toc_tree[-1]
+                    toc_tree[-1] = (last[0], last[1], children)
             elif previous_level > request_toc[i][2]:
                 break
         return toc_tree
@@ -150,7 +152,7 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
 
     def get_render_template(self, context, instance, placeholder):
         return get_plugin_template(
-            instance, "toc", "toc", TOC_TEMPLATE_CHOICES
+            instance, "toc", "toc", constants.TOC_TEMPLATE_CHOICES
         )
 
     def render(self, context, instance, placeholder):
@@ -159,9 +161,6 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
             context["toc"] = toc_tree
         else:
             context["toc"] = []
-        context["template"] = get_plugin_template(
-            instance, "toc", "toc", TOC_TEMPLATE_CHOICES
-        )
         context["instance"] = instance
         return super().render(context, instance, placeholder)
 

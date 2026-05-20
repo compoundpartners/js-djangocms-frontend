@@ -183,6 +183,6 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
                     toc = p.get_toc_tuple()
                 else:
                     toc = constants.TOC_PLUGIN_TUPLES.get(p.plugin_type, lambda x: tuple())(p)
-                if toc and len(toc) == 3 and toc[0]:
+                if toc and len(toc) == 3 and toc[0] and toc[1]:
                     content.append(toc)
         return content

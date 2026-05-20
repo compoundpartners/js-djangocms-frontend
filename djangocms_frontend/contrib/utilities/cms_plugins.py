@@ -157,9 +157,9 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
         )
 
     def render(self, context, instance, placeholder):
-        if toc_tree := (getattr(context["request"], "TOC", None) or self.get_toc(instance)):
-            toc_tree = create_tree(toc_tree)
-            context["toc"] = toc_tree
+        toc_list = self.get_toc(instance)
+        if toc_list:
+            context["toc"] = create_tree(toc_list)
         else:
             context["toc"] = []
         context["instance"] = instance
@@ -167,15 +167,22 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
 
     def get_toc(self, instance):
         content = []
-        for p in get_bound_plugins(
-                instance.placeholder.get_plugins(
-                    language=instance.language
-                ).filter(plugin_type__in=['HeadingPlugin'] + list(constants.TOC_PLUGIN_TUPLES.keys()))
+        source = getattr(instance.placeholder, 'source', None)
+        if source and hasattr(source, 'placeholders'):
+            placeholders = source.placeholders.all()
+        else:
+            placeholders = [instance.placeholder]
+
+        plugin_types = ['HeadingPlugin'] + list(constants.TOC_PLUGIN_TUPLES.keys())
+        for ph in placeholders:
+            for p in get_bound_plugins(
+                ph.get_plugins(language=instance.language)
+                .filter(plugin_type__in=plugin_types)
             ):
-            if hasattr(p, 'get_toc_tuple'):
-                toc = p.get_toc_tuple()
-            else:
-                toc = constants.TOC_PLUGIN_TUPLES.get(p.plugin_type, lambda x: tuple())(p)                
-            if toc and len(toc) == 3 and toc[0]:
-                content.append(toc)
+                if hasattr(p, 'get_toc_tuple'):
+                    toc = p.get_toc_tuple()
+                else:
+                    toc = constants.TOC_PLUGIN_TUPLES.get(p.plugin_type, lambda x: tuple())(p)
+                if toc and len(toc) == 3 and toc[0]:
+                    content.append(toc)
         return content

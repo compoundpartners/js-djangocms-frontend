@@ -41,6 +41,7 @@ class PromoPlugin(
                     "title",
                     "subtitle",
                     "content",
+                    "secondary_content",
                     "icon",
                     "alignment",
                     "modal_video",

@@ -53,6 +53,7 @@ class PromoForm(
                 "title",
                 "subtitle",
                 "content",
+                "secondary_content",
                 "icon",
                 "alignment",
                 "modal_video",
@@ -83,6 +84,11 @@ class PromoForm(
     )
     content = HTMLFormField(
         label=_("Content"),
+        required=False,
+        initial="",
+    )
+    secondary_content = HTMLFormField(
+        label=_("Secondary Content"),
         required=False,
         initial="",
     )

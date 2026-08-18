@@ -96,6 +96,9 @@ class BlockquoteForm(
                 "quote_origin_role",
                 "quote_origin_company",
                 "quote_alignment",
+                "is_review",
+                "review_score",
+                "maximum_review_score",
                 "attributes",
             ]
         }
@@ -130,6 +133,22 @@ class BlockquoteForm(
         initial=settings.EMPTY_CHOICE[0][0],
         required=False,
         widget=IconGroup(),
+    )
+    is_review = forms.BooleanField(
+        label=_("Is this a review?"),
+        required=False,
+        initial=False,
+        help_text=_("If checked, schema markup will use Review type instead of Quotation."),
+    )
+    review_score = forms.FloatField(
+        label=_("Review score"),
+        required=False,
+        help_text=_("The actual rating given (e.g. 4.5)."),
+    )
+    maximum_review_score = forms.FloatField(
+        label=_("Maximum review score"),
+        required=False,
+        help_text=_("The maximum possible rating (e.g. 5)."),
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()

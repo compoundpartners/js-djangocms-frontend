@@ -87,6 +87,17 @@ if settings.PLUGINS_AND_FIELDS.get('Blockquote'):
                     )
                 },
             ),
+            (
+                _("Review"),
+                {
+                    "classes": ("collapse",),
+                    "fields": (
+                        "is_review",
+                        "review_score",
+                        "maximum_review_score",
+                    ),
+                },
+            ),
         ]
 
         def get_render_template(self, context, instance, placeholder):

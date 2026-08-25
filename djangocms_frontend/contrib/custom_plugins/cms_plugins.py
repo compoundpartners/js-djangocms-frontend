@@ -105,6 +105,7 @@ class GatedContentPlugin(CMSUIPlugin):
                     "template",
                     "link_url",
                     "cookie_name",
+                    "gate_id",
                 ]
             },
         ),
@@ -115,6 +116,7 @@ class GatedContentPlugin(CMSUIPlugin):
             'instance': instance,
             'link_url': instance.link_url,
             'cookie_name': instance.cookie_name,
+            'gate_id': getattr(instance, 'gate_id', '') or '',
         })
         return context
 
@@ -130,6 +132,7 @@ class GatedTriggerPlugin(CMSUIPlugin):
     name = _("Gated Trigger")
     module = _("Frontend")
     model = models.GatedTrigger
+    form = forms.GatedTriggerForm
     render_template_prefix = "custom_plugins"
     render_template = "djangocms_frontend/gated_trigger.html"
     allow_children = True
@@ -138,7 +141,9 @@ class GatedTriggerPlugin(CMSUIPlugin):
         (
             None,
             {
-                "fields": []
+                "fields": [
+                    "gate_id",
+                ]
             },
         ),
     ]
@@ -146,6 +151,7 @@ class GatedTriggerPlugin(CMSUIPlugin):
     def render(self, context, instance, placeholder):
         context.update({
             'instance': instance,
+            'gate_id': getattr(instance, 'gate_id', '') or '',
         })
         return context
 

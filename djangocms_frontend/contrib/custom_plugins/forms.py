@@ -63,6 +63,7 @@ class GatedContentForm(TemplateChoiceMixin, EntangledModelForm):
                 "template",
                 "link_url",
                 "cookie_name",
+                "gate_id",
             ]
         }
     template = forms.ChoiceField(
@@ -78,6 +79,27 @@ class GatedContentForm(TemplateChoiceMixin, EntangledModelForm):
     cookie_name = forms.CharField(
         label=_('Cookie name'),
         required=False,
+    )
+    gate_id = forms.CharField(
+        label=_('Gate ID'),
+        required=False,
+        help_text=_("Optional. Set a matching ID on both trigger and content to pair them. Required when multiple gates appear on one page."),
+    )
+
+
+class GatedTriggerForm(EntangledModelForm):
+
+    class Meta:
+        model = FrontendUIItem
+        entangled_fields = {
+            "config": [
+                "gate_id",
+            ]
+        }
+    gate_id = forms.CharField(
+        label=_('Gate ID'),
+        required=False,
+        help_text=_("Optional. Set a matching ID on both trigger and content to pair them. Required when multiple gates appear on one page."),
     )
 
 

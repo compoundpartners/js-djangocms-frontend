@@ -7,6 +7,7 @@ from djangocms_frontend.helpers import get_plugin_template
 
 from ...cms_plugins import CMSUIPlugin
 from ...common.attributes import AttributesMixin
+from ...common.foreground import ForegroundMixin
 from ...common.spacing import SpacingMixin
 from .. import utilities
 from . import forms, models, constants
@@ -56,7 +57,7 @@ class EditorNotePlugin(mixin_factory("EditorNote"), CMSUIPlugin):
 
 @plugin_pool.register_plugin
 class HeadingPlugin(
-    mixin_factory("Heading"), AttributesMixin, SpacingMixin, CMSUIPlugin
+    mixin_factory("Heading"), AttributesMixin, SpacingMixin, ForegroundMixin, CMSUIPlugin
 ):
     """Room for notes for editor only visible in edit mode"""
 

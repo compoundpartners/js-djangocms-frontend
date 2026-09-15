@@ -4,6 +4,7 @@ from django.utils.translation import gettext as _
 from entangled.forms import EntangledModelForm
 
 from ... import settings
+from ...common.foreground import ForegroundFormMixin
 from ...common.spacing import SpacingFormMixin
 from ...fields import (
     AttributesFormField,
@@ -84,7 +85,9 @@ class SpacingForm(mixin_factory("Spacing"), EntangledModelForm):
             )
 
 
-class HeadingForm(mixin_factory("Heading"), SpacingFormMixin, EntangledModelForm):
+class HeadingForm(
+    mixin_factory("Heading"), SpacingFormMixin, ForegroundFormMixin, EntangledModelForm
+):
     class Meta:
         model = FrontendUIItem
         entangled_fields = {
@@ -99,7 +102,7 @@ class HeadingForm(mixin_factory("Heading"), SpacingFormMixin, EntangledModelForm
                 "attributes",
             ],
         }
-        untangled_fields = ("attributes",)
+        untangled_fields = ("attributes", "foreground_image")
 
     HEADINGS = (
         ("h1", _("Heading 1")),

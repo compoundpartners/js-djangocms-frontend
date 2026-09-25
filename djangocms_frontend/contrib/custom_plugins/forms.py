@@ -125,7 +125,6 @@ class CustomForm(TemplateChoiceMixin, EntangledModelForm):
         super().__init__(*args, **kwargs)
         module = getattr(self, 'module', None)
         plugin = getattr(self, 'plugin', None)
-        print(f'{module.upper()}_{plugin.upper()}')
         if module and plugin:
             self.fields['template'].widget = forms.Select()
             self.fields['template'].choices = get_template_choices(f'{module}_{plugin}')

@@ -19,6 +19,8 @@
                            data-bs-target="#tab-{{ forloop.counter }}">{{ fieldset.name|default:adminform.model_admin }}
                               {% if "attributes" in fieldset.classes and original.attributes %}
                                  <span class="indicator attributes"></span>
+                              {% elif "attributes" in fieldset.classes and original.tag_type and original.tag_type != 'div' %}
+                                 <span class="indicator attributes"></span>
                               {% endif %}
                               <span class="indicator error"></span>
                         </a>

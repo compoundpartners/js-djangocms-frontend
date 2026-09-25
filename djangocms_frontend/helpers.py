@@ -38,7 +38,6 @@ def insert_fields(
         classes = ("collapse",)
         if 'classes' in blockattrs:
             classes = blockattrs['classes']
-            del blockattrs['classes']
         fs = (
             list(fieldsets[:position] if position != -1 else fieldsets)
             + [

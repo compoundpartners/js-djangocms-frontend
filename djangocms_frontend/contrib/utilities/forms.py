@@ -171,6 +171,7 @@ class TableOfContentsForm(mixin_factory("TableOfContents"), TemplateChoiceMixin,
         entangled_fields = {
             "config": [
                 "template",
+                "title",
                 "list_attributes",
                 "link_attributes",
                 "attributes",
@@ -183,6 +184,16 @@ class TableOfContentsForm(mixin_factory("TableOfContents"), TemplateChoiceMixin,
         choices=TOC_TEMPLATE_CHOICES,
         initial=first_choice(TOC_TEMPLATE_CHOICES),
         help_text=_("This is the template that will be used for the component."),
+    )
+
+    title = forms.CharField(
+        label=_("Title"),
+        required=False,
+        initial="",
+        help_text=_(
+            "Optional title for the table of contents. If empty the template's "
+            "default title (if any) is used."
+        ),
     )
 
     list_attributes = AttributesFormField(

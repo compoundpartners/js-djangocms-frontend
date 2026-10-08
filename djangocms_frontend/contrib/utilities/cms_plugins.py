@@ -147,6 +147,7 @@ class TOCPlugin(mixin_factory("TOC"), AttributesMixin, CMSUIPlugin):
             {
                 "fields": (
                     "template",
+                    "title",
                 )
             },
         ),

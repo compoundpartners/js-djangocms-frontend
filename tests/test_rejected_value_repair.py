@@ -71,6 +71,33 @@ print("\n-- not reversible, deliberately ---------------------------------")
 from django.db import migrations as real_migrations
 check("backwards is a no-op", mig.backwards is real_migrations.RunPython.noop)
 
+
+
+
+# ---------------------------------------------------------------------------
+# migration 0005: code_type
+# ---------------------------------------------------------------------------
+print("\n-- 0005: code_type values no longer offered ---------------------")
+MIG5 = (pathlib.Path(__file__).resolve().parent.parent
+        / "djangocms_frontend" / "migrations" / "0005_repair_code_type.py")
+spec5 = importlib.util.spec_from_file_location("mig0005", MIG5)
+mig5 = importlib.util.module_from_spec(spec5)
+sys.modules["mig0005"] = mig5
+spec5.loader.exec_module(mig5)
+
+cfg, ch = mig5.repair_config({"code_type": "html"})
+check("a dropped value falls back to the field's initial",
+      cfg["code_type"] == "code", cfg)
+check("and is reported", ch == [("code_type", "html", "code")], ch)
+for good in mig5.VALID:
+    _, ch = mig5.repair_config({"code_type": good})
+    check(f"an offered value {good!r} is left alone", ch == [], ch)
+_, ch = mig5.repair_config({"code_type": ""})
+check("an empty value is left alone", ch == [], ch)
+_, ch = mig5.repair_config({"other": 1})
+check("a config without the field is left alone", ch == [], ch)
+check("0005 is also irreversible", mig5.backwards is real_migrations.RunPython.noop)
+
 passed = sum(1 for _, ok in results if ok)
-print(f"\n==== {passed}/{len(results)} checks passed ====")
+print(f"\n==== {passed}/{len(results)} checks passed (incl. 0005) ====")
 raise SystemExit(0 if passed == len(results) else 1)

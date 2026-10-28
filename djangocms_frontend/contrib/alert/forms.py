@@ -41,6 +41,13 @@ class AlertForm(
         label=_("Context"),
         choices=COLOR_STYLE_CHOICES,
         initial=first_choice(COLOR_STYLE_CHOICES),
+        # A project may legitimately offer no colour styles at all --
+        # COLOR_STYLE_CHOICES is a project setting, and emptying it is how you
+        # decline these Bootstrap contexts. Left required, the field is then
+        # unsatisfiable: `choices` is empty so no value validates, and
+        # `required=True` rejects "" as well, so the plugin cannot be saved in
+        # the admin or written through the service layer at all.
+        required=bool(COLOR_STYLE_CHOICES),
         widget=ColoredButtonGroup(),
     )
     alert_dismissible = forms.BooleanField(

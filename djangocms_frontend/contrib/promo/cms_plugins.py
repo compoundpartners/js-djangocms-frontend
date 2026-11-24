@@ -43,7 +43,6 @@ class PromoPlugin(
                     "content",
                     "icon",
                     "alignment",
-                    "modal_video",
                 )
             },
         ),

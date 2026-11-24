@@ -55,7 +55,6 @@ class PromoForm(
                 "content",
                 "icon",
                 "alignment",
-                "modal_video",
                 "attributes",
             ]
         }
@@ -96,10 +95,6 @@ class PromoForm(
         choices=settings.EMPTY_CHOICE + settings.ALIGN_CHOICES,
         required=False,
         widget=IconGroup(),
-    )
-    modal_video = forms.CharField(
-        label=_("Modal Video"),
-        required=False,
     )
     attributes = AttributesFormField()
     tag_type = TagTypeFormField()
